@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 
-export const ShoppingHistory = (sequelize) =>{
+export const shoppingHistory = (sequelize) =>{
     sequelize.define('ShoppingHistory', {
         IDShopHistory: {
             type: DataTypes.INTEGER,
@@ -12,7 +12,7 @@ export const ShoppingHistory = (sequelize) =>{
             allowNull: false
         },
         totalAmount: {
-            type: DataTypes.DECIMAL,
+            type: DataTypes.DOUBLE,
             allowNull: false
         }
     });
