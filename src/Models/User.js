@@ -3,7 +3,7 @@ import { DataTypes } from "sequelize";
 export const User = (sequelize) => {
 
     sequelize.define('User', {
-        id: {
+        idUser: {
             type: DataTypes.UUID,
             primaryKey: true,
             defaultValue: DataTypes.UUIDV4

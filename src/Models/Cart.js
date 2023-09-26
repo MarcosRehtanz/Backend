@@ -3,12 +3,12 @@ import {DataTypes} from "sequelize";
 export const Cart = (sequelize)=>{
 
     sequelize.define("Cart", {
-        id: {
+        idCart: {
             type: DataTypes.UUID,
             primaryKey: true,
             defaultValue: DataTypes.UUIDV4
         },
-        cantidad: {
+        quantity: {
             type: DataTypes.INTEGER,
             allowNull: false
         }
