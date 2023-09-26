@@ -5,10 +5,14 @@ import { MutationType } from "./Mutation/Mutation.js";
 
 export const typeDefs = gql`
     type User {
-        id: ID!
+        idUser: ID!
         name: String!
         email: String!
         password: String!
+        phone: String
+        postalCode: Int
+        nickName: String!
+        address: String
     }
 
     ${QueryType}
