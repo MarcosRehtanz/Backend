@@ -7,6 +7,10 @@ export const MutationType = gql`
             name: String!
             email: String!
             password: String!
+            nickName: String!
+            phone: String
+            postalCode: Int
+            address: String
         ): User
     }
 `
