@@ -7,7 +7,7 @@ export const User = (sequelize) => {
             primaryKey: true,
             defaultValue: DataTypes.UUIDV4
         },
-        typePerson: {
+        typeUser: {
             type: DataTypes.STRING,
             allowNull: false
         }
