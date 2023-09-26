@@ -3,7 +3,11 @@ import { addUser } from "./addUser.js";
 
 export const MutationType = gql`
     type Mutation {
-        addUser: [String]
+        addUser(
+            name: String!
+            email: String!
+            password: String!
+        ): User
     }
 `
 
