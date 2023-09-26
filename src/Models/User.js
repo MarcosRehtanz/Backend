@@ -20,5 +20,18 @@ export const User = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false
         },
+        phone: {
+            type: DataTypes.STRING,
+        },
+        postalCode: {
+            type: DataTypes.INTEGER
+        },
+        nickName: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        address: {
+            type: DataTypes.TEXT,
+        }
     },{timetamps: false})
 }
