@@ -13,6 +13,16 @@ export const typeDefs = gql`
         postalCode: Int
         nickName: String!
         address: String
+        status: Boolean!
+    }
+
+    type Product {
+        idProduct: ID!
+        name: String!
+        description: String!
+        price: Float
+        stock: Int
+        publicationDate: String
     }
 
     ${QueryType}
