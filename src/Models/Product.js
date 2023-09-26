@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 
-export const Product = (sequelize)=>{
+export const product = (sequelize)=>{
     sequelize.define('Product',{
         idProduct: {
             type: DataTypes.UUID,

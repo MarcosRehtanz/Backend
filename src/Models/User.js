@@ -32,6 +32,10 @@ export const user = (sequelize) => {
         },
         address: {
             type: DataTypes.TEXT,
+        },
+        status: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: true
         }
     },{timetamps: false})
 }
