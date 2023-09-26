@@ -8,7 +8,7 @@ export const shoppingHistory = (sequelize) =>{
             allowNull: false
         },
         billDate: {
-            type: DataTypes.DATE,
+            type: DataTypes.DATEONLY,
             allowNull: false
         },
         totalAmount: {

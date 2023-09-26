@@ -24,6 +24,24 @@ export const typeDefs = gql`
         stock: Int
         publicationDate: String
     }
+    type Cart {
+        idCart: ID!
+        quantity: Int
+    }
+    type shoppingHistory {
+        IDShopHistory: ID!
+        billDate:String!
+        totalAmount: Float!
+    }
+    type typePerson {
+        idPerson:ID!
+        typePerson:String
+    }
+    type typeUser {
+        idPerson: ID!
+        typeUser: String
+    }
+ 
 
     ${QueryType}
     ${MutationType}
