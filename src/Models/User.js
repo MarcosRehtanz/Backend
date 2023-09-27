@@ -67,7 +67,11 @@ export const user = (sequelize) => {
         type: DataTypes.STRING(5000),
       },
       typeUser: {
-        type: DataTypes.ENUM("buyer", "seller", "both", "delivery"),
+        type: DataTypes.ENUM("comprador", "vendedor", "ambos", "transportista"),
+        allowNull: true
+      },
+      typeUser: {
+        type: DataTypes.ENUM("Jurídica", "Física"),
         allowNull: true
       },
     },

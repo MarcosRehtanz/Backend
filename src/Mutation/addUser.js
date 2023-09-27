@@ -5,16 +5,16 @@ export const addUser = async (root, args) => {
     try {
         const [user, created] = await models.User.findOrCreate({
             where: {
-                userName,
+                userName: userName || null,
                 name,
-                lastName,
+                lastName: lastName || null,
                 email,
                 nickName,
-                phone,
+                phone: phone || null,
                 cuitCuil, 
-                postalCode, 
-                address,
-                profilePicture
+                postalCode: postalCode || null, 
+                address: address || null,
+                profilePicture: profilePicture || null
             },
             defaults: { password }
         })
