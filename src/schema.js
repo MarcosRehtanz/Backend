@@ -57,7 +57,11 @@ export const typeDefs = gql`
         typeUser: String
     }
  
-
+    type Material{
+        id: ID!
+        name: String!
+        origen: String!
+    }
     ${QueryType}
     ${MutationType}
 `

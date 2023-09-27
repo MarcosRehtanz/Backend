@@ -5,7 +5,7 @@ import { addCart } from "./addCart.js";
 import { addShoppingHistory } from "./addShoppingHistory.js";
 import { addTypePerson } from "./addTypePerson.js";
 import { addTypeUser } from "./addTypeUser.js";
-
+import { addMaterial } from "./addMaterial.js";
 export const MutationType = gql`
     type Mutation {
         addUser(
@@ -42,8 +42,10 @@ export const MutationType = gql`
         addTypeUser(
             typeUser: String
         ): TypeUser
+        addMaterial(name: String! origen:String!): Material 
     }
 `
+
 
 export const Mutation = {
     addUser,
@@ -51,5 +53,6 @@ export const Mutation = {
     addCart,
     addShoppingHistory,
     addTypePerson,
-    addTypeUser
+    addTypeUser,
+    addMaterial,
 }
