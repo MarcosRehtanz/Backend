@@ -9,11 +9,14 @@ import { addTypeUser } from "./addTypeUser.js";
 export const MutationType = gql`
     type Mutation {
         addUser(
+            userName: String
             name: String!
+            lastName: String
             email: String!
             password: String!
             nickName: String!
             phone: String
+            cuitCuil: String!
             postalCode: Int
             address: String
             profilePicture: String
