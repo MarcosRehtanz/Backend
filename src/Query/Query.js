@@ -6,6 +6,7 @@ import { allShoppingHistory } from "./allShoppingHistory.js";
 import { allTypePerson } from "./allTypePerson.js";
 import { allTypeUser } from "./allTypeUser.js";
 import { orderingStock } from "./orderingStock.js";
+import { orderingPrice } from "./orderingPrice.js";
 
 export const QueryType = gql`
     type Query {
@@ -19,6 +20,10 @@ export const QueryType = gql`
             orderStock: String!
             orderPrice: String
         ): [Product]
+        orderingPrice(
+            orderPrice: String!
+            orderStock: String
+        ): [Product]
     }
 `
 
@@ -29,5 +34,6 @@ export const Query = {
     allShoppingHistory,
     allTypePerson,
     allTypeUser,
-    orderingStock
+    orderingStock,
+    orderingPrice
 }
