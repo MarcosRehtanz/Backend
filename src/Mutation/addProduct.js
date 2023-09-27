@@ -1,7 +1,7 @@
 import { models } from "../db.js"
 
 export const addProduct = async (root, args) => {
-    const { name, description, price, stock, publicationDate } = args
+    const { name, description, price, stock, publicationDate, productImage } = args
 
     try {
         const [product, created] = await models.Product.findOrCreate({
@@ -10,7 +10,8 @@ export const addProduct = async (root, args) => {
                 description,
                 price,
                 stock, 
-                publicationDate
+                publicationDate,
+                productImage
             },
         })
         

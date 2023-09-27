@@ -1,7 +1,7 @@
 import { models } from "../db.js"
 
 export const addUser = async (root, args) => {
-    const { name, email, password, nickName, phone, postalCode, address } = args
+    const { name, email, password, nickName, phone, postalCode, address, profilePicture } = args
     try {
         const [user, created] = await models.User.findOrCreate({
             where: {
@@ -10,7 +10,8 @@ export const addUser = async (root, args) => {
                 nickName,
                 phone, 
                 postalCode, 
-                address
+                address,
+                profilePicture
             },
             defaults: { password }
         })

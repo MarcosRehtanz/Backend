@@ -16,6 +16,7 @@ export const MutationType = gql`
             phone: String
             postalCode: Int
             address: String
+            profilePicture: String
         ): User
         addProduct(
             name: String!
@@ -23,13 +24,14 @@ export const MutationType = gql`
             price: Float
             stock: Int
             publicationDate: String
+            productImage: String!
         ): Product
         addCart(
             quantity: Int!
         ): Cart
         addShoppingHistory(
-            billDate: String
-            totalAmount: Float
+            billDate: String!
+            totalAmount: Float!
         ): ShoppingHistory
         addTypePerson(
             typePerson: String

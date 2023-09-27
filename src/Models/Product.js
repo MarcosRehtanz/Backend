@@ -25,7 +25,10 @@ export const product = (sequelize)=>{
         publicationDate:{
             type: DataTypes.DATEONLY,
             allowNull: false
+        },
+        productImage: {
+            type: DataTypes.TEXT,
+            allowNull: false
         }
-
     },{timetamps: false})
 }

@@ -3,9 +3,9 @@ import { DataTypes } from "sequelize";
 export const shoppingHistory = (sequelize) =>{
     sequelize.define('ShoppingHistory', {
         IDShopHistory: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.UUID,
             primaryKey: true,
-            allowNull: false
+            defaultValue: DataTypes.UUIDV4
         },
         billDate: {
             type: DataTypes.DATEONLY,
