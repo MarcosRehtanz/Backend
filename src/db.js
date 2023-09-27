@@ -22,7 +22,7 @@ typeUser(sequelize)
 
 //Models
 const { User, Product, Cart, ShoppingHistory,  TypePerson, TypeUser} = sequelize.models
-console.log(sequelize.models)
+// console.log(sequelize.models)
 
 
 // Relations
@@ -38,11 +38,11 @@ User.hasMany(ShoppingHistory,{
   })
 ShoppingHistory.belongsTo(User)
 
-User.hasOne(TypePerson);
-TypePerson.belongsTo(User);
+// User.hasOne(TypePerson);
+// TypePerson.belongsTo(User);
 
-User.belongsToMany(TypeUser, {through: 'UserTypeUser'})
-TypeUser.belongsToMany(User, {through:'UserTypeUser'})
+// User.belongsToMany(TypeUser, {through: 'UserTypeUser'})
+// TypeUser.belongsToMany(User, {through:'UserTypeUser'})
 
 export const conn = sequelize
 export const models = sequelize.models
