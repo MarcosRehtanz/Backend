@@ -36,6 +36,9 @@ export const user = (sequelize) => {
         status: {
             type: DataTypes.BOOLEAN,
             defaultValue: true
+        },
+        profilePicture: {
+            type: DataTypes.TEXT,
         }
     },{timetamps: false})
 }

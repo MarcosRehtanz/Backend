@@ -14,6 +14,7 @@ export const typeDefs = gql`
         nickName: String!
         address: String
         status: Boolean!
+        profilePicture: String
     }
 
     type Product {
@@ -23,21 +24,22 @@ export const typeDefs = gql`
         price: Float
         stock: Int
         publicationDate: String
+        productImage: String!
     }
     type Cart {
         idCart: ID!
         quantity: Int
     }
-    type shoppingHistory {
+    type ShoppingHistory {
         IDShopHistory: ID!
         billDate:String!
         totalAmount: Float!
     }
-    type typePerson {
+    type TypePerson {
         idPerson:ID!
         typePerson:String
     }
-    type typeUser {
+    type TypeUser {
         idPerson: ID!
         typeUser: String
     }

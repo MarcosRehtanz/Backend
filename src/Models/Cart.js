@@ -1,6 +1,6 @@
 import {DataTypes} from "sequelize";
 
-export const Cart = (sequelize)=>{
+export const cart = (sequelize)=>{
 
     sequelize.define("Cart", {
         idCart: {
