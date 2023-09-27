@@ -13,8 +13,14 @@ export const typeDefs = gql`
         postalCode: Int
         nickName: String!
         address: String
-        status: Boolean!
+        "status o isAcountActive ? para verificar estado de la cuenta"
+        status: Boolean! 
         profilePicture: String
+        cart: Cart
+        product: Product
+        typePerson: TypePerson!
+        typeUser: [TypeUser!]!
+        shoppingHistory: ShoppingHistory
     }
 
     type Product {
@@ -29,12 +35,19 @@ export const typeDefs = gql`
     type Cart {
         idCart: ID!
         quantity: Int
+        "montos -- subtotales y totales"
+        product: Product
+        user: User!
+
     }
     type ShoppingHistory {
         IDShopHistory: ID!
         billDate:String!
         totalAmount: Float!
+        "user: User!"
+        product: Product
     }
+    
     type TypePerson {
         idPerson:ID!
         typePerson:String
