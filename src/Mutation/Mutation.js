@@ -45,6 +45,8 @@ export const MutationType = gql`
             typeUser: String
         ): TypeUser
         addMaterial(name: String! origen:String!): Material 
+        
+        deleteProduct(id: ID): String
     }
 `
 
