@@ -11,18 +11,15 @@ export const user = (sequelize) => {
       },
       userName: {
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
       },
       name: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      lastName:{
+      lastname:{
         type:DataTypes.STRING,
         allowNull: false
-      },
-      nickName: {
-        type: DataTypes.STRING,
       },
       email: {
         type: DataTypes.STRING,
@@ -32,22 +29,21 @@ export const user = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      newPassword: {
-        type: DataTypes.STRING,
-      },
       cuitCuil: {
         type: DataTypes.STRING,
         allowNull: false,
       },
       phone: {
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
       },
       address: {
-        type: DataTypes.TEXT,
+        type: DataTypes.STRING,
+        allowNull: false,
       },
       postalCode: {
         type: DataTypes.INTEGER,
+        allowNull: false,
       },
       acountActive: {
         type: DataTypes.BOOLEAN,
@@ -62,17 +58,18 @@ export const user = (sequelize) => {
       },
       profilePicture: {
         type: DataTypes.TEXT,
+        allowNull: true,
       },
       description: {
-        type: DataTypes.STRING(5000),
+        type: DataTypes.TEXT,
       },
       typeUser: {
-        type: DataTypes.ENUM("comprador", "vendedor", "ambos", "transportista"),
-        allowNull: true
+        type: DataTypes.ENUM("comprador", "vendedor", "transportista"),
+        allowNull: false
       },
-      typeUser: {
-        type: DataTypes.ENUM("Jurídica", "Física"),
-        allowNull: true
+      afipCondition: {
+        type: DataTypes.ENUM("Juridica", "Fisica"),
+        allowNull: false
       },
     },
     { timetamps: false }

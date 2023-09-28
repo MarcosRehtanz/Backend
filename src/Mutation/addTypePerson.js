@@ -1,19 +1,19 @@
-import { models } from "../db.js"
+// import { models } from "../db.js"
 
-export const addTypePerson = async (root, args) => {
-    const { typePerson } = args
+// export const addafipCondition = async (root, args) => {
+//     const { afipCondition } = args
 
-    try {
-        const [typePersonTable, created] = await models.TypePerson.findOrCreate({
-            where: {
-                typePerson
-            },
-        })
+//     try {
+//         const [typePersonTable, created] = await models.TypePerson.findOrCreate({
+//             where: {
+//                 afipCondition
+//             },
+//         })
         
-        return typePersonTable
+//         return typePersonTable
 
-    } catch (error) {
-        console.log(error.message);
-        return args
-    }
-}
+//     } catch (error) {
+//         console.log(error.message);
+//         return args
+//     }
+// }
