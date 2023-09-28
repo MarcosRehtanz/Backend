@@ -1,28 +1,47 @@
-import { models } from "../db.js"
+import { models } from "../db.js";
 
 export const addUser = async (root, args) => {
-    const { name, email, password, nickName, phone, postalCode, address, profilePicture } = args
-    try {
-        const [user, created] = await models.User.findOrCreate({
-            where: {
-                userName: userName || null,
-                name,
-                lastName: lastName || null,
-                email,
-                nickName,
-                phone: phone || null,
-                cuitCuil, 
-                postalCode: postalCode || null, 
-                address: address || null,
-                profilePicture: profilePicture || null
-            },
-            defaults: { password }
-        })
-        
-        return user
+  const {
+    userName,
+    name,
+    lastname,
+    email,
+    password,
+    cuitCuil,
+    phone,
+    address,
+    postalCode,
+    acountActive,
+    termsAndCondsAprove,
+    profilePicture,
+    afipCondition,
+    typeUser,
+  } = args;
+  try {
+    const user = await models.User.findOrCreate({
+      where: {
+        userName,
+        name,
+        lastname,
+        email,
+        password,
+        cuitCuil,
+        phone,
+        address,
+        postalCode,
+        acountActive,
+        termsAndCondsAprove,
+        profilePicture: profilePicture || null,
+        afipCondition,
+        typeUser,
+      },
+   
+    });
+    if(!user) throw new Error(error.message)
 
-    } catch (error) {
-        console.log(error.message);
-        return args
-    }
-}
+        return user[0].dataValues
+
+  } catch (error) {
+    throw new Error(error.message)
+  }
+};

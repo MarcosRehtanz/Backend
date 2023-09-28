@@ -1,25 +1,28 @@
 import { gql } from "apollo-server";
 import { addUser } from "./addUser.js";
 import { addProduct } from "./addProduct.js";
-import { addCart } from "./addCart.js";
+
 import { addShoppingHistory } from "./addShoppingHistory.js";
-import { addTypePerson } from "./addTypePerson.js";
+// import { addTypePerson } from "./addTypePerson.js";
 import { addTypeUser } from "./addTypeUser.js";
 import { addMaterial } from "./addMaterial.js";
 export const MutationType = gql`
     type Mutation {
         addUser(
-            userName: String
+            userName: String!
             name: String!
-            lastName: String
+            lastname: String!
             email: String!
             password: String!
-            nickName: String!
-            phone: String
             cuitCuil: String!
-            postalCode: Int
-            address: String
+            phone: String!
+            address: String!
+            postalCode: Int!
+            acountActive:Boolean!
+            termsAndCondsAprove: Boolean!
             profilePicture: String
+            afipCondition: AfipCondition!
+            typeUser:TypeUser!
         ): User
         addProduct(
             name: String!
@@ -29,16 +32,14 @@ export const MutationType = gql`
             publicationDate: String
             productImage: String!
         ): Product
-        addCart(
-            quantity: Int!
-        ): Cart
+
         addShoppingHistory(
             billDate: String!
             totalAmount: Float!
         ): ShoppingHistory
-        addTypePerson(
-            typePerson: String
-        ): TypePerson
+        # addTypePerson(
+        #     typePerson: String
+        # ): TypePerson
         addTypeUser(
             typeUser: String
         ): TypeUser
@@ -50,9 +51,8 @@ export const MutationType = gql`
 export const Mutation = {
     addUser,
     addProduct,
-    addCart,
     addShoppingHistory,
-    addTypePerson,
+    // addTypePerson,
     addTypeUser,
     addMaterial,
 }
