@@ -4,7 +4,7 @@ export const allProductsByUser = async (_, args) => {
   try {
     const { id } = args;
     if (!id)
-      throw new UserInputError("Debe proporsionar un ID", {
+      throw new UserInputError("Debe proporcionar un ID", {
         invalidArgs: id,
       });
     const product = await models.Product.findAll({ where: { UserIdUser: id } });

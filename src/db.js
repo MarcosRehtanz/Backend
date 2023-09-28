@@ -30,6 +30,8 @@ User.hasMany(ShoppingHistory, {
 });
 ShoppingHistory.belongsTo(User);
 
+Product.hasOne(Material) //Un preducto puede tener un material
+
 // User.hasOne(TypePerson);
 // TypePerson.belongsTo(User);
 
