@@ -32,6 +32,7 @@ export const MutationType = gql`
             publicationDate: String!
             productImage: String!
             id: ID!
+            MaterialId: ID!
         ): Product
 
         addShoppingHistory(

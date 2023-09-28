@@ -2,7 +2,7 @@ import { models } from "../db.js";
 
 export const addProduct = async (root, args) => {
   try {
-    const { name, description, price, stock, publicationDate, productImage, id} =
+    const { name, description, price, stock, publicationDate, productImage, id, MaterialId} =
       args;
     if (
       !name ||
@@ -11,7 +11,8 @@ export const addProduct = async (root, args) => {
       !stock ||
       !publicationDate ||
       !productImage ||
-      !id
+      !id ||
+      !MaterialId
     )
       throw new Error(error.message);
      
@@ -23,7 +24,8 @@ export const addProduct = async (root, args) => {
         stock,
         publicationDate,
         productImage,
-        UserIdUser: id
+        UserIdUser: id,
+        MaterialId
       },
   
     });

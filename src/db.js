@@ -25,12 +25,14 @@ const { User, Product, ShoppingHistory, TypePerson, TypeUser, Material } =
 
 User.hasMany(Product);
 Product.belongsTo(User);
+
 User.hasMany(ShoppingHistory, {
   foreignKey: "userID",
 });
 ShoppingHistory.belongsTo(User);
 
-Product.hasOne(Material) //Un preducto puede tener un material
+Material.hasMany(Product); // Un material puede pertenecer a muchos
+Product.belongsTo(Material); //Un producto puede tener un material
 
 // User.hasOne(TypePerson);
 // TypePerson.belongsTo(User);
