@@ -7,8 +7,12 @@ import { allShoppingHistory } from "./allShoppingHistory.js";
 import { allTypeUser } from "./allTypeUser.js";
 import { orderingStock } from "./orderingStock.js";
 import { orderingPrice } from "./orderingPrice.js";
+
 import { isRequiredArgument } from "graphql";
 import { getAllMaterial } from "./getAllMaterial.js";
+
+import {allProductsByUser} from "./allProductsByUser.js"
+
 export const QueryType = gql`
     type Query {
         allUsers: [User]
@@ -25,6 +29,8 @@ export const QueryType = gql`
             orderStock: String
         ): [Product]
         getAllMaterial: [Material!]
+        allProductsByUser: [Product] 
+
     }
 `
 
@@ -37,5 +43,7 @@ export const Query = {
     allTypeUser,
     orderingStock,
     orderingPrice,
-    getAllMaterial
+    getAllMaterial,
+    allProductsByUser
+
 }

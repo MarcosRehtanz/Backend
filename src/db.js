@@ -22,7 +22,12 @@ material(sequelize)
 const { User, Product, ShoppingHistory,  TypePerson, TypeUser, Material} = sequelize.models
 // console.log(sequelize.models)
 
+// const conection = () =>{
+  
+// }
 
+
+// console.log (conection())
 // Relations
 
 
