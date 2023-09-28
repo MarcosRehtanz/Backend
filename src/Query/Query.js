@@ -43,6 +43,8 @@ export const QueryType = gql`
             typeUser: String!
             idMaterial: String
         ): [Product]
+        _: Boolean
+
     }
 `
 

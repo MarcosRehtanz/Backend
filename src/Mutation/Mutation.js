@@ -1,7 +1,7 @@
 import { gql } from "apollo-server";
 import { addUser } from "./addUser.js";
 import { addProduct } from "./addProduct.js";
-
+import { uploadProductImg } from "./uploadProductImg.js";
 import { addShoppingHistory } from "./addShoppingHistory.js";
 // import { addTypePerson } from "./addTypePerson.js";
 import { addTypeUser } from "./addTypeUser.js";
@@ -46,7 +46,7 @@ export const MutationType = gql`
             typeUser: String
         ): TypeUser
         addMaterial(name: String! origen:String!): Material 
-        
+        uploadProductImg(photo: String): String
         deleteProduct(id: ID): String
     }
 `
@@ -59,4 +59,5 @@ export const Mutation = {
     // addTypePerson,
     addTypeUser,
     addMaterial,
+    uploadProductImg
 }
