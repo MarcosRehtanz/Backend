@@ -35,6 +35,7 @@ export const typeDefs = gql`
     stock: Int
     publicationDate: String
     productImage: String!
+    UserIdUser: ID!
   }
 
  type ShoppingHistory {
