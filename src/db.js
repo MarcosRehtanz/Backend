@@ -25,9 +25,6 @@ material(sequelize)
 const { User, Product, Cart, ShoppingHistory,  TypePerson, TypeUser, Material} = sequelize.models
 // console.log(sequelize.models)
 
-const { User, Product, Cart, ShoppingHistory,  TypePerson, TypeUser} = sequelize.models
-console.log(sequelize.models)
-
 
 // const conection = () =>{
   
