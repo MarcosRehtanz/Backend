@@ -7,7 +7,7 @@ import { cart } from "./Models/Cart.js";
 import { shoppingHistory } from "./Models/ShoppingHistory.js";
 import { typePerson } from "./Models/TypePerson.js";
 import { typeUser } from "./Models/TypeUser.js";
-
+import { material } from "./Models/Material.js";
 const sequelize = new Sequelize( process.env.POSTGRES, {logging:false} )
 
 
@@ -19,10 +19,15 @@ cart(sequelize)
 shoppingHistory(sequelize)
 typePerson(sequelize)
 typeUser(sequelize)
-
+material(sequelize)
 //Models
+
+const { User, Product, Cart, ShoppingHistory,  TypePerson, TypeUser, Material} = sequelize.models
+// console.log(sequelize.models)
+
 const { User, Product, Cart, ShoppingHistory,  TypePerson, TypeUser} = sequelize.models
 console.log(sequelize.models)
+
 
 // const conection = () =>{
   
