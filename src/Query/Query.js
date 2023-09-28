@@ -30,7 +30,7 @@ export const QueryType = gql`
             orderStock: String
         ): [Product]
         getAllMaterial: [Material!]
-        allProductsByUser: [Product] 
+        allProductsByUser(id:ID!): [Product] 
         getUserById(id:ID!): User
     }
 `

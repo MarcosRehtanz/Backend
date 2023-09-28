@@ -9,21 +9,22 @@ export const product = (sequelize)=>{
         },
         name:{
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         description:{
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         price:{
             type: DataTypes.DOUBLE,
-            allowNull:true
+            allowNull: true
         },
         stock:{
-            type: DataTypes.INTEGER
+            type: DataTypes.INTEGER,
+            allowNull: true
         },
         publicationDate:{
-            type: DataTypes.DATEONLY,
+            type: DataTypes.STRING,
             allowNull: false
         },
         productImage: {

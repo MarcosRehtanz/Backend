@@ -4,10 +4,11 @@ export const allProducts = async(_, args) => {
     
     try {
         const product = await models.Product.findAll()
-        console.log(product, 'pasé por la función')
-        return product
+        if(!product) throw new Error (error.message)
+        console.log(product[0].dataValues)
+        return product[0].dataValues
     } catch (error) {
-        
+        throw new Error (error.message)
     }
 
 }
