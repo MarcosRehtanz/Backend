@@ -12,6 +12,7 @@ import { isRequiredArgument } from "graphql";
 import { getAllMaterial } from "./getAllMaterial.js";
 
 import {allProductsByUser} from "./allProductsByUser.js"
+import { getUserById } from "./getUserById.js";
 
 export const QueryType = gql`
     type Query {
@@ -30,7 +31,7 @@ export const QueryType = gql`
         ): [Product]
         getAllMaterial: [Material!]
         allProductsByUser: [Product] 
-
+        getUserById(id:ID!): User
     }
 `
 
@@ -44,6 +45,7 @@ export const Query = {
     orderingStock,
     orderingPrice,
     getAllMaterial,
-    allProductsByUser
+    allProductsByUser,
+    getUserById
 
 }
