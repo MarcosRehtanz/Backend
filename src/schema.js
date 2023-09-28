@@ -23,7 +23,7 @@ export const typeDefs = gql`
         shoppingHistory: ShoppingHistory
     }
 
-    type Product {
+        type Product {
         idProduct: ID!
         name: String!
         description: String!
@@ -32,6 +32,7 @@ export const typeDefs = gql`
         publicationDate: String
         productImage: String!
     }
+    
     type Cart {
         idCart: ID!
         quantity: Int

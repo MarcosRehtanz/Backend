@@ -22,13 +22,21 @@ typeUser(sequelize)
 
 //Models
 const { User, Product, Cart, ShoppingHistory,  TypePerson, TypeUser} = sequelize.models
-// console.log(sequelize.models)
+console.log(sequelize.models)
+
+// const conection = () =>{
+  
+// }
 
 
+// console.log (conection())
 // Relations
 
 User.hasOne(Cart);
 Cart.belongsTo(User);
+
+User.hasMany(Product);
+Product.belongsTo(User)
 
 Product.belongsToMany(Cart, {through: 'ProductCart'})
 Cart.belongsToMany(Product, {through:'ProductCart'})
