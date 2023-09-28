@@ -1,24 +1,32 @@
-import { models } from "../db.js"
+import { models } from "../db.js";
 
 export const addProduct = async (root, args) => {
-    const { name, description, price, stock, publicationDate, productImage } = args
+  try {
+    const { name, description, price, stock, publicationDate, productImage } =
+      args;
+    if (
+      !name ||
+      !description ||
+      !price ||
+      !stock ||
+      !publicationDate ||
+      !productImage
+    )
+      throw new Error(error.message);
 
-    try {
-        const [product, created] = await models.Product.findOrCreate({
-            where: {
-                name,
-                description,
-                price,
-                stock, 
-                publicationDate,
-                productImage
-            },
-        })
-        
-        return product
-
-    } catch (error) {
-        console.log(error.message);
-        return args
-    }
-}
+    const product = await models.Product.findOrCreate({
+      where: {
+        name,
+        description,
+        price,
+        stock,
+        publicationDate,
+        productImage,
+      },
+    });
+    console.log(product[0].dataValues);
+    return product[0].dataValues;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};

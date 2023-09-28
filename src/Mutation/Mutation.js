@@ -27,9 +27,9 @@ export const MutationType = gql`
         addProduct(
             name: String!
             description: String!
-            price: Float
-            stock: Int
-            publicationDate: String
+            price: Float!
+            stock: Int!
+            publicationDate: String!
             productImage: String!
         ): Product
 
