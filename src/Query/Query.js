@@ -9,6 +9,7 @@ import { getAllMaterial } from "./getAllMaterial.js";
 import {allProductsByUser} from "./allProductsByUser.js"
 
 import { filteringMaterial } from "./filteringMaterial.js";
+import { filteringAfipCondition } from "./filteringAfipCondition.js";
 import { orderingStock } from "./orderingStock.js";
 import { orderingPrice } from "./orderingPrice.js";
 
@@ -33,7 +34,11 @@ export const QueryType = gql`
         allProductsByUser(id:ID!): [Product] 
         getUserById(id:ID!): User
         filteringMaterial(
-            idMaterial: String
+            idMaterial: String!
+        ): [Product]
+        filteringAfipCondition(
+            afipCondition: String!
+            typeUser: String!
         ): [Product]
     }
 `
@@ -50,6 +55,6 @@ export const Query = {
     getAllMaterial,
     allProductsByUser,
     getUserById,
-    filteringMaterial
-
+    filteringMaterial,
+    filteringAfipCondition
 }
