@@ -35,10 +35,13 @@ export const QueryType = gql`
         getUserById(id:ID!): User
         filteringMaterial(
             idMaterial: String!
+            afipCondition: String
+            typeUser: String
         ): [Product]
         filteringAfipCondition(
             afipCondition: String!
             typeUser: String!
+            idMaterial: String
         ): [Product]
     }
 `
