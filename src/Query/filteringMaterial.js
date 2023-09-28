@@ -5,7 +5,9 @@ export const filteringMaterial = async (root, args) => {
     const { idMaterial } = args
 
     try {
-        const product = await models.Product.findAll({ MateraialId: idMaterial });
+        const product = await models.Product.findAll({ where: {
+            MaterialId: idMaterial
+        } });
 
         return product
     } catch (error) {
