@@ -32,6 +32,7 @@ export const QueryType = gql`
         getAllMaterial: [Material!]
         allProductsByUser(id:ID!): [Product] 
         getUserById(id:ID!): User
+        _: Boolean
     }
 `
 
