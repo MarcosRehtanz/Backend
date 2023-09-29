@@ -7,15 +7,10 @@ export const allProductsByUser = async (_, args) => {
       throw new UserInputError("Debe proporcionar un ID", {
         invalidArgs: id,
       });
-    const product = await models.Product.findAll({ where: { UserIdUser: id } });
-    // const objProd = product.map((p) => {
-    //   return {
-    //     idProduct: p.dataValues.idProduct,
-    //     name:  p.dataValues.name,
-    //     description: p.dataValues.description
-    //   }
-    // });
-    console.log(product);
+    const product = await models.Product.findAll({
+      where: { UserIdUser: id }, include: models.Material
+    });
+
     return product;
   } catch (error) {
     console.log(error, "el error");
