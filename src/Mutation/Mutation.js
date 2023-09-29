@@ -64,7 +64,7 @@ export const MutationType = gql`
     #     typePerson: String
     # ): TypePerson
     addTypeUser(typeUser: String): TypeUser
-    addMaterial(name: String!, origen: String!): Material
+    addMaterial(name: String!, origen: String!, image: String!): Material
     uploadProductImg(photo: String): String
     deleteProduct(id: ID): String
   }

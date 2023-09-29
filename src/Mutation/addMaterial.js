@@ -5,22 +5,20 @@ export const addMaterial = async (_, args) => {
     
     try {
         const { name, origen, image } = args
-        if(!name || !origen || !image) return new Error(error.message)
+        if(!name || !origen || !image) return new Error("Faltan datos bichi")
         
         const mat = await models.Material.findOne({where:{name}})
-        if (mat) return new Error (error.message)
-        const material = await models.Material.findOrCreate({
-            where: {
+        if (mat) throw new Error ("El material ya esta creado")
+        const material = await models.Material.create({
                 name,
                 origen,
                 image
-            },
         })
-        if(!material.dataValues) return new Error(error.message)
+        console.log(material.dataValues);
+        if(!material.dataValues) return new Error("No se pudo crear el material")
         return material.dataValues
 
     } catch (error) {
-        console.log(error.message);
-        return args
+            throw new Error(error.message);
     }
 }
