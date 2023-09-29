@@ -4,13 +4,16 @@ export const addMaterial = async (_, args) => {
    
     
     try {
-        const { name, origen } = args
-        if(!name || !origen) return new Error(error.message)
+        const { name, origen, image } = args
+        if(!name || !origen || !image) return new Error(error.message)
         
+        const mat = await models.Material.findOne({where:{name}})
+        if (mat) return new Error (error.message)
         await models.Material.findOrCreate({
             where: {
                 name,
-                origen
+                origen,
+                image
             },
         })
         const materialCreate = await models.Material.findOne({where:{name}})
