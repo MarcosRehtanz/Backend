@@ -1,6 +1,8 @@
 import { models } from "../db.js";
+import { uploadProductImg } from "./uploadProductImg.js";
 
 export const addProduct = async (root, args) => {
+  console.log(args);
   try {
     const { name, description, price, stock, publicationDate, productImage, id, MaterialId} =
       args;
@@ -13,10 +15,9 @@ export const addProduct = async (root, args) => {
       !productImage ||
       !id ||
       !MaterialId
-    ){
-      throw new Error(error.message);
-    }
-     
+    )
+    throw new Error(error.message);
+    const urlImage = await uploadProductImg(productImage) 
     const product = await models.Product.findOrCreate({
       where: {
         name,
@@ -24,7 +25,7 @@ export const addProduct = async (root, args) => {
         price,
         stock,
         publicationDate,
-        productImage,
+        productImage: urlImage,
         UserIdUser: id,
       },
     });
