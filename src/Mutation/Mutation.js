@@ -28,20 +28,8 @@ export const MutationType = gql`
       typeUser: TypeUser!
     ): User
     login(
-      userName: String!
-      name: String!
-      lastname: String!
       email: String!
       password: String!
-      cuitCuil: String!
-      phone: String!
-      address: String!
-      postalCode: Int!
-      acountActive: Boolean!
-      termsAndCondsAprove: Boolean!
-      profilePicture: String
-      afipCondition: AfipCondition!
-      typeUser: TypeUser!
     ): User
     addUser(
       userName: String!
