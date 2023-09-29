@@ -15,8 +15,11 @@ export const addProduct = async (root, args) => {
       !productImage ||
       !id ||
       !MaterialId
-    )
-    throw new Error(error.message);
+    ){
+      throw new Error(error.message);
+    }
+     
+    const product = await models.Product.create({
     const urlImage = await uploadProductImg(productImage) 
     const product = await models.Product.findOrCreate({
       where: {
@@ -27,17 +30,16 @@ export const addProduct = async (root, args) => {
         publicationDate,
         productImage: urlImage,
         UserIdUser: id,
-      },
+        MaterialId: MaterialId
     });
 
-    const material = await models.Material.findOne({ where: { id: MaterialId } })
-    
-    const obj = {
-      ...product[0].dataValues,
-      material
-    }
-
-    return obj;
+    const productCreated = await models.Product.findOne({
+      where: {
+        idProduct: product.idProduct
+      },
+      include: models.Material
+    })
+    return productCreated;
   } catch (error) {
     throw new Error(error.message);
   }
