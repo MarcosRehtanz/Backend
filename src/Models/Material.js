@@ -17,8 +17,7 @@ export const material = (sequelize) =>{
         },
         image:{
             type: DataTypes.STRING,
-            allowNull:true
+            allowNull: true
         }
-
     })
 }

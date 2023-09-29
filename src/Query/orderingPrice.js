@@ -5,7 +5,7 @@ export const orderingPrice = async (root, args) => {
     const { orderPrice, orderStock } = args
 
     try {
-        const product = await models.Product.findAll();
+        const product = await models.Product.findAll({ include: models.Material });
         if (orderStock) {
             if (orderPrice === "ASC") {
                 product.sort((a, b) => {

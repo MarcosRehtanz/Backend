@@ -39,8 +39,8 @@ type JwtToken {
     stock: Int
     publicationDate: String
     productImage: String!
-    UserIdUser: ID!
-    MaterialId: ID
+    Material: Material
+    UserIdUser: String!
   }
 
  type ShoppingHistory {
@@ -65,6 +65,7 @@ type JwtToken {
     id: ID!
     name: String!
     origen: String!
+    image: String!
   }
   ${QueryType}
   ${MutationType}
