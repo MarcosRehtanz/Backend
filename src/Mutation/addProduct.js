@@ -19,10 +19,8 @@ export const addProduct = async (root, args) => {
       throw new Error(error.message);
     }
      
-    const product = await models.Product.create({
     const urlImage = await uploadProductImg(productImage) 
-    const product = await models.Product.findOrCreate({
-      where: {
+    const product = await models.Product.create({
         name,
         description,
         price,
