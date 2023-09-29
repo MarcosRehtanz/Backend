@@ -17,8 +17,7 @@ export const addProduct = async (root, args) => {
       throw new Error(error.message);
     }
      
-    const product = await models.Product.findOrCreate({
-      where: {
+    const product = await models.Product.create({
         name,
         description,
         price,
@@ -26,17 +25,16 @@ export const addProduct = async (root, args) => {
         publicationDate,
         productImage,
         UserIdUser: id,
-      },
+        MaterialId: MaterialId
     });
 
-    const material = await models.Material.findOne({ where: { id: MaterialId } })
-    
-    const obj = {
-      ...product[0].dataValues,
-      material
-    }
-
-    return obj;
+    const productCreated = await models.Product.findOne({
+      where: {
+        idProduct: product.idProduct
+      },
+      include: models.Material
+    })
+    return productCreated;
   } catch (error) {
     throw new Error(error.message);
   }

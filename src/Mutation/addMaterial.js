@@ -9,16 +9,15 @@ export const addMaterial = async (_, args) => {
         
         const mat = await models.Material.findOne({where:{name}})
         if (mat) return new Error (error.message)
-        await models.Material.findOrCreate({
+        const material = await models.Material.findOrCreate({
             where: {
                 name,
                 origen,
                 image
             },
         })
-        const materialCreate = await models.Material.findOne({where:{name}})
-        if(!materialCreate.dataValues) return new Error(error.message)
-        return materialCreate.dataValues
+        if(!material.dataValues) return new Error(error.message)
+        return material.dataValues
 
     } catch (error) {
         console.log(error.message);

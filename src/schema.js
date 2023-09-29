@@ -40,7 +40,7 @@ type JwtToken {
     publicationDate: String
     productImage: String!
     UserIdUser: ID!
-    material: Material
+    Material: Material
   }
 
  type ShoppingHistory {

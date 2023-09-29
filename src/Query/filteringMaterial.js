@@ -1,30 +1,26 @@
+import { Op, Sequelize } from "sequelize"
 import { models } from "../db.js"
 
 
 export const filteringMaterial = async (root, args) => {
-    const { idMaterial, afipCondition, typeUser } = args
+    const { materials, afipCondition, typeUser } = args
+    const materialsArray = materials.split(",")
+    const materialObject = materialsArray.map(material => ( material.trim() ))
+    console.log(materialsArray)
 
     try {
-        const products = await models.Product.findAll({ where: {
-            MaterialId: idMaterial
-        } });
-        if (afipCondition && typeUser){
-            const sellers = await models.User.findAll({
+        const materialProduct = await models.Product.findAll({
+            include: [{
+                model: models.Material,
                 where: {
-                    afipCondition, typeUser
-                }
-            });
-            const productWithSellers = sellers.map((seller) => {
-                const productUser = products.filter(product => product.UserIdUser === seller.idUser)
-                if (!productUser) return;
-                return productUser;
-            })
-            const product = await Promise.all(productWithSellers.flat());
-            return product
-        }else{
-            
-            return products
-        }
+                    name: {
+                        [Op.in]: materialObject
+                    }
+                },
+            }]
+        })
+
+        return materialProduct
 
     } catch (error) {
 
