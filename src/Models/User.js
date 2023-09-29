@@ -24,6 +24,7 @@ export const user = (sequelize) => {
       email: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique:true
       },
       password: {
         type: DataTypes.STRING,
@@ -42,7 +43,7 @@ export const user = (sequelize) => {
         allowNull: false,
       },
       postalCode: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
       },
       acountActive: {
