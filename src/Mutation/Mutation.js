@@ -6,8 +6,24 @@ import { addShoppingHistory } from "./addShoppingHistory.js";
 // import { addTypePerson } from "./addTypePerson.js";
 import { addTypeUser } from "./addTypeUser.js";
 import { addMaterial } from "./addMaterial.js";
+import { signUp } from "./singUp.js";
+
 export const MutationType = gql`
     type Mutation {
+        signUp(userName: String!
+            name: String!
+            lastname: String!
+            email: String!
+            password: String!
+            cuitCuil: String!
+            phone: String!
+            address: String!
+            postalCode: Int!
+            acountActive:Boolean!
+            termsAndCondsAprove: Boolean!
+            profilePicture: String
+            afipCondition: AfipCondition!
+            typeUser:TypeUser!): User
         addUser(
             userName: String!
             name: String!
@@ -49,15 +65,15 @@ export const MutationType = gql`
         uploadProductImg(photo: String): String
         deleteProduct(id: ID): String
     }
-`
-
+`;
 
 export const Mutation = {
-    addUser,
-    addProduct,
-    addShoppingHistory,
-    // addTypePerson,
-    addTypeUser,
-    addMaterial,
-    uploadProductImg
-}
+  addUser,
+  addProduct,
+  addShoppingHistory,
+  // addTypePerson,
+  addTypeUser,
+  addMaterial,
+  uploadProductImg,
+  signUp
+};

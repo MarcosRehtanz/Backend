@@ -1,8 +1,11 @@
 import { gql } from "apollo-server";
 import { QueryType } from "./Query/Query.js";
 import { MutationType } from "./Mutation/Mutation.js";
-
 export const typeDefs = gql`
+type JwtToken {
+    token: String!
+  }
+
   type User {
     idUser: ID!
     userName: String!
@@ -25,6 +28,7 @@ export const typeDefs = gql`
     afipCondition: AfipCondition!
     typeUser: TypeUser!
     shoppingHistory: ShoppingHistory
+    userJwtToken: JwtToken
   }
 
   type Product {
