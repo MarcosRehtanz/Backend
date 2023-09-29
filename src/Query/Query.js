@@ -34,14 +34,7 @@ export const QueryType = gql`
         allProductsByUser(id:ID!): [Product] 
         getUserById(id:ID!): User
         filteringMaterial(
-            materials: String!
-            afipCondition: String
-            typeUser: String
-        ): [Product]
-        filteringAfipCondition(
-            afipCondition: String!
-            typeUser: String!
-            idMaterial: String
+            materials: String
         ): [Product]
         _: Boolean
 
