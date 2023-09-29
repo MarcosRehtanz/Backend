@@ -17,12 +17,9 @@ typePerson(sequelize);
 typeUser(sequelize);
 material(sequelize);
 //Models
-const { User, Product, ShoppingHistory, TypePerson, TypeUser, Material } =
-  sequelize.models;
-// console.log(sequelize.models)
+const { User, Product, ShoppingHistory, TypePerson, TypeUser, Material } = sequelize.models;
 
 // Relations
-
 User.hasMany(Product);
 Product.belongsTo(User);
 
@@ -33,12 +30,6 @@ ShoppingHistory.belongsTo(User);
 
 Material.hasMany(Product); // Un material puede pertenecer a muchos
 Product.belongsTo(Material); //Un producto puede tener un material
-
-// User.hasOne(TypePerson);
-// TypePerson.belongsTo(User);
-
-// User.belongsToMany(TypeUser, {through: 'UserTypeUser'})
-// TypeUser.belongsToMany(User, {through:'UserTypeUser'})
 
 export const conn = sequelize;
 export const models = sequelize.models;
