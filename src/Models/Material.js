@@ -11,7 +11,7 @@ export const material = (sequelize) =>{
             type: DataTypes.STRING,
             allowNull: true,
         },
-        origen:{
+        origin:{
             type: DataTypes.STRING,
             allowNull: true,
         },
