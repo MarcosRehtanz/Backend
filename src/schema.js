@@ -65,6 +65,7 @@ type JwtToken {
     id: ID!
     name: String!
     origen: String!
+    image: String!
   }
   ${QueryType}
   ${MutationType}
