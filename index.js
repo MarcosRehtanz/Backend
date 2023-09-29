@@ -8,7 +8,7 @@ const server = new ApolloServer({
     resolvers,
 })
 
-conn.sync({ force: false }).then(async () => {
+conn.sync({ force: true }).then(async () => {
 
     try {
         const { url } = await server.listen()

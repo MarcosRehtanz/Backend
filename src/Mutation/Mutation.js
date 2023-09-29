@@ -58,6 +58,7 @@ export const MutationType = gql`
       MaterialId: ID!
     ): Product
 
+
     addShoppingHistory(billDate: String!, totalAmount: Float!): ShoppingHistory
     # addTypePerson(
     #     typePerson: String
@@ -67,6 +68,7 @@ export const MutationType = gql`
     uploadProductImg(photo: String): String
     deleteProduct(id: ID): String
   }
+
 `;
 
 export const Mutation = {

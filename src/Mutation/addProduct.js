@@ -1,6 +1,8 @@
 import { models } from "../db.js";
+import { uploadProductImg } from "./uploadProductImg.js";
 
 export const addProduct = async (root, args) => {
+  console.log(args);
   try {
     const { name, description, price, stock, publicationDate, productImage, id, MaterialId} =
       args;
@@ -13,25 +15,29 @@ export const addProduct = async (root, args) => {
       !productImage ||
       !id ||
       !MaterialId
-    )
+    ){
       throw new Error(error.message);
+    }
      
-    const product = await models.Product.findOrCreate({
-      where: {
+    const urlImage = await uploadProductImg(productImage) 
+    const product = await models.Product.create({
         name,
         description,
         price,
         stock,
         publicationDate,
-        productImage,
+        productImage: urlImage,
         UserIdUser: id,
-        MaterialId
-      },
-  
+        MaterialId: MaterialId
     });
-    
-    console.log(product[0].dataValues);
-    return product[0].dataValues;
+
+    const productCreated = await models.Product.findOne({
+      where: {
+        idProduct: product.idProduct
+      },
+      include: models.Material
+    })
+    return productCreated;
   } catch (error) {
     throw new Error(error.message);
   }
