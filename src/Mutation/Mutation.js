@@ -7,64 +7,78 @@ import { addShoppingHistory } from "./addShoppingHistory.js";
 import { addTypeUser } from "./addTypeUser.js";
 import { addMaterial } from "./addMaterial.js";
 import { signUp } from "./singUp.js";
+import { login } from "./login.js";
 
 export const MutationType = gql`
-    type Mutation {
-        signUp(userName: String!
-            name: String!
-            lastname: String!
-            email: String!
-            password: String!
-            cuitCuil: String!
-            phone: String!
-            address: String!
-            postalCode: Int!
-            acountActive:Boolean!
-            termsAndCondsAprove: Boolean!
-            profilePicture: String
-            afipCondition: AfipCondition!
-            typeUser:TypeUser!): User
-        addUser(
-            userName: String!
-            name: String!
-            lastname: String!
-            email: String!
-            password: String!
-            cuitCuil: String!
-            phone: String!
-            address: String!
-            postalCode: Int!
-            acountActive:Boolean!
-            termsAndCondsAprove: Boolean!
-            profilePicture: String
-            afipCondition: AfipCondition!
-            typeUser:TypeUser!
-        ): User
-        addProduct(
-            name: String!
-            description: String!
-            price: Float!
-            stock: Int!
-            publicationDate: String!
-            productImage: String!
-            id: ID!
-            MaterialId: ID!
-        ): Product
+  type Mutation {
+    signUp(
+      userName: String!
+      name: String!
+      lastname: String!
+      email: String!
+      password: String!
+      cuitCuil: String!
+      phone: String!
+      address: String!
+      postalCode: Int!
+      acountActive: Boolean!
+      termsAndCondsAprove: Boolean!
+      profilePicture: String
+      afipCondition: AfipCondition!
+      typeUser: TypeUser!
+    ): User
+    login(
+      userName: String!
+      name: String!
+      lastname: String!
+      email: String!
+      password: String!
+      cuitCuil: String!
+      phone: String!
+      address: String!
+      postalCode: Int!
+      acountActive: Boolean!
+      termsAndCondsAprove: Boolean!
+      profilePicture: String
+      afipCondition: AfipCondition!
+      typeUser: TypeUser!
+    ): User
+    addUser(
+      userName: String!
+      name: String!
+      lastname: String!
+      email: String!
+      password: String!
+      cuitCuil: String!
+      phone: String!
+      address: String!
+      postalCode: Int!
+      acountActive: Boolean!
+      termsAndCondsAprove: Boolean!
+      profilePicture: String
+      afipCondition: AfipCondition!
+      typeUser: TypeUser!
+    ): User
+    addProduct(
+      name: String!
+      description: String!
+      price: Float!
+      stock: Int!
+      publicationDate: String!
+      productImage: String!
+      id: ID!
+      MaterialId: ID!
+    ): Product
 
-        addShoppingHistory(
-            billDate: String!
-            totalAmount: Float!
-        ): ShoppingHistory
-        # addTypePerson(
-        #     typePerson: String
-        # ): TypePerson
-        addTypeUser(
-            typeUser: String
-        ): TypeUser
-        addMaterial(name: String! origen:String!): Material 
-        uploadProductImg(photo: String): String
-        deleteProduct(id: ID): String
-    }
+    addShoppingHistory(billDate: String!, totalAmount: Float!): ShoppingHistory
+    # addTypePerson(
+    #     typePerson: String
+    # ): TypePerson
+    addTypeUser(typeUser: String): TypeUser
+    addMaterial(name: String!, origen: String!): Material
+    uploadProductImg(photo: String): String
+    deleteProduct(id: ID): String
+  }
 `;
 
 export const Mutation = {
@@ -75,5 +89,6 @@ export const Mutation = {
   addTypeUser,
   addMaterial,
   uploadProductImg,
-  signUp
+  signUp,
+  login,
 };
