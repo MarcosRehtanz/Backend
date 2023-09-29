@@ -16,7 +16,7 @@ type JwtToken {
     cuitCuil: String!
     phone: String!
     address: String!
-    postalCode: Int!
+    postalCode: String!
     "status o isAcountActive ? para verificar estado de la cuenta"
     acountActive: Boolean!
     termsAndCondsAprove: Boolean!
@@ -64,7 +64,7 @@ type JwtToken {
   type Material {
     id: ID!
     name: String!
-    origen: String!
+    origin: String!
     image: String!
   }
   ${QueryType}
