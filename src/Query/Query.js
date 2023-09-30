@@ -11,6 +11,8 @@ import {allProductsByUser} from "./allProductsByUser.js"
 import { filteringMaterial } from "./filteringMaterial.js";
 import { orderingStock } from "./orderingStock.js";
 import { orderingPrice } from "./orderingPrice.js";
+
+import { filterUnion } from "./filterUnion.js";
 import { searchProductByName } from "./searchProductByName.js";
 import { searchUserByName } from "./searchUserByName.js";
 
@@ -44,6 +46,12 @@ export const QueryType = gql`
         searchUserByName(
             nameUser: String!
         ): [User]
+        filterUnion(
+            filterMaterials: String
+            firstOrder: String
+            orderPrice: String
+            orderStock: String
+        ): [Product]
     }
 `
 
@@ -61,5 +69,6 @@ export const Query = {
     getUserById,
     filteringMaterial,
     searchProductByName,
-    searchUserByName
+    searchUserByName,
+    filterUnion
 }

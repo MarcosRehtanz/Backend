@@ -20,7 +20,7 @@ export const typeDefs = gql`
     product: [Product]
     userJwtToken: JwtToken
     profile: Profile
-    shoppingHistory: ShoppingHistory
+    shoppingHistory: [ShoppingHistory]
   }
   type Profile {
     idProfile: ID!
