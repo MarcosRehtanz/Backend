@@ -11,7 +11,7 @@ export const typeDefs = gql`
     name: String!
     lastname: String!
     email: String!
-    password: String!
+    password: String
     "status o isAcountActive ? para verificar estado de la cuenta"
     acountActive: Boolean
     termsAndCondsAprove: Boolean

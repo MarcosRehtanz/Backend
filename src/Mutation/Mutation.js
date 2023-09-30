@@ -8,6 +8,7 @@ import { addTypeUser } from "./addTypeUser.js";
 import { addMaterial } from "./addMaterial.js";
 import { signUp } from "./singUp.js";
 import { login } from "./login.js";
+import { google } from "./google.js";
 
 export const MutationType = gql`
   type Mutation {
@@ -57,6 +58,7 @@ export const MutationType = gql`
     addMaterial(name: String!, origen: String!, image: String!): Material
     uploadProductImg(photo: String): String
     deleteProduct(id: ID): String
+    google(email:String! name:String! lastname:String!): User
   }
 
 `;
@@ -71,4 +73,5 @@ export const Mutation = {
   uploadProductImg,
   signUp,
   login,
+  google
 };
