@@ -30,7 +30,10 @@ export const user = (sequelize) => {
         type: DataTypes.BOOLEAN,
         defaultValue: true,
       },
-
+      termsAndCondsAprove: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
     },
     { timetamps: false }
   );

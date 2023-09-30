@@ -9,39 +9,37 @@ export const profile = (sequelize) => {
     },
     userName: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     cuitCuil: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     phone: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     address: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     postalCode: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     description: {
       type: DataTypes.TEXT,
+      allowNull: true,
     },
     typeUser: {
       type: DataTypes.ENUM("comprador", "vendedor", "transportista"),
-      allowNull: false,
+      allowNull: true,
     },
     afipCondition: {
       type: DataTypes.ENUM("Juridica", "Fisica"),
-      allowNull: false,
+      allowNull: true,
     },
-    termsAndCondsAprove: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false,
-    },
+
     deleteAd: {
       type: DataTypes.DATEONLY,
     },
