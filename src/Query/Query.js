@@ -12,6 +12,7 @@ import { filteringMaterial } from "./filteringMaterial.js";
 import { orderingStock } from "./orderingStock.js";
 import { orderingPrice } from "./orderingPrice.js";
 import { searchProductByName } from "./searchProductByName.js";
+import { searchUserByName } from "./searchUserByName.js";
 
 import { getUserById } from "./getUserById.js";
 
@@ -40,6 +41,9 @@ export const QueryType = gql`
         searchProductByName(
             nameProduct: String!
         ): [Product]
+        searchUserByName(
+            nameUser: String!
+        ): [User]
     }
 `
 
@@ -56,5 +60,6 @@ export const Query = {
     allProductsByUser,
     getUserById,
     filteringMaterial,
-    searchProductByName
+    searchProductByName,
+    searchUserByName
 }
