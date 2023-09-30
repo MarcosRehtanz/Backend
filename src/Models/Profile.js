@@ -32,7 +32,7 @@ export const profile = (sequelize) => {
       allowNull: true,
     },
     typeUser: {
-      type: DataTypes.ENUM("Comprador", "Vendedor", "Transportista"),
+      type: DataTypes.ENUM("comprador", "vendedor", "transportista"),
       allowNull: true,
     },
     afipCondition: {
