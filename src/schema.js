@@ -17,7 +17,7 @@ export const typeDefs = gql`
     termsAndCondsAprove: Boolean
     deleteAd: String
     cart: [String]
-    product: Product
+    product: [Product]
     userJwtToken: JwtToken
     profile: Profile
     shoppingHistory: ShoppingHistory

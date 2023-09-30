@@ -38,7 +38,7 @@ export const signUp = async (_, args) => {
           address:"address",
           postalCode: "postalCode",
           description:"description",
-          typeUser:"comprador",
+          typeUser:"Comprador",
           afipCondition:"Fisica",
           UserIdUser: userToCreate.dataValues.idUser
         })
@@ -93,12 +93,11 @@ export const signUp = async (_, args) => {
         description:"description",
         typeUser:"comprador",
         afipCondition:"Fisica",
-        UserIdUser: userToCreate.dataValues.idUser
+       
       })
 
       if(!profileCreate) throw new Error ("no se pudo completar el perfil");
-      console.log(userToCreate.dataValues.idUser)
-      console.log(userToCreate)
+      userToCreate.setProfile(profileCreate)
       const token = jwt.sign(
         {
           idUser: userToCreate.dataValues.idUser,
@@ -110,12 +109,11 @@ export const signUp = async (_, args) => {
 
       const obj = {
       ...userToCreate.dataValues,
-      profile: {...profileCreate.dataValues},
       userJwtToken: {
           token: token,
         },
       };
-      console.log(obj);
+   
       return obj;
     } catch (error) {
       throw new Error(error.message);

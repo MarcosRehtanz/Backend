@@ -29,13 +29,14 @@ conn.sync({ force: true }).then(async () => {
       
     await Promise.all(Profile.map(async (prof) =>{
         
-        const profile = await models.Profile.findOrCreate({
+        await models.Profile.findOrCreate({
             where:{
                 ...prof,
                 UserIdUser: users[0].dataValues.idUser
             }
         })
     }))
+    
       await Promise.all(Products.map(async p => await models.Product.findOrCreate({
         where: {
           ...p,

@@ -7,7 +7,7 @@ export const Profile = [
         postalCode: "5000",
         description: "Este es el perfil de pepito",
         afipCondition: "Juridica",
-        typeUser: "Comprador",
+        typeUser: "comprador",
         profilePicture: "https://campussafetyconference.com/wp-content/uploads/2020/08/iStock-476085198-300x300.jpg"
       },
       {
@@ -18,7 +18,7 @@ export const Profile = [
         postalCode: "5000",
         description: "Este es el perfil de juancito",
         afipCondition: "Juridica",
-        typeUser: "Comprador",
+        typeUser: "comprador",
         profilePicture: "https://campussafetyconference.com/wp-content/uploads/2020/08/iStock-476085198-300x300.jpg"
       },
       {
@@ -29,7 +29,7 @@ export const Profile = [
         postalCode: "5000",
         description: "Este es el perfil de maria",
         afipCondition: "Juridica",
-        typeUser: "Comprador",
+        typeUser: "comprador",
         profilePicture: "https://campussafetyconference.com/wp-content/uploads/2020/08/iStock-476085198-300x300.jpg"
       },
       {
@@ -40,7 +40,7 @@ export const Profile = [
         postalCode: "5000",
         description: "Este es el perfil de ginita",
         afipCondition: "Juridica",
-        typeUser: "Comprador",
+        typeUser: "comprador",
         profilePicture: "https://campussafetyconference.com/wp-content/uploads/2020/08/iStock-476085198-300x300.jpg"
       },
       {
@@ -51,7 +51,7 @@ export const Profile = [
         postalCode: "5000",
         description: "Este es el perfil de danielin",
         afipCondition: "Fisica",
-        typeUser: "Vendedor",
+        typeUser: "vendedor",
         profilePicture: "https://campussafetyconference.com/wp-content/uploads/2020/08/iStock-476085198-300x300.jpg"
       },
       {
@@ -62,7 +62,7 @@ export const Profile = [
         postalCode: "5000",
         description: "Este es el perfil de joniloco123",
         afipCondition: "Fisica",
-        typeUser: "Vendedor",
+        typeUser: "vendedor",
         profilePicture: "https://campussafetyconference.com/wp-content/uploads/2020/08/iStock-476085198-300x300.jpg"
       },
       {
@@ -73,7 +73,7 @@ export const Profile = [
         postalCode: "5000",
         description: "Este es el perfil de josemigueeeel",
         afipCondition: "Fisica",
-        typeUser: "Vendedor",
+        typeUser: "vendedor",
         profilePicture: "https://campussafetyconference.com/wp-content/uploads/2020/08/iStock-476085198-300x300.jpg"
       },
       {
@@ -84,7 +84,7 @@ export const Profile = [
         postalCode: "5000",
         description: "Este es el perfil de fanchute",
         afipCondition: "Fisica",
-        typeUser: "Vendedor",
+        typeUser: "vendedor",
         profilePicture: "https://campussafetyconference.com/wp-content/uploads/2020/08/iStock-476085198-300x300.jpg"
       },
       {
@@ -95,7 +95,7 @@ export const Profile = [
         postalCode: "5000",
         description: "Este es el perfil de JuanelCaballol0co",
         afipCondition: "Fisica",
-        typeUser: "Vendedor",
+        typeUser: "vendedor",
         profilePicture: "https://campussafetyconference.com/wp-content/uploads/2020/08/iStock-476085198-300x300.jpg"
       },
       {
@@ -106,7 +106,7 @@ export const Profile = [
         postalCode: "5000",
         description: "Este es el perfil de melanchu",
         afipCondition: "Fisica",
-        typeUser: "Vendedor",
+        typeUser: "vendedor",
         profilePicture: "https://campussafetyconference.com/wp-content/uploads/2020/08/iStock-476085198-300x300.jpg"
       },
       {
@@ -117,7 +117,7 @@ export const Profile = [
         postalCode: "5000",
         description: "Este es el perfil de GAbiTom",
         afipCondition: "Fisica",
-        typeUser: "Vendedor",
+        typeUser: "vendedor",
         profilePicture: "https://campussafetyconference.com/wp-content/uploads/2020/08/iStock-476085198-300x300.jpg"
       },
       
