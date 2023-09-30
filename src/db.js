@@ -7,6 +7,7 @@ import { shoppingHistory } from "./Models/ShoppingHistory.js";
 import { typePerson } from "./Models/TypePerson.js";
 import { typeUser } from "./Models/TypeUser.js";
 import { material } from "./Models/Material.js";
+import { profile } from "./Models/Profile.js";
 const sequelize = new Sequelize(process.env.POSTGRES, { logging: false });
 
 //Define
@@ -16,10 +17,14 @@ shoppingHistory(sequelize);
 typePerson(sequelize);
 typeUser(sequelize);
 material(sequelize);
+profile(sequelize)
 //Models
-const { User, Product, ShoppingHistory, TypePerson, TypeUser, Material } = sequelize.models;
+const { User, Profile, Product, ShoppingHistory, TypePerson, TypeUser, Material } = sequelize.models;
 
 // Relations
+User.hasOne(Profile);
+Profile.belongsTo(User,{foreignKey:"idUser"} );
+
 User.hasMany(Product);
 Product.belongsTo(User);
 

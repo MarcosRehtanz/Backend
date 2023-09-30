@@ -1,4 +1,4 @@
-import { DataType } from "sequelize";
+import { DataTypes } from "sequelize";
 
 export const profile = (sequelize) => {
   sequelize.define("Profile", {
