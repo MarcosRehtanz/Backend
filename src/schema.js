@@ -2,35 +2,38 @@ import { gql } from "apollo-server";
 import { QueryType } from "./Query/Query.js";
 import { MutationType } from "./Mutation/Mutation.js";
 export const typeDefs = gql`
-type JwtToken {
+  type JwtToken {
     token: String!
   }
 
   type User {
     idUser: ID!
-    userName: String!
     name: String!
     lastname: String!
     email: String!
     password: String!
-    cuitCuil: String!
-    phone: String!
-    address: String!
-    postalCode: String!
     "status o isAcountActive ? para verificar estado de la cuenta"
-    acountActive: Boolean!
-    termsAndCondsAprove: Boolean!
+    acountActive: Boolean
+    termsAndCondsAprove: Boolean
     deleteAd: String
-    profilePicture: String
-    description: String
     cart: [String]
     product: Product
-    afipCondition: AfipCondition!
-    typeUser: TypeUser!
-    shoppingHistory: ShoppingHistory
     userJwtToken: JwtToken
+    profile: Profile
+    shoppingHistory: ShoppingHistory
   }
-
+  type Profile {
+    idProfile: ID!
+    userName: String
+    cuitCuil: String
+    phone: String
+    address: String
+    postalCode: String
+    description: String
+    afipCondition: AfipCondition
+    typeUser: TypeUser
+    profilePicture: String
+  }
   type Product {
     idProduct: ID!
     name: String!
@@ -43,7 +46,7 @@ type JwtToken {
     UserIdUser: String!
   }
 
- type ShoppingHistory {
+  type ShoppingHistory {
     IDShopHistory: ID!
     billDate: String!
     totalAmount: Float!
