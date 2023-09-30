@@ -23,7 +23,7 @@ const { User, Profile, Product, ShoppingHistory, TypePerson, TypeUser, Material 
 
 // Relations
 User.hasOne(Profile);
-Profile.belongsTo(User,{foreignKey:"idUser"} );
+Profile.belongsTo(User);
 
 User.hasMany(Product);
 Product.belongsTo(User);
