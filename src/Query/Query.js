@@ -11,6 +11,7 @@ import {allProductsByUser} from "./allProductsByUser.js"
 import { filteringMaterial } from "./filteringMaterial.js";
 import { orderingStock } from "./orderingStock.js";
 import { orderingPrice } from "./orderingPrice.js";
+import { searchProductByName } from "./searchProductByName.js";
 
 import { getUserById } from "./getUserById.js";
 
@@ -36,7 +37,9 @@ export const QueryType = gql`
             materials: String
         ): [Product]
         _: Boolean
-
+        searchProductByName(
+            nameProduct: String!
+        ): [Product]
     }
 `
 
@@ -52,5 +55,6 @@ export const Query = {
     getAllMaterial,
     allProductsByUser,
     getUserById,
-    filteringMaterial
+    filteringMaterial,
+    searchProductByName
 }

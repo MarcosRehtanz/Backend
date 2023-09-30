@@ -1,4 +1,4 @@
-import { Op, Sequelize } from "sequelize"
+import { Op } from "sequelize"
 import { models } from "../db.js"
 
 
