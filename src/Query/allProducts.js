@@ -1,13 +1,9 @@
-import { models } from "../db.js"
+import { allProductsMaterials } from "../helper/queryModels";
 
 export const allProducts = async(_, args) => {
     
     try {
-        const product = await models.Product.findAll({
-            include: [{
-                model: models.Material
-            }]
-        })
+        const product = await allProductsMaterials();
         if(!product) throw new Error (error.message)
         // console.log(product);
         return product
