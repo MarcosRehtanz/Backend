@@ -17,6 +17,7 @@ import { searchProductByName } from "./searchProductByName.js";
 import { searchUserByName } from "./searchUserByName.js";
 
 import { getUserById } from "./getUserById.js";
+import { getProductById } from "./getProductById.js";
 
 export const QueryType = gql`
     type Query {
@@ -52,6 +53,9 @@ export const QueryType = gql`
             orderPrice: String
             orderStock: String
         ): [Product]
+        getProductById(
+            id: ID!
+        ): Product
     }
 `
 
@@ -70,5 +74,6 @@ export const Query = {
     filteringMaterial,
     searchProductByName,
     searchUserByName,
-    filterUnion
+    filterUnion,
+    getProductById
 }
