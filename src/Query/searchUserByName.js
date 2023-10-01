@@ -7,9 +7,23 @@ export const searchUserByName = async (_, args) => {
     try {
         const user = await models.User.findAll({
             where: {
-                name: {
-                    [Op.iLike]: `%${nameUser}%`,
-                }
+                [Op.or]: [
+                    {
+                        name: {
+                            [Op.iLike]: `%${nameUser}%`,
+                        },
+                    },
+                    {
+                        lastname: {
+                            [Op.iLike]: `%${nameUser}%`,
+                        },
+                    },
+                    {
+                        email: {
+                            [Op.iLike]: `%${nameUser}%`,
+                        },
+                    }
+                ]
             }, include: models.Product
         });
 
