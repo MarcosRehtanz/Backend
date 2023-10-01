@@ -1,4 +1,5 @@
 import { ApolloServer } from "apollo-server";
+import bcrypt from "bcryptjs";
 import { conn } from './src/db.js'
 import { typeDefs } from "./src/schema.js";
 import { resolvers } from "./src/resolvers.js";
@@ -21,9 +22,19 @@ conn.sync({ force: true }).then(async () => {
     const idRandom = material.map(id => id[0].dataValues.id)
     
     const userss = await Promise.all(Users.map(async (user, i) => {
+      const {
+        name,
+        lastname,
+        email,
+        password,
+      } = user;
+      const pass = await bcrypt.hash(password, 8);
         const users = await models.User.findOrCreate({
         where: {
-          ...user
+          name,
+          lastname,
+          email,
+          password: pass
         },
       })
       
