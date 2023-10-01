@@ -31,5 +31,8 @@ export const product = (sequelize)=>{
             type: DataTypes.TEXT,
             allowNull: false
         }
-    },{timetamps: false})
+    },{
+        timetamps: false,
+        paranoid: true
+    })
 }
