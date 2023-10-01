@@ -27,7 +27,7 @@ export const filterUnion = async (root, args) => {
         if(firstOrder){
             if (firstOrder === "orderPrice") { // pregunto el ordenamiento que se hace primero
                 if (orderStock) { // entonces pregunto si orderStock ya existe porque, el ultimo ordenamiento será el principal
-                    if (orderStock === "ASC") {
+                    if (orderStock === "ASC_STOCK") {
                         result.sort((a, b) => {
                             if (a.stock < b.stock) return -1
                             if (b.stock < a.stock) return 1
@@ -60,7 +60,7 @@ export const filterUnion = async (root, args) => {
                             if (a.price < b.price) return -1
                             if (b.price < a.price) return 1
                             if (a.price === b.price) {
-                                return (orderStock === "ASC") ? a.stock - b.stock : b.stock - a.stock;
+                                return (orderStock === "ASC_STOCK") ? a.stock - b.stock : b.stock - a.stock;
                             }
                             return 0;
                         });
@@ -69,13 +69,13 @@ export const filterUnion = async (root, args) => {
                             if (a.price < b.price) return 1
                             if (b.price < a.price) return -1
                             if (a.price === b.price) {
-                                return (orderStock === "ASC") ? a.stock - b.stock : b.stock - a.stock;
+                                return (orderStock === "ASC_STOCK") ? a.stock - b.stock : b.stock - a.stock;
                             }
                             return 0;
                         });
                     }
                 } else {
-                    if (orderStock === "ASC") {
+                    if (orderStock === "ASC_STOCK") {
                         result.sort((a, b) => a.stock - b.stock)
                     } else {
                         result.sort((a, b) => b.stock - a.stock)
