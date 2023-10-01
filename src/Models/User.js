@@ -35,6 +35,9 @@ export const user = (sequelize) => {
         defaultValue: false,
       },
     },
-    { timetamps: false }
+    { 
+      timetamps: false,
+      paranoid: true 
+     }
   );
 };
