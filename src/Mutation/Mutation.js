@@ -9,6 +9,9 @@ import { addMaterial } from "./addMaterial.js";
 import { signUp } from "./singUp.js";
 import { login } from "./login.js";
 import { google } from "./google.js";
+import { deleteProduct } from "./deleteProduct.js";
+import {restoreProduct} from "./restoreProduct.js"
+import {updateProfile} from "./updateProfile.js"
 
 export const MutationType = gql`
   type Mutation {
@@ -59,6 +62,19 @@ export const MutationType = gql`
     uploadProductImg(photo: String): String
     deleteProduct(id: ID): String
     google(email:String! name:String! lastname:String!): User
+    updateProfile(
+        idProfile: ID
+        userName: String!
+        cuitCuil: String!
+        phone: String!
+        address:String!
+        postalCode: String!
+        description: String!
+        typeUser: TypeUser!
+        afipCondition: AfipCondition!
+        profilePicture: String!
+    ) : Profile
+    restoreProduct(idProduct: ID!): Product
   }
 
 `;
@@ -73,5 +89,8 @@ export const Mutation = {
   uploadProductImg,
   signUp,
   login,
-  google
+  google,
+  updateProfile,
+  deleteProduct,
+  restoreProduct
 };
