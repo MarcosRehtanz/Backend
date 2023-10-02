@@ -1,4 +1,4 @@
-import { allProductsMaterials } from "../helper/queryModels";
+import { allProductsMaterials } from "../helper/queryModels.js";
 
 export const allProducts = async(_, args) => {
     
