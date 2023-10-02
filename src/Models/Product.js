@@ -30,7 +30,10 @@ export const product = (sequelize)=>{
         productImage: {
             type: DataTypes.TEXT,
             allowNull: false
-        }
+        },
+        deletedAt: {
+            type: DataTypes.DATEONLY
+          }
     },{
         timetamps: false,
         paranoid: true
