@@ -6,11 +6,7 @@ import { allShoppingHistory } from "./allShoppingHistory.js";
 // import { allTypePerson } from "./allTypePerson.js";
 import { allTypeUser } from "./allTypeUser.js";
 import { getAllMaterial } from "./getAllMaterial.js";
-import {allProductsByUser} from "./allProductsByUser.js"
-
-import { filteringMaterial } from "./filteringMaterial.js";
-import { orderingStock } from "./orderingStock.js";
-import { orderingPrice } from "./orderingPrice.js";
+import { allProductsByUser } from "./allProductsByUser.js"
 
 import { filterUnion } from "./filterUnion.js";
 import { searchProductByName } from "./searchProductByName.js";
@@ -26,20 +22,9 @@ export const QueryType = gql`
         allShoppingHistory: [ShoppingHistory]
         # allTypePerson: [TypePerson]
         allTypeUser: [TypeUser]
-        orderingStock(
-            orderStock: String!
-            orderPrice: String
-        ): [Product]
-        orderingPrice(
-            orderPrice: String!
-            orderStock: String
-        ): [Product]
         getAllMaterial: [Material!]
         allProductsByUser(id:ID!): [Product] 
         getUserById(id:ID!): User
-        filteringMaterial(
-            materials: String
-        ): [Product]
         _: Boolean
         searchProductByName(
             nameProduct: String!
@@ -66,12 +51,9 @@ export const Query = {
     allShoppingHistory,
     // allTypePerson,
     allTypeUser,
-    orderingStock,
-    orderingPrice,
     getAllMaterial,
     allProductsByUser,
     getUserById,
-    filteringMaterial,
     searchProductByName,
     searchUserByName,
     filterUnion,
