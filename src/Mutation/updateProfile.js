@@ -12,7 +12,8 @@ export const updateProfile = async (_, args) => {
         typeUser,
         afipCondition,
         profilePicture } = args;
-
+    const ifUserNameExist = await models.Profile.findOne({where:{userName}})
+    if (ifUserNameExist) throw new Error ('El nombre de usuario que intenta utilizar ya fue usado por alguien mas')
     try {
         const updatedProfile = await models.Profile.update(
             {
