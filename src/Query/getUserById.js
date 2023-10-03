@@ -36,7 +36,8 @@ export const getUserById = async (_, args) => {
       termsAndCondsAprove: user.dataValues.termsAndCondsAprove,
       product: [...Product],
       profile: user.dataValues.Profile.dataValues,
-      shoppingHistory: user.dataValues.ShoppingHistory?.dataValues
+      shoppingHistory: user.dataValues.ShoppingHistory?.dataValues,
+      review: user.dataValues.Reviews
     }
 
     return objUser;

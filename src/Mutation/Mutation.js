@@ -6,19 +6,20 @@ import { addShoppingHistory } from "./addShoppingHistory.js";
 // import { addTypePerson } from "./addTypePerson.js";
 import { addTypeUser } from "./addTypeUser.js";
 import { addMaterial } from "./addMaterial.js";
+import { addReview } from "./addReview.js";
 import { userRegister } from "./userRegister.js";
 import { signUp } from "./singUp.js";
 import { login } from "./login.js";
 import { google } from "./google.js";
 import { deleteProduct } from "./deleteProduct.js";
-import {restoreProduct} from "./restoreProduct.js"
-import {updateProfile} from "./updateProfile.js"
-import {updateProduct} from "./updateProduct.js"
-import {updateUser} from "./updateUser.js"
-import {restoreProfile} from "./restoreProfile.js"
-import {deleteProfile} from "./deleteProfile.js"
-import {deleteUser} from "./deleteUser.js"
-import {restoreUser} from "./restoreUser.js"
+import { restoreProduct } from "./restoreProduct.js"
+import { updateProfile } from "./updateProfile.js"
+import { updateProduct } from "./updateProduct.js"
+import { updateUser } from "./updateUser.js"
+import { restoreProfile } from "./restoreProfile.js"
+import { deleteProfile } from "./deleteProfile.js"
+import { deleteUser } from "./deleteUser.js"
+import { restoreUser } from "./restoreUser.js"
 import { orderMercadoPago } from "./orderMercadoPago.js";
 
 export const MutationType = gql`
@@ -119,6 +120,12 @@ export const MutationType = gql`
     restoreProfile(idProfile: ID!): Profile
     deleteUser(idUser: ID!): String
     restoreUser(idUser: ID!): User
+    addReview(
+      rating: Int!
+      comment: String!
+      idProduct: String!
+      idUser: String!
+    ): Review
   }
 `;
 
@@ -144,4 +151,5 @@ export const Mutation = {
   deleteUser,
   restoreUser,
   orderMercadoPago,
+  addReview
 };

@@ -21,6 +21,7 @@ export const typeDefs = gql`
     token: String!
     profile: Profile
     shoppingHistory: [ShoppingHistory]
+    review: [Review]
   }
   type Profile {
     idProfile: ID!
@@ -44,6 +45,8 @@ export const typeDefs = gql`
     productImage: String!
     Material: Material
     UserIdUser: String!
+    Reviews: [Review]
+    averageRating: Int
   }
 
   type MercadoPago {
@@ -83,7 +86,7 @@ export const typeDefs = gql`
   }
 
   type Review {
-    id: ID!
+    idReview: ID!
     rating: Int!
     comment: String!
     createdAt: String!

@@ -57,5 +57,5 @@ export const Query = {
     searchProductByName,
     searchUserByName,
     filterUnion,
-    getProductById
+    getProductById,
 }
