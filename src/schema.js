@@ -2,9 +2,9 @@ import { gql } from "apollo-server";
 import { QueryType } from "./Query/Query.js";
 import { MutationType } from "./Mutation/Mutation.js";
 export const typeDefs = gql`
-  type JwtToken {
-    token: String!
-  }
+  # type JwtToken {
+  #   token: String!
+  # }
 
   type User {
     idUser: ID!
@@ -18,7 +18,7 @@ export const typeDefs = gql`
     deleteAd: String
     cart: [String]
     product: [Product]
-    userJwtToken: JwtToken
+    token: String!
     profile: Profile
     shoppingHistory: [ShoppingHistory]
   }
@@ -46,6 +46,17 @@ export const typeDefs = gql`
     UserIdUser: String!
   }
 
+  type MercadoPago {
+    id: ID!
+    title: String!
+    picture_url: String!
+    unit_price: Int!
+    currency_id: String! #Tipo de moneda
+    description: String
+    quantity: Int!
+    response: String
+  }
+  
   type ShoppingHistory {
     IDShopHistory: ID!
     billDate: String!
