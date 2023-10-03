@@ -39,13 +39,12 @@ export const profile = (sequelize) => {
       type: DataTypes.ENUM("Juridica", "Fisica"),
       allowNull: true,
     },
-
-    deleteAd: {
-      type: DataTypes.DATEONLY,
-    },
     profilePicture: {
       type: DataTypes.TEXT,
       allowNull: true,
     },
+  }, {
+    timetamps: false,
+    paranoid: true
   });
 };
