@@ -12,7 +12,7 @@ export const orderMercadoPago = async (_, args) => {
     try {
         const {
             id,
-            title,
+            title, 
             picture_url,
             unit_price,
             currency_id,
@@ -20,17 +20,19 @@ export const orderMercadoPago = async (_, args) => {
             description,
         } = args
 
-
+        
 
         let preference = {
-            items: [
-                {
-                    title: "Mi producto",
-                    unit_price: 100,
-                    currency_id: "ARG",
-                    quantity: 1,
-                },
-            ],
+            items: id.map((idProduct, i) => ({
+                id: idProduct,
+                title: title[i],
+                picture_url: picture_url[i] ,
+                unit_price: unit_price[i],
+                currency_id: currency_id[i],
+                quantity: quantity[i],
+                description: description[i],
+            }))
+
         };
 
         const response = await mercadopago.preferences.create(preference);
