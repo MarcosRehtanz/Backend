@@ -81,6 +81,14 @@ export const typeDefs = gql`
     origin: String!
     image: String!
   }
+
+  type Review {
+    id: ID!
+    rating: Int!
+    comment: String!
+    createdAt: String!
+  }
+
   ${QueryType}
   ${MutationType}
 `;
