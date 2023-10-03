@@ -47,16 +47,17 @@ export const typeDefs = gql`
   }
 
   type MercadoPago {
-    id: ID!
-    title: String!
-    picture_url: String!
-    unit_price: Int!
+    products: [Product]!
+    # id: ID!
+    # title: String!
+    # picture_url: String!
+    # unit_price: Int!
     currency_id: String! #Tipo de moneda
-    description: String
-    quantity: Int!
+    # description: String
+    # quantity: Int!
     response: String
   }
-  
+
   type ShoppingHistory {
     IDShopHistory: ID!
     billDate: String!

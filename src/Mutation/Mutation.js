@@ -11,14 +11,14 @@ import { signUp } from "./singUp.js";
 import { login } from "./login.js";
 import { google } from "./google.js";
 import { deleteProduct } from "./deleteProduct.js";
-import {restoreProduct} from "./restoreProduct.js"
-import {updateProfile} from "./updateProfile.js"
-import {updateProduct} from "./updateProduct.js"
-import {updateUser} from "./updateUser.js"
-import {restoreProfile} from "./restoreProfile.js"
-import {deleteProfile} from "./deleteProfile.js"
-import {deleteUser} from "./deleteUser.js"
-import {restoreUser} from "./restoreUser.js"
+import { restoreProduct } from "./restoreProduct.js"
+import { updateProfile } from "./updateProfile.js"
+import { updateProduct } from "./updateProduct.js"
+import { updateUser } from "./updateUser.js"
+import { restoreProfile } from "./restoreProfile.js"
+import { deleteProfile } from "./deleteProfile.js"
+import { deleteUser } from "./deleteUser.js"
+import { restoreUser } from "./restoreUser.js"
 import { orderMercadoPago } from "./orderMercadoPago.js";
 
 export const MutationType = gql`
