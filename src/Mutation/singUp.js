@@ -109,9 +109,7 @@ export const signUp = async (_, args) => {
 
       const obj = {
       ...userToCreate.dataValues,
-      userJwtToken: {
-          token: token,
-        },
+      token
       };
    
       return obj;

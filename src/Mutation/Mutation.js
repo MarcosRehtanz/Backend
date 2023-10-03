@@ -6,6 +6,7 @@ import { addShoppingHistory } from "./addShoppingHistory.js";
 // import { addTypePerson } from "./addTypePerson.js";
 import { addTypeUser } from "./addTypeUser.js";
 import { addMaterial } from "./addMaterial.js";
+import { userRegister } from "./userRegister.js";
 import { signUp } from "./singUp.js";
 import { login } from "./login.js";
 import { google } from "./google.js";
@@ -18,9 +19,16 @@ import {restoreProfile} from "./restoreProfile.js"
 import {deleteProfile} from "./deleteProfile.js"
 import {deleteUser} from "./deleteUser.js"
 import {restoreUser} from "./restoreUser.js"
+import { orderMercadoPago } from "./orderMercadoPago.js";
 
 export const MutationType = gql`
   type Mutation {
+    userRegister(
+      name: String!
+      lastname: String!
+      email: String!
+      password: String!
+    ): User
     signUp(
       name: String!
       lastname: String!
@@ -58,6 +66,15 @@ export const MutationType = gql`
       MaterialId: ID!
     ): Product
 
+    orderMercadoPago(
+        id: [ID!]!
+        title: [String!]!
+        picture_url: [String!]!
+        unit_price: [Int!]!
+        currency_id: [String!]!
+        description: [String]!
+        quantity: [Int!]!
+    ): MercadoPago
 
     addShoppingHistory(billDate: String!, totalAmount: Float!): ShoppingHistory
     # addTypePerson(
@@ -113,6 +130,7 @@ export const Mutation = {
   addTypeUser,
   addMaterial,
   uploadProductImg,
+  userRegister,
   signUp,
   login,
   google,
@@ -124,5 +142,6 @@ export const Mutation = {
   deleteProfile,
   restoreProfile,
   deleteUser,
-  restoreUser
+  restoreUser,
+  orderMercadoPago,
 };
