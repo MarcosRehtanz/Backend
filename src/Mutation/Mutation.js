@@ -13,7 +13,11 @@ import { deleteProduct } from "./deleteProduct.js";
 import {restoreProduct} from "./restoreProduct.js"
 import {updateProfile} from "./updateProfile.js"
 import {updateProduct} from "./updateProduct.js"
-import {updatedUser} from "./updateUser.js"
+import {updateUser} from "./updateUser.js"
+import {restoreProfile} from "./restoreProfile.js"
+import {deleteProfile} from "./deleteProfile.js"
+import {deleteUser} from "./deleteUser.js"
+import {restoreUser} from "./restoreUser.js"
 
 export const MutationType = gql`
   type Mutation {
@@ -85,7 +89,7 @@ export const MutationType = gql`
                 stock: Float!
                 publicationDate: String!
                 productImage:String!): Product
-    updatedUser(
+    updateUser(
                 idUser: ID!
                 name: String!
                 lastname: String!
@@ -93,9 +97,12 @@ export const MutationType = gql`
                 password: String!
                 acountActive: Boolean!
                 termsAndCondsAprove: Boolean!
-    )
+                ): User
+    deleteProfile(idProfile: ID!): String 
+    restoreProfile(idProfile: ID!): Profile
+    deleteUser(idUser: ID!): String
+    restoreUser(idUser: ID!): User
   }
-
 `;
 
 export const Mutation = {
@@ -113,5 +120,9 @@ export const Mutation = {
   deleteProduct,
   restoreProduct,
   updateProduct,
-  updatedUser
+  updateUser,
+  deleteProfile,
+  restoreProfile,
+  deleteUser,
+  restoreUser
 };

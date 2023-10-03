@@ -1,21 +1,31 @@
 
-//En prueba no usar, no tocar
-//deletedAt se debe agregar a cada modelo.
+//Ya sirve wey (*_*)
+
 import { models } from "../db.js";
 
-export const restoreProduct = async (_, { id }) => {
+export const restoreProduct = async (_, { idProduct, deletedAt }) => {
   try {
-    const product = await models.Product.findByPk(id);
+    const restoredProduct = await models.Product.update(
+          {
+            deletedAt
+          },
+          {where: {idProduct}}
+    )
 
-    if (!product) {
-      throw new Error('El producto que desea restaurar no existe o ha sido eliminado');
-    }
-    else{
+  if(restoredProduct){
+      deletedAt = null
+      const switchDeletedAt = await models.Product.findByPk(idProduct)
+      console.log(switchDeletedAt, 'Aquí estoy de nuevo mi ciela')
+      return switchDeletedAt
+  }
+  else{
+    return 'Este producto ya ha sido restaurado'
+  
+  }
         
     }
-
-    return 'El producto seleccionado fue restaurado exitosamente';
-  } catch (error) {
+       
+   catch (error) {
     console.error('Error al restaurar el producto:', error);
     throw new Error('Error al restaurar el producto: ' + error.message);
   }

@@ -1,8 +1,8 @@
 import { models } from "../db.js";
 
-export const deleteUser = async (_, {id}) =>{
+export const deleteUser = async (_, {idUser}) =>{
     try{
-        const user = await models.User.findByPk(id)
+        const user = await models.User.findByPk(idUser)
         if(!user){
             throw Error('El user que desea eliminar no existe')
         }
@@ -13,6 +13,7 @@ export const deleteUser = async (_, {id}) =>{
     }
     catch(error){
         console.log(error, 'Soy el error del deleteUser')
+        throw new Error('No se ha podido eliminar este usuario ' + error.message)
     }
 
 }
