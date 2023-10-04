@@ -45,11 +45,8 @@ export const typeDefs = gql`
     productImage: String!
     Material: Material
     UserIdUser: String!
-<<<<<<< Updated upstream
     Reviews: [Review]
     averageRating: Int
-=======
->>>>>>> Stashed changes
     currency_id: String
     quantity: Int
   }
@@ -71,16 +68,11 @@ export const typeDefs = gql`
     UserIdUser: String!
     currencyId: String
     quantity: Int
+
   }
   type MercadoPago {
     products: [Product]!
-    # id: ID!
-    # title: String!
-    # picture_url: String!
-    # unit_price: Int!
     currency_id: [String]! #Tipo de moneda
-    # description: String
-    # quantity: Int!
     response: String
   }
 
