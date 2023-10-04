@@ -11,7 +11,6 @@ import { signUp } from "./singUp.js";
 import { login } from "./login.js";
 import { google } from "./google.js";
 import { deleteProduct } from "./deleteProduct.js";
-<<<<<<< Updated upstream
 import { restoreProduct } from "./restoreProduct.js"
 import { updateProfile } from "./updateProfile.js"
 import { updateProduct } from "./updateProduct.js"
@@ -21,12 +20,6 @@ import { deleteProfile } from "./deleteProfile.js"
 import { deleteUser } from "./deleteUser.js"
 import { restoreUser } from "./restoreUser.js"
 import { orderMercadoPago } from "./orderMercadoPago.js";
-=======
-import {restoreProduct} from "./restoreProduct.js"
-import {updateProfile} from "./updateProfile.js"
-import {updateProduct} from "./updateProduct.js"
-import {updateUser} from "./updateUser.js"
->>>>>>> Stashed changes
 
 export const MutationType = gql`
   type Mutation {
@@ -37,10 +30,7 @@ export const MutationType = gql`
       password: String!
     ): User
     signUp(
-      name: String!
-      lastname: String!
-      email: String!
-      password: String!
+     token: String!
     ): User
     login(
       email: String!
@@ -121,15 +111,11 @@ export const MutationType = gql`
                 password: String!
                 acountActive: Boolean!
                 termsAndCondsAprove: Boolean!
-<<<<<<< Updated upstream
                 ): User
     deleteProfile(idProfile: ID!): String 
     restoreProfile(idProfile: ID!): Profile
     deleteUser(idUser: ID!): String
     restoreUser(idUser: ID!): User
-=======
-    ): User
->>>>>>> Stashed changes
   }
 `;
 
@@ -149,14 +135,10 @@ export const Mutation = {
   deleteProduct,
   restoreProduct,
   updateProduct,
-<<<<<<< Updated upstream
   updateUser,
   deleteProfile,
   restoreProfile,
   deleteUser,
   restoreUser,
   orderMercadoPago,
-=======
-  updateUser
->>>>>>> Stashed changes
 };
