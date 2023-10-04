@@ -6,10 +6,11 @@ import bcrypt from "bcryptjs";
 export const signUp = async (_, args) => {
   //creacion de usuario propio de MdR
   try {
-    const reqToken = args.token;
+    
+    const reqToken = args.token
     if (!reqToken) throw new Error("No llego el token");
 
-    const decodeToken = token.verify(reqToken, process.env.JWT_PRIVATE_KEY);
+    const decodeToken = jwt.verify(reqToken, process.env.JWT_PRIVATE_KEY);
 
     if (!decodeToken) throw new Error("no se decodifico el token");
 
