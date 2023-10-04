@@ -31,11 +31,7 @@ export const MutationType = gql`
       password: String!
     ): User
     signUp(
-      token: String!
-      name: String
-      lastname: String
-      email: String
-      password: String
+     token: String!
     ): User
     login(
       email: String!
