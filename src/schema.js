@@ -45,11 +45,8 @@ export const typeDefs = gql`
     productImage: String!
     Material: Material
     UserIdUser: String!
-<<<<<<< Updated upstream
     Reviews: [Review]
     averageRating: Int
-=======
->>>>>>> Stashed changes
     currency_id: String
     quantity: Int
   }
