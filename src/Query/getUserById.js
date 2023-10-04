@@ -17,7 +17,11 @@ export const getUserById = async (_, args) => {
       },
       {
         model: models.ShoppingHistory
-      }]
+      },
+      {
+        model: models.Review
+      }
+    ]
     });
     if (!user) throw new Error("mensaje que no devuelve usuario");
     const Product = user.dataValues.Products.map(p => p.dataValues)
@@ -32,7 +36,8 @@ export const getUserById = async (_, args) => {
       termsAndCondsAprove: user.dataValues.termsAndCondsAprove,
       product: [...Product],
       profile: user.dataValues.Profile.dataValues,
-      shoppingHistory: user.dataValues.ShoppingHistory?.dataValues
+      shoppingHistory: user.dataValues.ShoppingHistory?.dataValues,
+      review: user.dataValues.Reviews
     }
 
     return objUser;
