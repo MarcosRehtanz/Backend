@@ -8,6 +8,8 @@ import { typePerson } from "./Models/TypePerson.js";
 import { typeUser } from "./Models/TypeUser.js";
 import { material } from "./Models/Material.js";
 import { profile } from "./Models/Profile.js";
+import { review } from "./Models/Review.js";
+
 const sequelize = new Sequelize(process.env.POSTGRES, { logging: false });
 
 //Define
@@ -17,9 +19,11 @@ shoppingHistory(sequelize);
 typePerson(sequelize);
 typeUser(sequelize);
 material(sequelize);
-profile(sequelize)
+profile(sequelize);
+review(sequelize);
+
 //Models
-const { User, Profile, Product, ShoppingHistory, TypePerson, TypeUser, Material } = sequelize.models;
+const { User, Profile, Product, ShoppingHistory, TypePerson, TypeUser, Material, Review } = sequelize.models;
 
 // Relations
 User.hasOne(Profile);
@@ -33,8 +37,14 @@ User.hasMany(ShoppingHistory, {
 });
 ShoppingHistory.belongsTo(User);
 
-Material.hasMany(Product); // Un material puede pertenecer a muchos
-Product.belongsTo(Material); //Un producto puede tener un material
+Material.hasMany(Product);
+Product.belongsTo(Material);
+
+Product.hasMany(Review);
+Review.belongsTo(Product);
+
+User.hasMany(Review);
+Review.belongsTo(User);
 
 export const conn = sequelize;
 export const models = sequelize.models;
