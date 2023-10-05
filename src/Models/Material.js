@@ -19,5 +19,8 @@ export const material = (sequelize) =>{
             type: DataTypes.STRING,
             allowNull: true
         }
+    },{
+        timetamps: false,
+        paranoid: true
     })
 }

@@ -22,6 +22,9 @@ import { deleteProfile } from "./deleteProfile.js"
 import { deleteUser } from "./deleteUser.js"
 import { restoreUser } from "./restoreUser.js"
 import { orderMercadoPago } from "./orderMercadoPago.js";
+import {updateMaterial} from "./updateMaterial.js"
+import {restoreMaterial} from "./restoreMaterial.js"
+import {deleteMaterial} from "./updateMaterial.js"
 
 export const MutationType = gql`
   type Mutation {
@@ -124,6 +127,14 @@ export const MutationType = gql`
       rating: Int!
       comment: String!
     ): Review
+    updateMaterial(
+        id: ID!
+        name: String!
+        origin: String!
+        image: String!
+        ): Material
+    deleteMaterial(id: ID!): String
+    restoreMaterial(id: ID!): Material
   }
 `;
 
@@ -150,5 +161,8 @@ export const Mutation = {
   restoreUser,
   orderMercadoPago,
   addReview,
-  updateReviewew
+  updateReview,
+  updateMaterial,
+  restoreMaterial,
+  deleteMaterial
 };
