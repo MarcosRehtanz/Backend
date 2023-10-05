@@ -4,24 +4,23 @@ export const updateMaterial = async (_, args) => {
 
     const { id,
         name,
-        origin,
+        description,
         image,
         } = args;
 
     try {
-        const updatedMaterial = await models.Material.update(
+        const updatedMaterial = await models.Materials.update(
             {
                 name,
-                origin,
-                image,
-
+                description,
+                image
             }, { where: {id} }
         )
     if(!updatedMaterial){
         throw new Error ('El material que intenta actualizar aún no está registrado')
     }
     else{
-        const newMaterialInfo = models.Material.findByPk(id)
+        const newMaterialInfo = models.Materials.findByPk(id)
         return newMaterialInfo
     }
 

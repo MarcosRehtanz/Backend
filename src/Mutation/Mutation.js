@@ -137,7 +137,7 @@ export const MutationType = gql`
     updateMaterial(
         id: ID!
         name: String!
-        origin: String!
+        description: String!
         image: String!
         ): Material
     deleteMaterial(id: ID!): String

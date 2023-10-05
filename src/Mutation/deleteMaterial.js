@@ -2,7 +2,7 @@ import { models } from "../db.js";
 
 export const deleteMaterial = async (_, {id}) =>{
     try{
-        const material = await models.Material.findByPk(id)
+        const material = await models.Materials.findByPk(id)
         if(!material){
             throw Error('El material que desea eliminar no existe')
         }
