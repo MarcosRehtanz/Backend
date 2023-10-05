@@ -68,11 +68,16 @@ export const typeDefs = gql`
     UserIdUser: String!
     currencyId: String
     quantity: Int
-
   }
   type MercadoPago {
     products: [Product]!
+    # id: ID!
+    # title: String!
+    # picture_url: String!
+    # unit_price: Int!
     currency_id: [String]! #Tipo de moneda
+    # description: String
+    # quantity: Int!
     response: String
   }
 

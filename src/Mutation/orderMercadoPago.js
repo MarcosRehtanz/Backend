@@ -1,11 +1,11 @@
 import "dotenv/config";
 import mercadopago from "mercadopago";
 
-const { ACCESS_TOKEN } = process.env;
+const { ACCESS_TOKEN_MP } = process.env;
 
 mercadopago.configure({
-  access_token:
-    "TEST-7139552295917095-100300-901bdf63f1757af25b5538b6faf872e4-1327154320",
+  access_token:ACCESS_TOKEN_MP
+   
 });
 
 export const orderMercadoPago = async (_, args) => {
@@ -29,6 +29,7 @@ export const orderMercadoPago = async (_, args) => {
         failure: failure,
         pending: pending,
       },
+      auto_return:"approved"
     };
 
     const IdCurr = prod.map((p) => p.currencyId);
