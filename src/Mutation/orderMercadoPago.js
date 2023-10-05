@@ -33,14 +33,15 @@ export const orderMercadoPago = async (_, args) => {
     };
 
     const IdCurr = prod.map((p) => p.currencyId);
+   
     const response = await mercadopago.preferences.create(preference);
 
     const res = {
       products: prod,
       currency_id: IdCurr,
-      response: JSON.stringify(response),
+      response: response.body.id,
     };
-
+    console.log(res)
     return res;
   } catch (error) {
     console.log(error);
