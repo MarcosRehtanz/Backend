@@ -150,5 +150,5 @@ export const Mutation = {
   restoreUser,
   orderMercadoPago,
   addReview,
-  updateReviewew
+  updateReview
 };
