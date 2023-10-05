@@ -22,9 +22,9 @@ import { deleteProfile } from "./deleteProfile.js"
 import { deleteUser } from "./deleteUser.js"
 import { restoreUser } from "./restoreUser.js"
 import { orderMercadoPago } from "./orderMercadoPago.js";
-import {updateMaterial} from "./updateMaterial.js"
-import {restoreMaterial} from "./restoreMaterial.js"
-import {deleteMaterial} from "./updateMaterial.js"
+import { updateMaterial } from "./updateMaterial.js"
+import { restoreMaterial } from "./restoreMaterial.js"
+import { deleteMaterial } from "./deleteMaterial.js"
 
 export const MutationType = gql`
   type Mutation {
