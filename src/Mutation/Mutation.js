@@ -15,6 +15,7 @@ import { deleteProduct } from "./deleteProduct.js";
 import { restoreProduct } from "./restoreProduct.js"
 import { updateProfile } from "./updateProfile.js"
 import { updateProduct } from "./updateProduct.js"
+import { updateReview } from "./updateReview.js";
 import { updateUser } from "./updateUser.js"
 import { restoreProfile } from "./restoreProfile.js"
 import { deleteProfile } from "./deleteProfile.js"
@@ -113,10 +114,17 @@ export const MutationType = gql`
     deleteUser(idUser: ID!): String
     restoreUser(idUser: ID!): User
     addReview(
+      title: String!
       rating: Int!
       comment: String!
       idProduct: String!
       idUser: String!
+    ): Review
+    updateReview(
+      idReview: ID!
+      title: String!
+      rating: Int!
+      comment: String!
     ): Review
   }
 `;
@@ -143,5 +151,6 @@ export const Mutation = {
   deleteUser,
   restoreUser,
   orderMercadoPago,
-  addReview
+  addReview,
+  updateReview
 };

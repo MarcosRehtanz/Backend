@@ -13,46 +13,46 @@ const server = new ApolloServer({
   resolvers,
 })
 
-conn.sync({ force: true }).then(async () => {
-  const material = await Promise.all(Materials.map(async m => await models.Material.findOrCreate({
-    where: {
-      ...m
-    },
-  })))
-  const idRandom = material.map(id => id[0].dataValues.id)
+conn.sync({ force: false }).then(async () => {
+  // const material = await Promise.all(Materials.map(async m => await models.Material.findOrCreate({
+  //   where: {
+  //     ...m
+  //   },
+  // })))
+  // const idRandom = material.map(id => id[0].dataValues.id)
 
-  const userss = await Promise.all(Users.map(async (user, i) => {
-    const {
-      name,
-      lastname,
-      email,
-      password,
-    } = user;
-    const pass = await bcrypt.hash(password, 8);
-    const users = await models.User.findOrCreate({
-      where: {
-        name,
-        lastname,
-        email,
-        password: pass
-      },
-    })
+  // const userss = await Promise.all(Users.map(async (user, i) => {
+  //   const {
+  //     name,
+  //     lastname,
+  //     email,
+  //     password,
+  //   } = user;
+  //   const pass = await bcrypt.hash(password, 8);
+  //   const users = await models.User.findOrCreate({
+  //     where: {
+  //       name,
+  //       lastname,
+  //       email,
+  //       password: pass
+  //     },
+  //   })
     
-    await models.Profile.findOrCreate({
-      where: {
-        ...Profile[i],
-        UserIdUser: users[0].dataValues.idUser
-      }
-    })
+  //   await models.Profile.findOrCreate({
+  //     where: {
+  //       ...Profile[i],
+  //       UserIdUser: users[0].dataValues.idUser
+  //     }
+  //   })
 
-    await Promise.all(Products.map(async p => await models.Product.findOrCreate({
-      where: {
-        ...p,
-        UserIdUser: users[0].dataValues.idUser,
-        MaterialId: idRandom[Math.floor(Math.random() * idRandom.length)]
-      }
-    })))
-  }))
+  //   await Promise.all(Products.map(async p => await models.Product.findOrCreate({
+  //     where: {
+  //       ...p,
+  //       UserIdUser: users[0].dataValues.idUser,
+  //       MaterialId: idRandom[Math.floor(Math.random() * idRandom.length)]
+  //     }
+  //   })))
+  // }))
 
   try {
     const { url } = await server.listen()
