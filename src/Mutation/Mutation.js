@@ -168,5 +168,9 @@ export const Mutation = {
   restoreUser,
   orderMercadoPago,
   addReview,
-  updateReview
+  updateReview,
+  addSubMaterial,
+  updateMaterial,
+  restoreMaterial,
+  deleteMaterial
 };
