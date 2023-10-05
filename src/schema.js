@@ -108,6 +108,7 @@ export const typeDefs = gql`
 
   type Review {
     idReview: ID!
+    title: String!
     rating: Int!
     comment: String!
     createdAt: String!
