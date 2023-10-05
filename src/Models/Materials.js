@@ -1,7 +1,7 @@
 import { DataTypes} from "sequelize";
 
-export const material = (sequelize) =>{
-    sequelize.define("Material", {
+export const materials = (sequelize) =>{
+    sequelize.define("Materials", {
         id:{
             type: DataTypes.UUID,
             primaryKey: true,
@@ -11,8 +11,8 @@ export const material = (sequelize) =>{
             type: DataTypes.STRING,
             allowNull: true,
         },
-        origin:{
-            type: DataTypes.STRING,
+        description:{
+            type: DataTypes.TEXT,
             allowNull: true,
         },
         image:{

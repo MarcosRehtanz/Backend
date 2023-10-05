@@ -7,11 +7,7 @@ export const getProductById = async (_, args) => {
         const product = await models.Product.findOne({
             where: {
                 idProduct: id
-            }, include: [{
-                model: models.Material
-            },{
-                model: models.Review
-            }]
+            }, include: [models.Materials, models.Review, models.SubMaterials]
         });
         return product;
     } catch (error) {

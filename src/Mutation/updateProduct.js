@@ -19,13 +19,13 @@ export const updateProduct = async (_, args) => {
                 stock,
                 publicationDate,
                 productImage
-            }, { where: {idProduct} }
+            }, { where: {idProduct}, include: [models.Materials, models.SubMaterials] }
         )
     if(!updatedProduct){
         throw new Error ('El producto que intenta actualizar aún no está registrado')
     }
     else{
-        const newProductInfo = models.Product.findByPk(idProduct)
+        const newProductInfo = models.Product.findByPk(idProduct, { include: [models.Materials, models.SubMaterials] })
         return newProductInfo
     }
 

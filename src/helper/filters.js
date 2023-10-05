@@ -63,16 +63,41 @@ export function sortingUnified(result, firstOrder, orderStock, orderPrice) {
     return result;
 }
 
-export async function filteringMaterials(materialsArray){
-    let result = await models.Product.findAll({
-        include: [{
-            model: models.Material,
-            where: {
-                name: {
-                    [Op.in]: materialsArray
-                }
+export async function filteringMaterials(materialsArray, subMaterialsArray) {
+    let result = null;
+    if (!subMaterialsArray) {
+        result = await models.Product.findAll({
+            include: [{
+                model: models.Materials,
+                where: {
+                    name: {
+                        [Op.in]: materialsArray
+                    }
+                },
             },
-        }]
-    })
+            {
+                model: models.SubMaterials
+            }]
+        })
+    } else {
+        result = await models.Product.findAll({
+            include: [{
+                model: models.Materials,
+                where: {
+                    name: {
+                        [Op.in]: materialsArray
+                    }
+                },
+            },
+            {
+                model: models.SubMaterials,
+                where: {
+                    name: {
+                        [Op.in]: subMaterialsArray
+                    }
+                },
+            }]
+        })
+    }
     return result;
 }

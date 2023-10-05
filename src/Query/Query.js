@@ -23,7 +23,7 @@ export const QueryType = gql`
         allShoppingHistory: [ShoppingHistory]
         # allTypePerson: [TypePerson]
         allTypeUser: [TypeUser]
-        getAllMaterial: [Material!]
+        getAllMaterial: [Materials!]
         allProductsByUser(id:ID!): [Product] 
         getUserById(id:ID!): User
         _: Boolean
@@ -35,6 +35,7 @@ export const QueryType = gql`
         ): [User]
         filterUnion(
             filterMaterials: String
+            filterSubMaterials: String
             firstOrder: String
             orderPrice: String
             orderStock: String

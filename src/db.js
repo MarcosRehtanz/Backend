@@ -6,7 +6,8 @@ import { product } from "./Models/Product.js";
 import { shoppingHistory } from "./Models/ShoppingHistory.js";
 import { typePerson } from "./Models/TypePerson.js";
 import { typeUser } from "./Models/TypeUser.js";
-import { material } from "./Models/Material.js";
+import { materials } from "./Models/Materials.js";
+import { subMaterials } from "./Models/SubMaterials.js";
 import { profile } from "./Models/Profile.js";
 import { review } from "./Models/Review.js";
 
@@ -18,12 +19,13 @@ product(sequelize);
 shoppingHistory(sequelize);
 typePerson(sequelize);
 typeUser(sequelize);
-material(sequelize);
+materials(sequelize);
 profile(sequelize);
 review(sequelize);
+subMaterials(sequelize);
 
 //Models
-const { User, Profile, Product, ShoppingHistory, TypePerson, TypeUser, Material, Review } = sequelize.models;
+const { User, Profile, Product, ShoppingHistory, TypePerson, TypeUser, Materials, Review, SubMaterials } = sequelize.models;
 
 // Relations
 User.hasOne(Profile);
@@ -37,8 +39,17 @@ User.hasMany(ShoppingHistory, {
 });
 ShoppingHistory.belongsTo(User);
 
-Material.hasMany(Product);
-Product.belongsTo(Material);
+// relacion de uno a muchos, materiales y submateriales, respectivamente
+Materials.hasMany(SubMaterials);
+SubMaterials.belongsTo(Materials);
+
+// relacion muchos a muchos materiales y productos
+Materials.belongsToMany(Product, { through: 'Product_Materials' }); 
+Product.belongsToMany(Materials, { through: 'Product_Materials' });
+
+// relacion muchos a muchos submateriales y productos
+SubMaterials.belongsToMany(Product, { through: 'Product_SubMaterials' });
+Product.belongsToMany(SubMaterials, { through: 'Product_SubMaterials' });
 
 Product.hasMany(Review);
 Review.belongsTo(Product);

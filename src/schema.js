@@ -43,7 +43,8 @@ export const typeDefs = gql`
     stock: Int
     publicationDate: String
     productImage: String!
-    Material: Material
+    Materials: [Materials]
+    SubMaterials: [SubMaterials]
     UserIdUser: String!
     Reviews: [Review]
     averageRating: Int
@@ -99,11 +100,18 @@ export const typeDefs = gql`
     transportista
   }
 
-  type Material {
+  type Materials {
     id: ID!
     name: String!
-    origin: String!
+    description: String!
     image: String!
+    SubMaterials: [SubMaterials]
+  }
+
+  type SubMaterials {
+    id: ID!
+    name: String!
+    description: String!
   }
 
   type Review {
