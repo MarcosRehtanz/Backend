@@ -12,6 +12,7 @@ export const orderMercadoPago = async (_, args) => {
   try {
     console.log(args);
     const prod = args.product;
+    const { success, failure, pending } = args;
     //console.log(prod)
     let preference = {
       items: prod.map((p, i) => ({
@@ -23,10 +24,16 @@ export const orderMercadoPago = async (_, args) => {
         currency_id: p.currencyId,
         quantity: p.quantity,
       })),
+      back_urls: {
+        success: success,
+        failure: failure,
+        pending: pending,
+      },
     };
+
     const IdCurr = prod.map((p) => p.currencyId);
     const response = await mercadopago.preferences.create(preference);
-    console.log(prod);
+
     const res = {
       products: prod,
       currency_id: IdCurr,
