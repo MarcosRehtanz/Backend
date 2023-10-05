@@ -113,7 +113,16 @@ export const typeDefs = gql`
     comment: String!
     createdAt: String!
   }
-
+  input SuccesInput {
+    payment_id: Int
+    status: String
+    merchant_order_id: String
+  }
+  type InfoResMP {
+    payment: Int!
+    status: String!
+    merchant_order_id: String!
+  }
   ${QueryType}
   ${MutationType}
 `;

@@ -3,18 +3,20 @@ import mercadopago from "mercadopago";
 
 const { ACCESS_TOKEN_MP } = process.env;
 
-mercadopago.configure({
-  access_token:ACCESS_TOKEN_MP
-   
-});
 
 export const orderMercadoPago = async (_, args) => {
+  mercadopago.configure({
+    access_token:ACCESS_TOKEN_MP
+     
+  });
+
   try {
     console.log(args);
     const prod = args.product;
-    // const { success, failure, pending } = args;
-    //console.log(prod)
-    let preference = {
+
+    const IdCurr = prod.map((p) => p.currencyId);
+   
+    const response = await mercadopago.preferences.create({
       items: prod.map((p, i) => ({
         id: p.id,
         title: p.name,
@@ -24,24 +26,21 @@ export const orderMercadoPago = async (_, args) => {
         currency_id: p.currencyId,
         quantity: p.quantity,
       })),
-      // back_urls: {
-      //   success: success,
-      //   failure: failure,
-      //   pending: pending,
-      // },
-      // auto_return:"approved"
-    };
-
-    const IdCurr = prod.map((p) => p.currencyId);
-   
-    const response = await mercadopago.preferences.create(preference);
+      back_urls: {
+        success: "http://localhost:5173/success",
+        failure: "http://localhost:5173/failure",
+        pending: "http://localhost:5173/pending",
+      },
+      auto_return:"approved",
+      notification_url: "https://18ca-2803-9800-9896-72a8-b0e0-3909-50c2-6b2b.ngrok.io/webhook"
+    });
 
     const res = {
       products: prod,
       currency_id: IdCurr,
-      response: response.body.id,
+      response: JSON.stringify(response.body),
     };
-    console.log(res)
+    console.log(response.body)
     return res;
   } catch (error) {
     console.log(error);
