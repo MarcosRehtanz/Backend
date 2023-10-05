@@ -7,6 +7,7 @@ import { addShoppingHistory } from "./addShoppingHistory.js";
 import { addTypeUser } from "./addTypeUser.js";
 import { addMaterial } from "./addMaterial.js";
 import { addReview } from "./addReview.js";
+import { addSubMaterial } from "./addSubMaterial.js";
 import { userRegister } from "./userRegister.js";
 import { signUp } from "./singUp.js";
 import { login } from "./login.js";
@@ -60,7 +61,8 @@ export const MutationType = gql`
       publicationDate: String!
       productImage: String!
       id: ID!
-      MaterialId: ID!
+      Materials: [ID!]
+      SubMaterials: [ID!]
     ): Product
 
     orderMercadoPago(
@@ -75,7 +77,7 @@ export const MutationType = gql`
     #     typePerson: String
     # ): TypePerson
     addTypeUser(typeUser: String): TypeUser
-    addMaterial(name: String!, origen: String!, image: String!): Material
+    addMaterial(name: String!, description: String!, image: String!): Materials
     uploadProductImg(photo: String): String
     deleteProduct(id: ID): String
     google(email: String!, name: String!, lastname: String!): User
@@ -127,10 +129,15 @@ export const MutationType = gql`
       rating: Int!
       comment: String!
     ): Review
+    addSubMaterial(
+      materialId: ID!
+      name: String!
+      description: String!
+    ): SubMaterials
     updateMaterial(
         id: ID!
         name: String!
-        origin: String!
+        description: String!
         image: String!
         ): Material
     deleteMaterial(id: ID!): String
@@ -162,6 +169,7 @@ export const Mutation = {
   orderMercadoPago,
   addReview,
   updateReview,
+  addSubMaterial,
   updateMaterial,
   restoreMaterial,
   deleteMaterial

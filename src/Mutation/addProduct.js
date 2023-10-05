@@ -2,9 +2,8 @@ import { models } from "../db.js";
 import { uploadProductImg } from "./uploadProductImg.js";
 
 export const addProduct = async (root, args) => {
-  console.log(args);
   try {
-    const { name, description, price, stock, publicationDate, productImage, id, MaterialId} =
+    const { name, description, price, stock, publicationDate, productImage, id, Materials, SubMaterials } =
       args;
     if (
       !name ||
@@ -13,30 +12,27 @@ export const addProduct = async (root, args) => {
       !stock ||
       !publicationDate ||
       !productImage ||
-      !id ||
-      !MaterialId
-    ){
+      !id
+    ) {
       throw new Error(error.message);
     }
-     
-    const urlImage = await uploadProductImg(productImage) 
+
+    const urlImage = await uploadProductImg(productImage)
     const product = await models.Product.create({
-        name,
-        description,
-        price,
-        stock,
-        publicationDate,
-        productImage: urlImage,
-        UserIdUser: id,
-        MaterialId: MaterialId
+      name,
+      description,
+      price,
+      stock,
+      publicationDate,
+      productImage: urlImage,
+      UserIdUser: id
     });
 
-    const productCreated = await models.Product.findOne({
-      where: {
-        idProduct: product.idProduct
-      },
-      include: models.Material
-    })
+    await product.addMaterials(Materials);
+    await product.addSubMaterials(SubMaterials);
+
+    const productCreated = await models.Product.findByPk( product.idProduct, { include: [models.Materials, models.SubMaterials] })
+    console.log(productCreated);
     return productCreated;
   } catch (error) {
     throw new Error(error.message);

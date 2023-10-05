@@ -2,7 +2,7 @@ import { models } from "../db.js";
 
 export const restoreMaterial = async (_, { id, deletedAt }) => {
   try {
-    const restoredMaterial = await models.Material.update(
+    const restoredMaterial = await models.Materials.update(
           {
             deletedAt
           },
@@ -11,7 +11,7 @@ export const restoreMaterial = async (_, { id, deletedAt }) => {
 
   if(restoredMaterial){
       deletedAt = null
-      const switchDeletedAt = await models.Material.findByPk(id)
+      const switchDeletedAt = await models.Materials.findByPk(id)
       console.log(switchDeletedAt, 'Aquí estoy de nuevo mi ciela')
       return switchDeletedAt
   }

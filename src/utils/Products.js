@@ -9,7 +9,6 @@ export const Products = [
         publicationDate: '2023-09-29',
         productImage: 'https://cdn0.ecologiaverde.com/es/posts/1/7/5/por_que_es_importante_reciclar_el_papel_y_carton_1571_orig.jpg',
         UserIdUser: "054298c6-2b9d-4e2a-97c4-fab92f97d18d",
-        MaterialId: "7f64f433-a4ac-4444-94df-8978e8e6fb31" 
     },
     {
         name: 'Producto 2',
@@ -19,7 +18,6 @@ export const Products = [
         publicationDate: '2023-09-30',
         productImage: 'https://fundacionecomar.org/wp-content/uploads/2020/04/plasticos.jpg',
         UserIdUser: "2095e9b1-8f97-40b2-92ca-a58f328f0c4e",
-        MaterialId: "df9332e4-280e-41cc-88c9-3edc9726da70" 
     },
     {
         name: 'Producto 3',
@@ -29,7 +27,6 @@ export const Products = [
         publicationDate: '2023-10-01',
         productImage: 'https://www.leanpio.com/wp-content/uploads/2022/03/proceso-reciclaje-vidrio.jpg',
         UserIdUser: "33a89175-3368-49d8-98a6-8d9dcdba7180",
-        MaterialId: "b3123b0b-921e-4538-81f3-fa405c561ca7" 
     },
     
 ]
