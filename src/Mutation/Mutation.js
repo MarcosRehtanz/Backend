@@ -172,9 +172,9 @@ export const Mutation = {
   addReview,
   updateReview,
   addSubMaterial,
-  // updateSubMaterials,
+  updateSubMaterials,
   deleteSubMaterial,
-  // restoreSubmaterials,
+  restoreSubmaterials,
   updateMaterial,
   restoreMaterial,
   deleteMaterial
