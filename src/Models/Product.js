@@ -31,6 +31,10 @@ export const product = (sequelize)=>{
             type: DataTypes.TEXT,
             allowNull: false
         },
+        quantity: {
+            type: DataTypes.INTEGER,
+            defaultValue: 1
+        },
         deletedAt: {
             type: DataTypes.DATEONLY
           }
