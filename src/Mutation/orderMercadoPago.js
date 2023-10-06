@@ -5,6 +5,7 @@ const { ACCESS_TOKEN_MP } = process.env;
 
 
 export const orderMercadoPago = async (_, args) => {
+  console.log("first")
   mercadopago.configure({
     access_token:ACCESS_TOKEN_MP
      
@@ -38,9 +39,9 @@ export const orderMercadoPago = async (_, args) => {
     const res = {
       products: prod,
       currency_id: IdCurr,
-      response: JSON.stringify(response.body),
+      response: response.body.id,
     };
-    console.log(response.body)
+    console.log(response.body.id)
     return res;
   } catch (error) {
     console.log(error);

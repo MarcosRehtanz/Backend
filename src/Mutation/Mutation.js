@@ -68,9 +68,6 @@ export const MutationType = gql`
 
     orderMercadoPago(
       product: [ProductInput]
-      success: String
-      failure: String
-      pending: String
     ): MercadoPago
 
     addShoppingHistory(billDate: String!, totalAmount: Float!): ShoppingHistory

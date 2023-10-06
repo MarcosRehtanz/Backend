@@ -14,6 +14,7 @@ import { searchUserByName } from "./searchUserByName.js";
 
 import { getUserById } from "./getUserById.js";
 import { getProductById } from "./getProductById.js";
+import { getMaterialsByName } from "./getMaterialsByName.js";
 
 import { feedbackMercadoPago } from "./feedbackMercadoPago.js";
 import {allSubmaterial} from "./allSubmaterials.js"
@@ -44,9 +45,12 @@ export const QueryType = gql`
         getProductById(
             id: ID!
         ): Product
-
     feedbackMercadoPago(success:SuccesInput): InfoResMP
     allSubmaterial: [SubMaterials]
+        getMaterialsByName(
+            stringMaterials: String!
+        ): [Materials]
+        feedbackMercadoPago(success:SuccesInput): InfoResMP
     }
 `
 
@@ -65,4 +69,5 @@ export const Query = {
     getProductById,
     feedbackMercadoPago,
     allSubmaterial
+    getMaterialsByName
 }
