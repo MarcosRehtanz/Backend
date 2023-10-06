@@ -10,7 +10,7 @@ export const getUserById = async (_, args) => {
     const user = await models.User.findOne({
       where: { idUser: id }, include: [{
         model: models.Product,
-        include: models.Material
+        include: models.Materials
       },
       {
         model: models.Profile
