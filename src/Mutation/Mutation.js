@@ -139,9 +139,9 @@ export const MutationType = gql`
         name: String!
         description: String!
         image: String!
-        ): Material
+        ): Materials
     deleteMaterial(id: ID!): String
-    restoreMaterial(id: ID!): Material
+    restoreMaterial(id: ID!): Materials
   }
 `;
 
