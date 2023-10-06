@@ -1,6 +1,7 @@
 import { gql } from "apollo-server";
 import { allUsers } from "./allUsers.js";
-import { allProducts } from "./allProducts.js";
+// import { allProducts } from "./countAllProducts.js";
+import { countAllProducts } from "./countAllProducts.js";
 
 import { allShoppingHistory } from "./allShoppingHistory.js";
 // import { allTypePerson } from "./allTypePerson.js";
@@ -21,7 +22,7 @@ import { allSubmaterial } from "./allSubmaterials.js"
 export const QueryType = gql`
     type Query {
         allUsers: [User]
-        allProducts: [Product]
+       
         allShoppingHistory: [ShoppingHistory]
         # allTypePerson: [TypePerson]
         allTypeUser: [TypeUser]
@@ -35,13 +36,22 @@ export const QueryType = gql`
         searchUserByName(
             nameUser: String!
         ): [User]
+
         filterUnion(
-            filterMaterials: String
-            filterSubMaterials: String
+            filterMaterials: [String]
+            filterSubMaterials: [String]
             firstOrder: String
             orderPrice: String
             orderStock: String
+            limit: Int
+            offset: Int
         ): [Product]
+
+        countAllProducts(
+            filterMaterials: [String]
+            filterSubMaterials: [String]
+        ): Int
+
         getProductById(
             id: ID!
         ): Product
@@ -55,7 +65,7 @@ export const QueryType = gql`
 
 export const Query = {
     allUsers,
-    allProducts,
+    // allProducts,
     allShoppingHistory,
     // allTypePerson,
     allTypeUser,
@@ -69,4 +79,5 @@ export const Query = {
     feedbackMercadoPago,
     allSubmaterial,
     getMaterialsByName,
+    countAllProducts
 }

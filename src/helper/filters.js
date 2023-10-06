@@ -63,41 +63,82 @@ export function sortingUnified(result, firstOrder, orderStock, orderPrice) {
     return result;
 }
 
-export async function filteringMaterials(materialsArray, subMaterialsArray) {
+export async function filteringMaterials(materialsArray, subMaterialsArray, limit, offset) {
     let result = null;
-    if (!subMaterialsArray || subMaterialsArray === '') {
-        result = await models.Product.findAll({
-            include: [{
-                model: models.Materials,
-                where: {
-                    name: {
-                        [Op.in]: materialsArray
-                    }
+    if (limit) {
+        if ((!subMaterialsArray || subMaterialsArray === '') ) {
+            result = await models.Product.findAll({
+                include: [{
+                    model: models.Materials,
+                    where: {
+                        name: {
+                            [Op.in]: materialsArray
+                        }
+                    },
                 },
-            },
-            {
-                model: models.SubMaterials
-            }]
-        })
-    } else {
-        result = await models.Product.findAll({
-            include: [{
-                model: models.Materials,
-                where: {
-                    name: {
-                        [Op.in]: materialsArray
-                    }
+                {
+                    model: models.SubMaterials
+                }],
+                limit,
+                offset
+            })
+        } else {
+            result = await models.Product.findAll({
+                include: [{
+                    model: models.Materials,
+                    where: {
+                        name: {
+                            [Op.in]: materialsArray
+                        }
+                    },
                 },
-            },
-            {
-                model: models.SubMaterials,
-                where: {
-                    name: {
-                        [Op.in]: subMaterialsArray
-                    }
+                {
+                    model: models.SubMaterials,
+                    where: {
+                        name: {
+                            [Op.in]: subMaterialsArray
+                        }
+                    },
+                }],
+                limit,
+                offset
+            })
+        }
+    }else {
+        if ((!subMaterialsArray || subMaterialsArray === '')) {
+            result = await models.Product.count({
+                include: [{
+                    model: models.Materials,
+                    where: {
+                        name: {
+                            [Op.in]: materialsArray
+                        }
+                    },
                 },
-            }]
-        })
+                {
+                    model: models.SubMaterials
+                }]
+            })
+        } else {
+            result = await models.Product.count({
+                include: [{
+                    model: models.Materials,
+                    where: {
+                        name: {
+                            [Op.in]: materialsArray
+                        }
+                    },
+                },
+                {
+                    model: models.SubMaterials,
+                    where: {
+                        name: {
+                            [Op.in]: subMaterialsArray
+                        }
+                    },
+                }],
+            })
+        }
     }
     return result;
 }
