@@ -14,6 +14,7 @@ import { searchUserByName } from "./searchUserByName.js";
 
 import { getUserById } from "./getUserById.js";
 import { getProductById } from "./getProductById.js";
+import { getMaterialsByName } from "./getMaterialsByName.js";
 
 import { feedbackMercadoPago } from "./feedbackMercadoPago.js";
 export const QueryType = gql`
@@ -43,8 +44,10 @@ export const QueryType = gql`
         getProductById(
             id: ID!
         ): Product
-
-    feedbackMercadoPago(success:SuccesInput): InfoResMP
+        getMaterialsByName(
+            stringMaterials: String!
+        ): [Materials]
+        feedbackMercadoPago(success:SuccesInput): InfoResMP
     }
 `
 
@@ -61,5 +64,6 @@ export const Query = {
     searchUserByName,
     filterUnion,
     getProductById,
-    feedbackMercadoPago
+    feedbackMercadoPago,
+    getMaterialsByName
 }
