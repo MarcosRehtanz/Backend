@@ -7,9 +7,9 @@ export const allProductsByUser = async (_, args) => {
       throw new UserInputError("Debe proporcionar un ID", {
         invalidArgs: id,
       });
-    const product = await models.Product.findAll({
-      where: { UserIdUser: id }, include: models.Material
-    });
+      const product = await models.Product.findAll({
+        where: { UserIdUser: id }, include: models.Materials
+      });
 
     return product;
   } catch (error) {
