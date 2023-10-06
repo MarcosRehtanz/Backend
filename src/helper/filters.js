@@ -65,7 +65,7 @@ export function sortingUnified(result, firstOrder, orderStock, orderPrice) {
 
 export async function filteringMaterials(materialsArray, subMaterialsArray) {
     let result = null;
-    if (!subMaterialsArray) {
+    if (!subMaterialsArray || subMaterialsArray === '') {
         result = await models.Product.findAll({
             include: [{
                 model: models.Materials,
