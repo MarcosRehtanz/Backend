@@ -34,9 +34,7 @@ Profile.belongsTo(User);
 User.hasMany(Product);
 Product.belongsTo(User);
 
-User.hasMany(ShoppingHistory, {
-  foreignKey: "userID",
-});
+User.hasMany(ShoppingHistory);
 ShoppingHistory.belongsTo(User);
 
 // relacion de uno a muchos, materiales y submateriales, respectivamente
