@@ -7,7 +7,7 @@ export const resolvers = {
         averageRating: (root) => {
             const totalReview = root.Reviews.length
             const totalRating = root.Reviews.reduce((acc, obj) => acc + obj.rating, 0);
-            return Math.floor(totalRating / totalReview)
+            return root.Reviews.length === 0 ? 0 : Math.floor(totalRating / totalReview)
         }
     },
     Mutation,

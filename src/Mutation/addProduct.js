@@ -16,7 +16,7 @@ export const addProduct = async (root, args) => {
     ) {
       throw new Error(error.message);
     }
-
+    
     const urlImage = await uploadProductImg(productImage)
     const product = await models.Product.create({
       name,
@@ -32,7 +32,7 @@ export const addProduct = async (root, args) => {
     await product.addSubMaterials(SubMaterials);
 
     const productCreated = await models.Product.findByPk( product.idProduct, { include: [models.Materials, models.SubMaterials] })
-    console.log(productCreated);
+    // console.log(productCreated);
     return productCreated;
   } catch (error) {
     throw new Error(error.message);
