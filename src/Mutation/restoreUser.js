@@ -1,29 +1,19 @@
 
 import { models } from "../db.js";
 
-export const restoreUser = async (_, { idUser, deletedAt }) => {
+export const restoreUser = async (_, { idUser }) => {
   try {
-    const restoredUser = await models.User.update(
-          {
-            deletedAt
-          },
-          {where: {idUser}}
-    )
+    const restoredUser = await models.User.findByPk(idUser, { paranoid: false })
 
-  if(restoredUser){
-      deletedAt = null
-      const switchDeletedAt = await models.User.findByPk(idUser)
-      console.log(switchDeletedAt, 'Aquí estoy de nuevo mi ciela')
-      return switchDeletedAt
-  }
-  else{
-    return 'El usuario ya ha sido restaurado'
-  
-  }
-        
+    if (!restoredUser) {
+      throw new Error('Usuario no encontrado')
     }
-       
-   catch (error) {
+    else {
+      console.log(restoredUser, '¡He vuelto del más allá ciela!')
+      return restoredUser
+    }
+  }
+  catch (error) {
     throw new Error('Error al restaurar el usuario: ' + error.message);
   }
 };

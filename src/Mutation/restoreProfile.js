@@ -1,29 +1,19 @@
 
 import { models } from "../db.js";
 
-export const restoreProfile = async (_, { idProfile, deletedAt }) => {
+export const restoreProfile = async (_, { idProfile }) => {
   try {
-    const restoredProfile = await models.Profile.update(
-          {
-            deletedAt
-          },
-          {where: {idProfile}}
-    )
+    const restoredProfile = await models.Profile.findByPk(idProfile, { paranoid: false })
 
-  if(restoredProfile){
-      deletedAt = null
-      const switchDeletedAt = await models.Product.findByPk(idProfile)
-      console.log(switchDeletedAt, 'Aquí estoy de nuevo mi ciela')
-      return switchDeletedAt
-  }
-  else{
-    return 'Hemos recuperado tu perfil'
-  
-  }
-        
+    if (!restoredProfile) {
+      throw new Error('Peril no encontrado')
     }
-       
-   catch (error) {
+    else {
+      console.log(restoredProfile, '¡He vuelto del más allá ciela!')
+      return restoredProfile
+    }
+  }
+  catch (error) {
     throw new Error('Error al restaurar el perfil: ' + error.message);
   }
 };
