@@ -13,20 +13,20 @@ import { signUp } from "./singUp.js";
 import { login } from "./login.js";
 import { google } from "./google.js";
 import { deleteProduct } from "./deleteProduct.js";
-import { restoreProduct } from "./restoreProduct.js"
-import { updateProfile } from "./updateProfile.js"
-import { updateProduct } from "./updateProduct.js"
+import { restoreProduct } from "./restoreProduct.js";
+import { updateProfile } from "./updateProfile.js";
+import { updateProduct } from "./updateProduct.js";
 import { updateReview } from "./updateReview.js";
-import { updateUser } from "./updateUser.js"
-import { restoreProfile } from "./restoreProfile.js"
-import { deleteProfile } from "./deleteProfile.js"
-import { deleteUser } from "./deleteUser.js"
-import { restoreUser } from "./restoreUser.js"
+import { updateUser } from "./updateUser.js";
+import { restoreProfile } from "./restoreProfile.js";
+import { deleteProfile } from "./deleteProfile.js";
+import { deleteUser } from "./deleteUser.js";
+import { restoreUser } from "./restoreUser.js";
 import { orderMercadoPago } from "./orderMercadoPago.js";
-import { updateMaterial } from "./updateMaterial.js"
-import { restoreMaterial } from "./restoreMaterial.js"
-import { deleteMaterial } from "./deleteMaterial.js"
-import { deleteSubMaterial } from "./deleteSubMaterial.js"
+import { updateMaterial } from "./updateMaterial.js";
+import { restoreMaterial } from "./restoreMaterial.js";
+import { deleteMaterial } from "./deleteMaterial.js";
+import { deleteSubMaterial } from "./deleteSubMaterial.js";
 
 export const MutationType = gql`
   type Mutation {
@@ -66,14 +66,21 @@ export const MutationType = gql`
       SubMaterials: [ID!]
     ): Product
 
-    orderMercadoPago(
-      product: [ProductInput]
-    ): MercadoPago
+    orderMercadoPago(product: [ProductInput]): MercadoPago
 
-    addShoppingHistory(billDate: String!, totalAmount: Float!): ShoppingHistory
+    addShoppingHistory(
+      payment_id: Int
+      status: String
+      merchant_order_id: String
+      email: String
+    ): ShoppingHistory
+
+
     # addTypePerson(
     #     typePerson: String
     # ): TypePerson
+
+    
     addTypeUser(typeUser: String): TypeUser
     addMaterial(name: String!, description: String!, image: String!): Materials
     uploadProductImg(photo: String): String
@@ -133,14 +140,14 @@ export const MutationType = gql`
       description: String!
     ): SubMaterials
     updateMaterial(
-        id: ID!
-        name: String!
-        description: String!
-        image: String!
-        ): Materials
+      id: ID!
+      name: String!
+      description: String!
+      image: String!
+    ): Materials
     deleteMaterial(id: ID!): String
     restoreMaterial(id: ID!): Materials
-    deleteSubMaterial(id: ID!):String
+    deleteSubMaterial(id: ID!): String
   }
 `;
 
@@ -174,5 +181,5 @@ export const Mutation = {
   // restoreSubmaterials,
   updateMaterial,
   restoreMaterial,
-  deleteMaterial
+  deleteMaterial,
 };

@@ -84,10 +84,13 @@ export const typeDefs = gql`
 
   type ShoppingHistory {
     IDShopHistory: ID!
-    billDate: String!
+    operationId: Int
+    paymentMethod: String
+    paymentMethodId: String
+    netAmount: Float
+    taxes: Float
     totalAmount: Float!
-    "user: User!"
-    product: Product
+    UserIdUser: ID
   }
 
   enum AfipCondition {
