@@ -1,28 +1,19 @@
 import { models } from "../db.js";
 
-export const restoreMaterial = async (_, { id, deletedAt }) => {
+export const restoreMaterial = async (_, { id }) => {
   try {
-    const restoredMaterial = await models.Materials.update(
-          {
-            deletedAt
-          },
-          {where: {id}}
-    )
 
-  if(restoredMaterial){
-      deletedAt = null
-      const switchDeletedAt = await models.Materials.findByPk(id)
-      console.log(switchDeletedAt, 'Aquí estoy de nuevo mi ciela')
-      return switchDeletedAt
-  }
-  else{
-    return 'Este material ya ha sido restaurado'
-  
-  }
-        
+    const restoredMaterial = await models.Materials.findByPk(id, { paranoid: false })
+
+    if (!restoredMaterial) {
+      throw new Error('Material no encontrado')
     }
-       
-   catch (error) {
+    else {
+      console.log(restoredMaterial, '¡He vuelto del más allá ciela!')
+      return restoredMaterial
+    }
+  } 
+  catch (error) {
     console.error('Error al restaurar el material:', error);
     throw new Error('Error al restaurar el material: ' + error.message);
   }

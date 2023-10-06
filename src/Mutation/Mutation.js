@@ -26,6 +26,7 @@ import { orderMercadoPago } from "./orderMercadoPago.js";
 import { updateMaterial } from "./updateMaterial.js"
 import { restoreMaterial } from "./restoreMaterial.js"
 import { deleteMaterial } from "./deleteMaterial.js"
+import {deleteSubMaterial} from "./deleteSubMaterial.js"
 
 export const MutationType = gql`
   type Mutation {
@@ -142,6 +143,7 @@ export const MutationType = gql`
         ): Materials
     deleteMaterial(id: ID!): String
     restoreMaterial(id: ID!): Materials
+    deleteSubMaterial(id: ID!):String
   }
 `;
 
@@ -170,6 +172,9 @@ export const Mutation = {
   addReview,
   updateReview,
   addSubMaterial,
+  // updateSubMaterials,
+  deleteSubMaterial,
+  // restoreSubmaterials,
   updateMaterial,
   restoreMaterial,
   deleteMaterial

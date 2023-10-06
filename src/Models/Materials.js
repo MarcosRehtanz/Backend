@@ -18,9 +18,10 @@ export const materials = (sequelize) =>{
         image:{
             type: DataTypes.STRING,
             allowNull: true
-        }
+        },
+
     },{
         timetamps: false,
         paranoid: true
-    })
-}
+    });
+};

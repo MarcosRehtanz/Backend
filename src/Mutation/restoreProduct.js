@@ -1,30 +1,20 @@
-
-//Ya sirve wey (*_*)
+//Ya sirve wey @(*_*)@ 2.0
 
 import { models } from "../db.js";
 
-export const restoreProduct = async (_, { idProduct, deletedAt }) => {
+export const restoreProduct = async (_, { idProduct }) => {
   try {
-    const restoredProduct = await models.Product.update(
-          {
-            deletedAt
-          },
-          {where: {idProduct}}
-    )
 
-  if(restoredProduct){
-      deletedAt = null
-      const switchDeletedAt = await models.Product.findByPk(idProduct)
-      console.log(switchDeletedAt, 'Aquí estoy de nuevo mi ciela')
-      return switchDeletedAt
+    const restoredProduct = await models.Product.findByPk(idProduct, {paranoid: false})
+
+  if(!restoredProduct){
+    throw new Error ('Producto no encontrado')
   }
   else{
-    return 'Este producto ya ha sido restaurado'
-  
+    console.log(restoredProduct, '¡He vuelto del más allá ciela!')
+    return restoredProduct
   }
-        
-    }
-       
+    }    
    catch (error) {
     console.error('Error al restaurar el producto:', error);
     throw new Error('Error al restaurar el producto: ' + error.message);
