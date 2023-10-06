@@ -14,10 +14,7 @@ export const subMaterials = (sequelize) => {
         description: {
             type: DataTypes.TEXT,
             allowNull: true,
-        },
-        deletedAt: {
-            type: DataTypes.DATEONLY
-          }
+        }
     }, {
         timetamps: false,
         paranoid: true
