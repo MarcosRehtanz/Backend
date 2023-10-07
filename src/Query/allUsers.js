@@ -20,7 +20,7 @@ export const allUsers = async() => {
                     lastname: usuario.dataValues.lastname,
                     email:usuario.dataValues.email,
                     password: usuario.dataValues.password,
-                    accountActive: usuario.dataValues.accountActive,
+                    acountActive: usuario.dataValues.acountActive,
                     termsAndCondsAprove: usuario.dataValues.termsAndCondsAprove,
                     createdAt: String(usuario.dataValues.createdAt),
                     updatedAt: String(usuario.dataValues.updatedAt),
