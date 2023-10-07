@@ -1,11 +1,31 @@
 import jwt from 'jsonwebtoken'
-import { transporter } from '../../config/nodemailer.js'
 import 'dotenv/config'
+import { transporter } from '../../config/nodemailer.js'
+import {models} from '../db.js'
 
 export const userRegister = async (_, args) => {
     const { GMAIL } = process.env
+    const { idUser,
+            name,
+            lastname,
+            email,
+            password,
+            acountActive,
+            termsAndCondsAprove} = args
+    const emailToValidate = models.User.findOne(
+            idUser,
+            name,
+            lastname,
+            password,
+            acountActive,
+            termsAndCondsAprove,
+            {where:{email}}
+        )
+        if(emailToValidate){
+           throw new Error ('Este email está en uso. Accede a tu cuenta e inicia sesión')
+        }
+    
     const token = jwt.sign(args, process.env.JWT_PRIVATE_KEY)
-
     await transporter.sendMail({
         from: `Mercado de Residuos <${GMAIL}>`,
         to: `${args.email}`,
