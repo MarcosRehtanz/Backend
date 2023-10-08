@@ -81,6 +81,14 @@ export const typeDefs = gql`
     # quantity: Int!
     response: String
   }
+  
+  type BuyOrder {
+    id: ID!
+    title: String!
+    quantity: Int!
+    unit_price: Float!
+    id_product: String!
+  }
 
   type ShoppingHistory {
     IDShopHistory: ID!
@@ -91,6 +99,7 @@ export const typeDefs = gql`
     taxes: Float
     totalAmount: Float!
     UserIdUser: ID
+    buyOrders: [BuyOrder]
   }
 
   enum AfipCondition {
