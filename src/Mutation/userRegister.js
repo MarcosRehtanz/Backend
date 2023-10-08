@@ -6,28 +6,22 @@ import bcrypt from 'bcryptjs'
 
 export const userRegister = async (_, args) => {
     const { GMAIL } = process.env
-    const { idUser,
-            name,
+    const { name,
             lastname,
             email,
             password
             } = args
-    const emailToValidate = models.User.findOne(
-            idUser,
-            name,
-            lastname,
-            password,
-            {where:email}
-        )
+    const emailToValidate = await models.User.findOne( {where:{email}})
+    console.log(emailToValidate, 'Esto arroja la consulta')
         if(emailToValidate){
            throw new Error ('Este email está en uso. Accede a tu cuenta e inicia sesión')
         }
     const pass = await bcrypt.hash(password, 8);
     const token = jwt.sign(
             {  
-            idUser,
             name,
             lastname,
+            email,
             password: pass
             }, 
         process.env.JWT_PRIVATE_KEY)
