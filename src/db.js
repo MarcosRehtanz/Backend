@@ -1,4 +1,4 @@
-import { Sequelize } from "sequelize";
+import { DataTypes, Sequelize } from "sequelize";
 import "dotenv/config";
 
 import { user } from "./Models/User.js";
@@ -10,6 +10,7 @@ import { materials } from "./Models/Materials.js";
 import { subMaterials } from "./Models/SubMaterials.js";
 import { profile } from "./Models/Profile.js";
 import { review } from "./Models/Review.js";
+import { buyOrders } from "./Models/BuyOrders.js";
 
 const sequelize = new Sequelize(process.env.POSTGRES, { logging: false });
 
@@ -17,6 +18,7 @@ const sequelize = new Sequelize(process.env.POSTGRES, { logging: false });
 user(sequelize);
 product(sequelize);
 shoppingHistory(sequelize);
+buyOrders(sequelize)
 typePerson(sequelize);
 typeUser(sequelize);
 materials(sequelize);
@@ -25,7 +27,7 @@ review(sequelize);
 subMaterials(sequelize);
 
 //Models
-const { User, Profile, Product, ShoppingHistory, TypePerson, TypeUser, Materials, Review, SubMaterials } = sequelize.models;
+const { User, Profile, Product, ShoppingHistory, BuyOrders, TypePerson, TypeUser, Materials, Review, SubMaterials } = sequelize.models;
 
 // Relations
 User.hasOne(Profile);
@@ -36,6 +38,12 @@ Product.belongsTo(User);
 
 User.hasMany(ShoppingHistory);
 ShoppingHistory.belongsTo(User);
+
+ShoppingHistory.hasMany(BuyOrders);
+BuyOrders.belongsTo(ShoppingHistory);
+
+BuyOrders.hasMany(Product, { foreignKey: { type: DataTypes.UUID } });
+Product.belongsTo(BuyOrders);
 
 // relacion de uno a muchos, materiales y submateriales, respectivamente
 Materials.hasMany(SubMaterials);
