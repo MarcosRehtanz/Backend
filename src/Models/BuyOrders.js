@@ -8,6 +8,10 @@ export const buyOrders = (sequelize) => {
             primaryKey: true,
             defaultValue: DataTypes.UUIDV4,
         },
+        id_product: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         title: {
             type: DataTypes.STRING
         },
