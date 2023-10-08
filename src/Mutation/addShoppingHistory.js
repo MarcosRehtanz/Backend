@@ -49,17 +49,21 @@ export const addShoppingHistory = async (root, args) => {
       totalAmount: shoppingHistoryadded[0].dataValues.totalAmount,
       UserIdUser: shoppingHistoryadded[0].dataValues.UserIdUser,
     };
-    const buyOrders = await Promise.all(response.response.additional_info.items.map( async item => {
-      const buyProduct = await models.BuyOrders.create({
-        title: item.title,
-        unit_price: item.unit_price,
-        quantity: item.quantity,
-        ShoppingHistoryIDShopHistory: shoppingHistoryadded[0].dataValues.IDShopHistory
+    console.log(response.response.additional_info.items[0])
+    const buyOrders = await Promise.all(response.response.additional_info.items.map(async item => {
+      const buyProduct = await models.BuyOrders.findOrCreate({
+        where: {
+          id_product: item.id,
+          title: item.title,
+          unit_price: item.unit_price,
+          quantity: item.quantity,
+          ShoppingHistoryIDShopHistory: shoppingHistoryadded[0].dataValues.IDShopHistory
+        }
       })
       return buyProduct.dataValues
     }))
 
-    return {...res, buyOrders};
+    return { ...res, buyOrders };
   } catch (error) {
     throw new Error("Algo salio mal");
   }

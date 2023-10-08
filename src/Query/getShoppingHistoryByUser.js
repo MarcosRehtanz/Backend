@@ -14,19 +14,22 @@ export const getShoppingHistorybyUser = async (_, args) => {
     if (!userShoppingHistory)
       throw new Error("El usuario no realizó ninguna compra");
     
-    const res = {
-      IDShopHistory: userShoppingHistory[0].dataValues.IDShopHistory,
-      operationId: userShoppingHistory[0].dataValues.operationId,
-      paymentMethod: userShoppingHistory[0].dataValues.paymentMethod,
-      paymentMethodId: userShoppingHistory[0].dataValues.paymentMethodId,
-      netAmount: userShoppingHistory[0].dataValues.netAmount,
-      taxes: userShoppingHistory[0].dataValues.taxes,
-      totalAmount: userShoppingHistory[0].dataValues.totalAmount,
-      UserIdUser: userShoppingHistory[0].dataValues.UserIdUser,
-      buyOrders:[ userShoppingHistory[0].dataValues.BuyOrders[0].dataValues]
-    }
+    const res = userShoppingHistory.map(uSH => ({
+      IDShopHistory: uSH.dataValues.IDShopHistory,
+      operationId: uSH.dataValues.operationId,
+      paymentMethod: uSH.dataValues.paymentMethod,
+      paymentMethodId: uSH.dataValues.paymentMethodId,
+      netAmount: uSH.dataValues.netAmount,
+      taxes: uSH.dataValues.taxes,
+      totalAmount: uSH.dataValues.totalAmount,
+      UserIdUser: uSH.dataValues.UserIdUser,
+      buyOrders: uSH.dataValues.BuyOrders.map(bo => {
+        console.log(bo);
+        return bo.dataValues
+      })
+    }))
       console.log(res)
-    return [res];
+    return res;
   } catch (error) {
     console.log(error.message)
   }
