@@ -8,7 +8,8 @@ export const filterUnion = async (root, args) => {
         let result = null;
         
         if (filterMaterials?.length > 0 && filterMaterials) { // Si el filtro de materiales tiene un valor entonces se filtra
-            result = await filteringMaterials(filterMaterials, filterSubMaterials, limit, offset);
+            const subMaterials = (filterSubMaterials?.length > 0 && filterSubMaterials) ? filterSubMaterials : null;
+            result = await filteringMaterials(filterMaterials, subMaterials, limit, offset);
         } else {
             result = await allProductsMaterials(limit, offset); // en primera instancia se buscan todos los productos
         }
