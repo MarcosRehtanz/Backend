@@ -27,6 +27,8 @@ import { updateMaterial } from "./updateMaterial.js";
 import { restoreMaterial } from "./restoreMaterial.js";
 import { deleteMaterial } from "./deleteMaterial.js";
 import { deleteSubMaterial } from "./deleteSubMaterial.js";
+import {deleteReview} from "./deleteReview.js"
+import {restoreReview} from "./restoreReview.js"
 
 export const MutationType = gql`
   type Mutation {
@@ -148,6 +150,8 @@ export const MutationType = gql`
     deleteMaterial(id: ID!): String
     restoreMaterial(id: ID!): Materials
     deleteSubMaterial(id: ID!): String
+    deleteReview(idReview: ID!): String
+    restoreReview(idReview: ID!): Review
   }
 `;
 
@@ -182,4 +186,6 @@ export const Mutation = {
   updateMaterial,
   restoreMaterial,
   deleteMaterial,
+  deleteReview,
+  restoreReview
 };

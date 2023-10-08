@@ -17,7 +17,7 @@ export const signUp = async (_, args) => {
     const isUserExists = await models.User.findOne({ where: { email: decodeToken.email } });
 
     if (isUserExists) {
-      throw new Error("El usuario ya esta creado");
+      throw new Error("El usuario ya esta creado, por favor inicia sesión");
     }
     if (!decodeToken.password) throw new Error("Se requiere password para continuar");
     //const pass = await bcrypt.hash(decodeToken.password, 8);
