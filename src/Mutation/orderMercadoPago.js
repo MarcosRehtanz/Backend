@@ -19,7 +19,7 @@ export const orderMercadoPago = async (_, args) => {
    
     const response = await mercadopago.preferences.create({
       items: prod.map((p, i) => ({
-        id: p.id,
+        id: p.idProduct,
         title: p.name,
         picture_url: p.productImage,
         description: p.description,
