@@ -98,6 +98,7 @@ export const typeDefs = gql`
     paymentMethodId: String
     netAmount: Float
     taxes: Float
+    status: String
     totalAmount: Float!
     UserIdUser: ID
     buyOrders: [BuyOrder]

@@ -21,6 +21,7 @@ export const getShoppingHistorybyUser = async (_, args) => {
       paymentMethodId: uSH.dataValues.paymentMethodId,
       netAmount: uSH.dataValues.netAmount,
       taxes: uSH.dataValues.taxes,
+      status:uSH.dataValues.status,
       totalAmount: uSH.dataValues.totalAmount,
       UserIdUser: uSH.dataValues.UserIdUser,
       buyOrders: uSH.dataValues.BuyOrders.map(bo => {
