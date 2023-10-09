@@ -60,7 +60,7 @@ async function startApolloServer() {
         const email = query.email;
 
         const response = await mercadopago.payment.findById(Number(id));
-        console.log(response.body.status);
+        console.log(response.body);
         const user = await models.User.findOne({
           where: { email },
         });
@@ -71,7 +71,7 @@ async function startApolloServer() {
 
         const shoppingHistoryadded = await models.ShoppingHistory.findOrCreate({
           where: {
-            operationId: response.body.collector_id,
+            operationId: id,
             paymentMethod: response.body.payment_type_id,
             paymentMethodId: response.body.payment_method_id,
             netAmount: response.body.transaction_details.net_received_amount,
