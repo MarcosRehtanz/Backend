@@ -39,66 +39,72 @@ async function startApolloServer() {
 
     const topic = query.topic || query.type;
 
-    console.log(query);
-    if (!query.email) return res.sendStatus(200);
-    if (topic === "payment") {
-      const { ACCESS_TOKEN_MP } = process.env;
-      mercadopago.configure({
-        access_token: ACCESS_TOKEN_MP,
-      });
-      const id = query["data.id"];
-      const email = query.email;
-      const response = await mercadopago.payment.findById(Number(id));
-      console.log(email);
-      const user = await models.User.findOne({
-        where: { email },
-      });
+    try {
+      if (!query.email || query.email === "undefined")
+        return res.sendStatus(200);
 
-      if (!user)
-        throw new Error(
-          "usuario no registado en la base de datos. Inicie sesion con su email para continuar"
-        );
-      const shoppingHistoryadded = await models.ShoppingHistory.findOrCreate({
-        where: {
-          operationId: response.body.collector_id,
-          paymentMethod: response.body.payment_type_id,
-          paymentMethodId: response.body.payment_method_id,
-          netAmount: response.body.transaction_details.net_received_amount,
-          taxes: response.body.taxes_amount,
-          totalAmount: response.body.transaction_amount,
-          UserIdUser: user.dataValues.idUser,
-        },
-      });
+      if (topic === "payment") {
+        const { ACCESS_TOKEN_MP } = process.env;
+        mercadopago.configure({
+          access_token: ACCESS_TOKEN_MP,
+        });
 
-      if (!shoppingHistoryadded)
-        throw new Error("Falta informacion para crear el historial");
+        const id = query["data.id"];
+        const email = query.email;
 
-      const res = {
-        IDShopHistory: shoppingHistoryadded[0].dataValues.IDShopHistory,
-        operationId: shoppingHistoryadded[0].dataValues.operationId,
-        paymentMethod: shoppingHistoryadded[0].dataValues.paymentMethod,
-        paymentMethodId: shoppingHistoryadded[0].dataValues.paymentMethodId,
-        netAmount: shoppingHistoryadded[0].dataValues.netAmount,
-        taxes: shoppingHistoryadded[0].dataValues.taxes,
-        totalAmount: shoppingHistoryadded[0].dataValues.totalAmount,
-        UserIdUser: shoppingHistoryadded[0].dataValues.UserIdUser,
-      };
-      const buyOrders = await Promise.all(
-        response.response.additional_info.items.map(async (item) => {
-          const buyProduct = await models.BuyOrders.create({
-            title: item.title,
-            unit_price: item.unit_price,
-            quantity: item.quantity,
-            ShoppingHistoryIDShopHistory:
-              shoppingHistoryadded[0].dataValues.IDShopHistory,
-          });
-          return buyProduct.dataValues;
-        })
-      );
+        const response = await mercadopago.payment.findById(Number(id));
 
-      return { ...res, buyOrders };
+        const user = await models.User.findOne({
+          where: { email },
+        });
+        if (!user)
+          throw new Error(
+            "usuario no registado en la base de datos. Inicie sesion con su email para continuar"
+          );
+
+        const shoppingHistoryadded = await models.ShoppingHistory.findOrCreate({
+          where: {
+            operationId: response.body.collector_id,
+            paymentMethod: response.body.payment_type_id,
+            paymentMethodId: response.body.payment_method_id,
+            netAmount: response.body.transaction_details.net_received_amount,
+            taxes: response.body.taxes_amount,
+            totalAmount: response.body.transaction_amount,
+            UserIdUser: user.dataValues.idUser,
+          },
+        });
+        if (!shoppingHistoryadded)
+          throw new Error("Falta informacion para crear el historial");
+
+        console.log(response.body.additional_info.items);
+        const buyOrders = await Promise.all(response.response.additional_info.items.map(async item => {
+          const buyProduct = await models.BuyOrders.findOrCreate({
+            where: {
+              id_product: item.id,
+              title: item.title,
+              unit_price: item.unit_price,
+              quantity: item.quantity,
+              ShoppingHistoryIDShopHistory: shoppingHistoryadded[0].dataValues.IDShopHistory
+            }
+          })
+          return buyProduct.dataValues
+        }))
+        const res = {
+          IDShopHistory: shoppingHistoryadded[0].dataValues.IDShopHistory,
+          operationId: shoppingHistoryadded[0].dataValues.operationId,
+          paymentMethod: shoppingHistoryadded[0].dataValues.paymentMethod,
+          paymentMethodId: shoppingHistoryadded[0].dataValues.paymentMethodId,
+          netAmount: shoppingHistoryadded[0].dataValues.netAmount,
+          taxes: shoppingHistoryadded[0].dataValues.taxes,
+          totalAmount: shoppingHistoryadded[0].dataValues.totalAmount,
+          UserIdUser: shoppingHistoryadded[0].dataValues.UserIdUser,
+        };
+        return { ...res, buyOrders };
+      }
+      return res.sendStatus(200);
+    } catch (error) {
+      console.log(error.message);
     }
-    res.sendStatus(200);
   });
   conn
     .sync({ force: true })
