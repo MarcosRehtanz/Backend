@@ -29,6 +29,7 @@ import { deleteMaterial } from "./deleteMaterial.js";
 import { deleteSubMaterial } from "./deleteSubMaterial.js";
 import {deleteReview} from "./deleteReview.js"
 import {restoreReview} from "./restoreReview.js"
+import { passwordReset } from "./passwordReset.js"
 
 export const MutationType = gql`
   type Mutation {
@@ -152,6 +153,7 @@ export const MutationType = gql`
     deleteSubMaterial(id: ID!): String
     deleteReview(idReview: ID!): String
     restoreReview(idReview: ID!): Review
+    passwordReset(email: String): String
   }
 `;
 
@@ -187,5 +189,6 @@ export const Mutation = {
   restoreMaterial,
   deleteMaterial,
   deleteReview,
-  restoreReview
+  restoreReview,
+  passwordReset
 };
