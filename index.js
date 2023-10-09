@@ -17,10 +17,14 @@ import { Profile } from "./src/utils/Profile.js";
 import { models } from "./src/db.js";
 import cors from "cors";
 import morgan from "morgan";
+import bodyParser from "body-parser";
 import mercadopago from "mercadopago";
 
 async function startApolloServer() {
   const app = express();
+  // Express 4.0
+  app.use(bodyParser.json({ limit: '10mb' }));
+  app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
   const httpServer = http.createServer(app);
   const server = new ApolloServer({
     typeDefs,
@@ -32,8 +36,11 @@ async function startApolloServer() {
   });
   await server.start();
   server.applyMiddleware({ app });
+  
   app.use(cors());
   app.use(morgan("dev"));
+
+
   app.post("/webhook", async (req, res) => {
     const { query } = req;
 
@@ -77,7 +84,7 @@ async function startApolloServer() {
         if (!shoppingHistoryadded)
           throw new Error("Falta informacion para crear el historial");
 
-        console.log(response.body.additional_info.items);
+        
         const buyOrders = await Promise.all(
           response.response.additional_info.items.map(async (item) => {
             const buyProduct = await models.BuyOrders.findOrCreate({
