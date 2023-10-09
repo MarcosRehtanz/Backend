@@ -118,7 +118,7 @@ async function startApolloServer() {
     }
   });
   conn
-    .sync({ force: false })
+    .sync({ force: true })
     .then(async () => {
       // const material = await Promise.all(
       //   Materials.map(
