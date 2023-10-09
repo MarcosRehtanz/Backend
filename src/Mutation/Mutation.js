@@ -68,7 +68,7 @@ export const MutationType = gql`
       SubMaterials: [ID!]
     ): Product
 
-    orderMercadoPago(product: [ProductInput]): MercadoPago
+    orderMercadoPago(product: [ProductInput] email:String): MercadoPago
 
     addShoppingHistory(
       payment_id: Int
