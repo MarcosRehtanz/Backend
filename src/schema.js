@@ -80,6 +80,7 @@ export const typeDefs = gql`
     # description: String
     # quantity: Int!
     response: String
+    init_point: String
   }
   
   type BuyOrder {
