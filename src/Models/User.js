@@ -30,6 +30,10 @@ export const user = (sequelize) => {
         type: DataTypes.BOOLEAN,
         defaultValue: true,
       },
+      role:{
+        type:DataTypes.ENUM('admin','user'),
+        allowNull: false
+      },
       termsAndCondsAprove: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
