@@ -9,6 +9,8 @@ export const shoppingHistory = (sequelize) => {
     },
     operationId: {
       type: DataTypes.INTEGER,
+      allowNull: false,
+      unique: true
     },
     paymentMethod: {
       type: DataTypes.STRING,
