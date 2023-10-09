@@ -35,7 +35,7 @@ async function startApolloServer() {
     ],
   });
   await server.start();
-  server.applyMiddleware({ app });
+   server.applyMiddleware({ app, path: "/" });
   
   app.use(cors());
   app.use(morgan("dev"));
