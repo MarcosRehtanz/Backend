@@ -33,7 +33,7 @@ export const orderMercadoPago = async (_, args) => {
         pending: "http://localhost:5173/pending",
       },
       auto_return:"approved",
-      notification_url: `https://dab7-2803-9800-9896-72a8-11d2-47f8-9f0f-a19c.ngrok-free.app/webhook?email=${args.email}`
+      notification_url: `http://localhost:4000/webhook?email=${args.email}`
     });
 
     const res = {
