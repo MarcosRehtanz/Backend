@@ -53,7 +53,7 @@ async function startApolloServer() {
         const email = query.email;
 
         const response = await mercadopago.payment.findById(Number(id));
-
+        console.log(response.body.status);
         const user = await models.User.findOne({
           where: { email },
         });
@@ -70,6 +70,7 @@ async function startApolloServer() {
             netAmount: response.body.transaction_details.net_received_amount,
             taxes: response.body.taxes_amount,
             totalAmount: response.body.transaction_amount,
+            status:response.body.status,
             UserIdUser: user.dataValues.idUser,
           },
         });
@@ -77,18 +78,21 @@ async function startApolloServer() {
           throw new Error("Falta informacion para crear el historial");
 
         console.log(response.body.additional_info.items);
-        const buyOrders = await Promise.all(response.response.additional_info.items.map(async item => {
-          const buyProduct = await models.BuyOrders.findOrCreate({
-            where: {
-              id_product: item.id,
-              title: item.title,
-              unit_price: item.unit_price,
-              quantity: item.quantity,
-              ShoppingHistoryIDShopHistory: shoppingHistoryadded[0].dataValues.IDShopHistory
-            }
+        const buyOrders = await Promise.all(
+          response.response.additional_info.items.map(async (item) => {
+            const buyProduct = await models.BuyOrders.findOrCreate({
+              where: {
+                id_product: item.id,
+                title: item.title,
+                unit_price: item.unit_price,
+                quantity: item.quantity,
+                ShoppingHistoryIDShopHistory:
+                  shoppingHistoryadded[0].dataValues.IDShopHistory,
+              },
+            });
+            return buyProduct.dataValues;
           })
-          return buyProduct.dataValues
-        }))
+        );
         const res = {
           IDShopHistory: shoppingHistoryadded[0].dataValues.IDShopHistory,
           operationId: shoppingHistoryadded[0].dataValues.operationId,
@@ -152,7 +156,7 @@ async function startApolloServer() {
               lastname,
               email,
               password: pass,
-              role
+              role,
             },
           });
 
