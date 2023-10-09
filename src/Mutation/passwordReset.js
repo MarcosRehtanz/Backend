@@ -5,7 +5,7 @@ import { transporter } from '../../config/nodemailer.js';
 import { models } from '../db.js';
 
 
-export const initiatePasswordReset = async (_, args) => {
+export const passwordReset = async (_, args) => {
   const { GMAIL } = process.env;
   const { email } = args;
 
@@ -16,7 +16,7 @@ export const initiatePasswordReset = async (_, args) => {
   }
 
   try {
-
+    //Esto es para configurar el token de recuperación con tiempo de 1 hora y tuve que preguntar cómo se hace eso
     const key = process.env.JWT_PRIVATE_KEY; // Esta vaina la pregunté a ChatGPT
     const expiresIn = '1h';  // Esta vaina la pregunté a ChatGPT x2
 
