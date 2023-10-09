@@ -22,6 +22,7 @@ export const typeDefs = gql`
     profile: Profile
     shoppingHistory: [ShoppingHistory]
     review: [Review]
+    role: String
   }
   type Profile {
     idProfile: ID!
