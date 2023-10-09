@@ -43,30 +43,64 @@ export const typeDefs = gql`
     stock: Int
     publicationDate: String
     productImage: String!
-    Material: Material
+    Materials: [Materials]
+    SubMaterials: [SubMaterials]
     UserIdUser: String!
     Reviews: [Review]
     averageRating: Int
+    currency_id: String
+    quantity: Int
   }
-
+  input MaterialInput {
+    id: ID!
+    name: String!
+    origin: String!
+    image: String!
+  }
+  input ProductInput {
+    idProduct: ID!
+    name: String!
+    description: String!
+    price: Float
+    stock: Int
+    publicationDate: String
+    productImage: String!
+    Material: MaterialInput
+    UserIdUser: String!
+    currencyId: String
+    quantity: Int
+  }
   type MercadoPago {
     products: [Product]!
     # id: ID!
     # title: String!
     # picture_url: String!
     # unit_price: Int!
-    currency_id: String! #Tipo de moneda
+    currency_id: [String]! #Tipo de moneda
     # description: String
     # quantity: Int!
     response: String
+    init_point: String
+  }
+  
+  type BuyOrder {
+    id: ID!
+    title: String!
+    quantity: Int!
+    unit_price: Float!
+    id_product: String!
   }
 
   type ShoppingHistory {
     IDShopHistory: ID!
-    billDate: String!
+    operationId: Int
+    paymentMethod: String
+    paymentMethodId: String
+    netAmount: Float
+    taxes: Float
     totalAmount: Float!
-    "user: User!"
-    product: Product
+    UserIdUser: ID
+    buyOrders: [BuyOrder]
   }
 
   enum AfipCondition {
@@ -79,20 +113,37 @@ export const typeDefs = gql`
     transportista
   }
 
-  type Material {
+  type Materials {
     id: ID!
     name: String!
-    origin: String!
+    description: String!
     image: String!
+    SubMaterials: [SubMaterials]
+  }
+
+  type SubMaterials {
+    id: ID!
+    name: String!
+    description: String!
   }
 
   type Review {
     idReview: ID!
+    title: String!
     rating: Int!
     comment: String!
     createdAt: String!
   }
-
+  input SuccesInput {
+    payment_id: Int
+    status: String
+    merchant_order_id: String
+  }
+  type InfoResMP {
+    payment: Int!
+    status: String!
+    merchant_order_id: String!
+  }
   ${QueryType}
   ${MutationType}
 `;

@@ -7,6 +7,9 @@ export const review = (sequelize) => {
             primaryKey: true,
             defaultValue: DataTypes.UUIDV4
         },
+        title: {
+            type: DataTypes.STRING
+        },
         rating: {
             type: DataTypes.INTEGER,
             allowNull: true,

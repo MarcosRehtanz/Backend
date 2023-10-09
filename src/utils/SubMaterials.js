@@ -1,47 +1,38 @@
-export const Materials = [
+export const SubMaterials = [
     {
-        name: 'Papel',
+        name: 'Sub Papel',
         description: 'Periódicos, revistas, cartón, papel de oficina',
-        image: "Una imagen"
     },
     {
-        name: 'Cartón',
+        name: 'Sub Cartón',
         description: 'Cajas de cartón, envases de cartón',
-        image: "Una imagen"
     },
     {
-        name: 'Plástico',
+        name: 'Sub Plástico',
         description: 'Botellas de plástico, envases de plástico, bolsas de plástico',
-        image: "Una imagen"
     },
     {
-        name: 'Vidrio',
+        name: 'Sub Vidrio',
         description: 'Botellas de vidrio, frascos de vidrio',
-        image: "Una imagen"
     },
     {
-        name: 'Aluminio',
+        name: 'Sub Aluminio',
         description: 'Latas de refrescos, envases de aluminio',
-        image: "Una imagen"
     },
     {
-        name: 'Metal',
+        name: 'Sub Metal',
         description: 'Latas de conservas, envases metálicos',
-        image: "Una imagen"
     },
     {
-        name: 'Pilas',
+        name: 'Sub Pilas',
         description: 'Baterías alcalinas, baterías recargables',
-        image: "Una imagen"
     },
     {
-        name: 'Electrónicos',
+        name: 'Sub Electrónicos',
         description: 'Computadoras, teléfonos móviles, electrodomésticos',
-        image: "Una imagen"
     },
     {
-        name: 'Neumáticos',
+        name: 'Sub Neumáticos',
         description: 'Neumáticos de vehículos',
-        image: "Una imagen"
     }
 ];

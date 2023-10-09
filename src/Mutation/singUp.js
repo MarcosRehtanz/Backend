@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import { models } from "../db.js";
 import "dotenv/config";
-import bcrypt from "bcryptjs";
+// import bcrypt from "bcryptjs";
 
 export const signUp = async (_, args) => {
   //creacion de usuario propio de MdR
@@ -17,15 +17,15 @@ export const signUp = async (_, args) => {
     const isUserExists = await models.User.findOne({ where: { email: decodeToken.email } });
 
     if (isUserExists) {
-      throw new Error("El usuario ya esta creado");
+      throw new Error("El usuario ya esta creado, por favor inicia sesión");
     }
     if (!decodeToken.password) throw new Error("Se requiere password para continuar");
-    const pass = await bcrypt.hash(decodeToken.password, 8);
+    //const pass = await bcrypt.hash(decodeToken.password, 8);
     const userToCreate = await models.User.create({
       name:decodeToken.name,
       lastname: decodeToken.lastname,
       email: decodeToken.email,
-      password: pass,
+      password: decodeToken.password
     });
 
     if (!userToCreate) throw new Error("No se pudo crear el usuario");
