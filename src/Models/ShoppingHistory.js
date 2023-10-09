@@ -22,6 +22,9 @@ export const shoppingHistory = (sequelize) => {
     taxes: {
       type: DataTypes.FLOAT,
     },
+    status:{
+      type: DataTypes.STRING
+    },
     totalAmount: {
       type: DataTypes.DOUBLE,
       allowNull: false,
