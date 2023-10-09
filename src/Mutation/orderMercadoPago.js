@@ -28,12 +28,12 @@ export const orderMercadoPago = async (_, args) => {
         quantity: p.quantity,
       })),
       back_urls: {
-        success: "http://localhost:5173/success",
-        failure: "http://localhost:5173/failure",
-        pending: "http://localhost:5173/pending",
+        success: "https://front-end-one-gilt.vercel.app/success",
+        failure: "https://front-end-one-gilt.vercel.app/failure",
+        pending: "https://front-end-one-gilt.vercel.app/pending",
       },
       auto_return:"approved",
-      notification_url: `https://dab7-2803-9800-9896-72a8-11d2-47f8-9f0f-a19c.ngrok-free.app/webhook?email=${args.email}`
+      notification_url: `https://current--FinalProjectHenrys-T-a2w5gm.apollographos.net/webhook?email=${args.email}`
     });
 
     const res = {
