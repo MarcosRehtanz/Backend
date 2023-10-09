@@ -3,7 +3,7 @@
 import jwt from 'jsonwebtoken';
 import { transporter } from '../../config/nodemailer.js';
 import { models } from '../db.js';
-
+import 'dotenv/config'
 
 export const passwordReset = async (_, args) => {
   const { GMAIL } = process.env;
@@ -30,7 +30,7 @@ export const passwordReset = async (_, args) => {
       html: `
         <h2>Recibiste este mensaje porque solicitaste restablecer tu contraseña.</h2>
         <p>Haga clic en el siguiente enlace para restablecer su contraseña:</p>
-        <a href="http://localhost:5173/reset-password?token=${token}">Restablecer Contraseña</a>
+        <a href="${process.env.URL_FRONT}/reset-password?token=${token}">Restablecer Contraseña</a>
       `,
     };
 
