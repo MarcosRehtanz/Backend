@@ -144,7 +144,7 @@ async function startApolloServer() {
       // Recorrido para hacer usuarios
       const userss = await Promise.all(
         Users.map(async (user, i) => {
-          const { name, lastname, email, password } = user;
+          const { name, lastname, email, password, role } = user;
           const pass = await bcrypt.hash(password, 8);
           const users = await models.User.findOrCreate({
             where: {
@@ -152,6 +152,7 @@ async function startApolloServer() {
               lastname,
               email,
               password: pass,
+              role
             },
           });
 

@@ -7,7 +7,7 @@ export const Users = [
         email: "juanperez@example.com",
         password: "MiContraseñaSegura123",
         lastname: "Pérez",
-        
+        role:"user"
     },
     {
 
@@ -15,7 +15,7 @@ export const Users = [
         email: "luis@example.com",
         password: "NuevaContraseña1",
         lastname: "Pérez",
-        
+        role:"user"
     },
     {
 
@@ -23,7 +23,7 @@ export const Users = [
         email: "ana@example.com",
         password: "NuevaContraseña2",
         lastname: "Pérez",
-        
+        role:"user"
     },
     {
 
@@ -31,7 +31,7 @@ export const Users = [
         email: "pedro@example.com",
         password: "NuevaContraseña3",
         lastname: "Pérez",
-      
+        role:"user"
     },
     {
 
@@ -39,7 +39,7 @@ export const Users = [
         email: "maria@example.com",
         password: "NuevaContraseña4",
         lastname: "Pérez",
-        
+        role:"user"
     },
     {
 
@@ -47,7 +47,7 @@ export const Users = [
         email: "carlos@example.com",
         password: "NuevaContraseña5",
         lastname: "Pérez",
-        
+        role:"admin"
     },
     {
 
@@ -55,7 +55,7 @@ export const Users = [
         email: "laura@example.com",
         password: "NuevaContraseña6",
         lastname: "Pérez",
-        
+        role:"user"
     },
     {
 
@@ -63,7 +63,7 @@ export const Users = [
         email: "diego@example.com",
         password: "NuevaContraseña7",
         lastname: "Pérez",
-        
+        role:"user"
     },
     {
 
@@ -71,7 +71,7 @@ export const Users = [
         email: "elena@example.com",
         password: "NuevaContraseña8",
         lastname: "Pérez",
-        
+        role:"user"
     },
     {
 
@@ -79,7 +79,7 @@ export const Users = [
         email: "sergio@example.com",
         password: "NuevaContraseña9",
         lastname: "Pérez",
-        
+        role:"user"
     },
     {
 
@@ -87,6 +87,6 @@ export const Users = [
         email: "luisa@example.com",
         password: "NuevaContraseña10",
         lastname: "Pérez",
-        
+        role:"user"
     }
 ];
