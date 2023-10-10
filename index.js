@@ -126,7 +126,7 @@ async function startApolloServer() {
     }
   });
   conn
-    .sync({ force: true })
+    .sync({ force: false })
     .then(async () => {
       console.log("listo")
       // const material = await Promise.all(
