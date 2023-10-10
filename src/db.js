@@ -1,3 +1,4 @@
+import * as pg from 'pg';
 import { DataTypes, Sequelize } from "sequelize";
 import "dotenv/config";
 
@@ -12,7 +13,7 @@ import { profile } from "./Models/Profile.js";
 import { review } from "./Models/Review.js";
 import { buyOrders } from "./Models/BuyOrders.js";
 
-const sequelize = new Sequelize(process.env.POSTGRES, { logging: false });
+const sequelize = new Sequelize(process.env.POSTGRES, { dialectModule: pg, logging: false });
 
 //Define
 user(sequelize);
