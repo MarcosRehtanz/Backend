@@ -22,7 +22,7 @@ export const typeDefs = gql`
     profile: Profile
     shoppingHistory: [ShoppingHistory]
     review: [Review]
-    role: String
+    role: Role
   }
   type Profile {
     idProfile: ID!
@@ -113,6 +113,10 @@ export const typeDefs = gql`
     comprador
     vendedor
     transportista
+  }
+  enum Role {
+    admin
+    user
   }
 
   type Materials {

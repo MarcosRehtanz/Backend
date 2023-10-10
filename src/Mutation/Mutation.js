@@ -56,6 +56,7 @@ export const MutationType = gql`
       profilePicture: String
       afipCondition: AfipCondition!
       typeUser: TypeUser!
+      role: Role
     ): User
     addProduct(
       name: String!

@@ -25,7 +25,8 @@ export const allUsers = async() => {
                     createdAt: String(usuario.dataValues.createdAt),
                     updatedAt: String(usuario.dataValues.updatedAt),
                     deletedAt: usuario.dataValues.deletedAt,
-                    profile: usuario.dataValues.Profile.dataValues
+                    profile: usuario.dataValues.Profile.dataValues,
+                    role:usuario.dataValues.role
                 }
                 
             }
