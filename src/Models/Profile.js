@@ -43,6 +43,10 @@ export const profile = (sequelize) => {
       type: DataTypes.TEXT,
       allowNull: true,
     },
+    isBan: {
+      type: DataTypes.BOOLEAN,
+      defualtValue:false,
+     },
   }, {
     timetamps: false,
     paranoid: true

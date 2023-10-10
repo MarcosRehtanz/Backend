@@ -25,7 +25,7 @@ export const updateProduct = async (_, args) => {
         throw new Error ('El producto que intenta actualizar aún no está registrado')
     }
     else{
-        const newProductInfo = models.Product.findByPk(idProduct, { include: [models.Materials, models.SubMaterials] })
+        const newProductInfo = await models.Product.findByPk(idProduct, { include: [models.Materials, models.SubMaterials] })
         return newProductInfo
     }
 
