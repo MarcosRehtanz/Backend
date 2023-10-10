@@ -34,7 +34,7 @@ export const updateProfile = async (_, args) => {
     }
     else{
         console.log(JSON.stringify(updatedProfile), "Se supone que me actualicé")
-        const newProfileInfo = models.Profile.findByPk(idProfile)
+        const newProfileInfo = await models.Profile.findByPk(idProfile)
         return newProfileInfo
     }
 

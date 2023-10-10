@@ -35,6 +35,7 @@ export const typeDefs = gql`
     afipCondition: AfipCondition
     typeUser: TypeUser
     profilePicture: String
+    isBan: Boolean
   }
   type Product {
     idProduct: ID!

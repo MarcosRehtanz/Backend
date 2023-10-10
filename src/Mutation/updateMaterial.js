@@ -20,7 +20,7 @@ export const updateMaterial = async (_, args) => {
         throw new Error ('El material que intenta actualizar aún no está registrado')
     }
     else{
-        const newMaterialInfo = models.Materials.findByPk(id)
+        const newMaterialInfo = await models.Materials.findByPk(id)
         return newMaterialInfo
     }
 
