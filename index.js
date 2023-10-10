@@ -22,7 +22,13 @@ import mercadopago from "mercadopago";
 
 async function startApolloServer() {
   const app = express();
-  // Express 4.0
+  
+  // CORS configuration
+  const corsOptions = {
+      origin: '0.0.0.0',
+      credentials: true
+  }
+  
   app.use(bodyParser.json({ limit: '10mb' }));
   app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
   const httpServer = http.createServer(app);
@@ -37,9 +43,9 @@ async function startApolloServer() {
     playground: true
   });
   await server.start();
-   server.applyMiddleware({ app, path: "/" });
+   server.applyMiddleware({ app, path: "/", cors: corsOptions });
   
-  app.use(cors());
+  // app.use(cors());
   app.use(morgan("dev"));
 
 
