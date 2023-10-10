@@ -12,7 +12,7 @@ export const google = async (root, args) => {
   if (findGoogleUser) return findGoogleUser
   
   const createUserWithGoogle = await models.User.findOrCreate({where:{
-    email, name, lastname
+    email, name, lastname, role: "user"
   }}) 
 
   if(!createUserWithGoogle) return ("usuario ya creado anteriormente");
@@ -37,7 +37,8 @@ export const google = async (root, args) => {
     idUser: createUserWithGoogle[0].dataValues.idUser,
     name: createUserWithGoogle[0].dataValues.name,
     email:createUserWithGoogle[0].dataValues.email,
-    lastname:createUserWithGoogle[0].dataValues.lastname
+    lastname:createUserWithGoogle[0].dataValues.lastname,
+    role:createUserWithGoogle[0].dataValues.role
   }
 
   return res
