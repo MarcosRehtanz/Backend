@@ -25,7 +25,7 @@ async function startApolloServer() {
   
   // CORS configuration
   const corsOptions = {
-      origin: process.env.URL_FRONT,
+      origin: "*",
       credentials: true
   }
   
