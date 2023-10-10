@@ -5,15 +5,15 @@ import {
 } from "apollo-server-core";
 import express from "express";
 import http from "http";
-import bcrypt from "bcryptjs";
+// import bcrypt from "bcryptjs";
 import { conn } from "./src/db.js";
 import { typeDefs } from "./src/schema.js";
 import { resolvers } from "./src/resolvers.js";
-import { Users } from "./src/utils/Users.js";
-import { Products } from "./src/utils/Products.js";
-import { Materials } from "./src/utils/Materials.js";
-import { SubMaterials } from "./src/utils/SubMaterials.js";
-import { Profile } from "./src/utils/Profile.js";
+// import { Users } from "./src/utils/Users.js";
+// import { Products } from "./src/utils/Products.js";
+// import { Materials } from "./src/utils/Materials.js";
+// import { SubMaterials } from "./src/utils/SubMaterials.js";
+// import { Profile } from "./src/utils/Profile.js";
 import { models } from "./src/db.js";
 import cors from "cors";
 import morgan from "morgan";
@@ -39,6 +39,8 @@ async function startApolloServer() {
       ApolloServerPluginDrainHttpServer({ httpServer }),
       ApolloServerPluginLandingPageLocalDefault({ embed: true }),
     ],
+    introspection: true,
+    playground: true
   });
   await server.start();
    server.applyMiddleware({ app, path: "/", cors: corsOptions });
@@ -126,6 +128,7 @@ async function startApolloServer() {
   conn
     .sync({ force: false })
     .then(async () => {
+      console.log("listo")
       // const material = await Promise.all(
       //   Materials.map(
       //     async (m) =>
@@ -137,10 +140,10 @@ async function startApolloServer() {
       //   )
       // );
 
-      // Obtengo los id de todos los materiales
+      // // Obtengo los id de todos los materiales
       // const materialsId = material.map((id) => id[0].dataValues.id);
 
-      // Hago un nuevo recorrido pero ahora de los materiales que dependen de los primeros
+      // // Hago un nuevo recorrido pero ahora de los materiales que dependen de los primeros
       // const subMaterial = await Promise.all(
       //   SubMaterials.map(
       //     async (sub, index) =>
@@ -158,7 +161,7 @@ async function startApolloServer() {
       //   materialId: sub[0].dataValues.MaterialId,
       // }));
 
-      // Recorrido para hacer usuarios
+      // // Recorrido para hacer usuarios
       // const userss = await Promise.all(
       //   Users.map(async (user, i) => {
       //     const { name, lastname, email, password, role } = user;
@@ -173,59 +176,51 @@ async function startApolloServer() {
       //       },
       //     });
 
-          // await models.Profile.findOrCreate({
-          //   where: {
-          //     ...Profile[i],
-          //     UserIdUser: users[0].dataValues.idUser,
-          //   },
-          // });
+      //     await models.Profile.findOrCreate({
+      //       where: {
+      //         ...Profile[i],
+      //         UserIdUser: users[0].dataValues.idUser,
+      //       },
+      //     });
 
-          // await Promise.all(
-          //   Products.map(async (p) => {
-          //     const product = await models.Product.create({
-          //       ...p,
-          //       UserIdUser: users[0].dataValues.idUser,
-          //     });
-          //     // Relacion aleatoria de cada producto con un o dos materiales
-          //     const randomMaterial = Math.floor(
-          //       Math.random() * materialsId.length
-          //     );
-          //     const random2Material = Math.floor(
-          //       Math.random() * materialsId.length
-          //     );
-          //     if (random2Material !== randomMaterial)
-          //       await product.addMaterials([
-          //         materialsId[randomMaterial],
-          //         materialsId[random2Material],
-          //       ]);
-          //     else await product.addMaterials([materialsId[randomMaterial]]);
+      //     await Promise.all(
+      //       Products.map(async (p) => {
+      //         const product = await models.Product.create({
+      //           ...p,
+      //           UserIdUser: users[0].dataValues.idUser,
+      //         });
+      //         // Relacion aleatoria de cada producto con un o dos materiales
+      //         const randomMaterial = Math.floor(
+      //           Math.random() * materialsId.length
+      //         );
+      //         const random2Material = Math.floor(
+      //           Math.random() * materialsId.length
+      //         );
+      //         if (random2Material !== randomMaterial)
+      //           await product.addMaterials([
+      //             materialsId[randomMaterial],
+      //             materialsId[random2Material],
+      //           ]);
+      //         else await product.addMaterials([materialsId[randomMaterial]]);
 
-          //     const randomSubMaterial = subMaterialsId.find(
-          //       (sub) => sub.materialId === materialsId[randomMaterial]
-          //     );
-          //     await product.addSubMaterials([randomSubMaterial.id]);
-          //   })
-          // );
-        // })
+      //         const randomSubMaterial = subMaterialsId.find(
+      //           (sub) => sub.materialId === materialsId[randomMaterial]
+      //         );
+      //         await product.addSubMaterials([randomSubMaterial.id]);
+      //       })
+      //     );
+      //   })
       // );
 
-      try {
-        // const { url } = await server.listen()
-        // console.log(`Server ready at ${url}`)
-      } catch (error) {
-        console.log(error.message);
-      }
+      // try {
+
+      // } catch (error) {
+      //   console.log(error.message);
+      // }
     })
-    .catch((error) => {
-      console.log(error.message);
-    });
-  await new Promise((resolve) => httpServer.listen({ port: 4000 }, resolve));
-  console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`);
+  await new Promise((resolve) => httpServer.listen({ port: process.env.PORT || 4000 }, resolve));
+  console.log(`🚀 Server ready at ${process.env.URL_BACK}${server.graphqlPath}`);
 }
 
 startApolloServer();
-// const server = new ApolloServer({
-//   typeDefs,
-//   resolvers,
 
-// })

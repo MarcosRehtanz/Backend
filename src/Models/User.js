@@ -33,6 +33,7 @@ export const user = (sequelize) => {
       role:{
         type:DataTypes.ENUM('admin','user'),
         defualtValue: "user",
+        allowNull: true,
       },
       termsAndCondsAprove: {
         type: DataTypes.BOOLEAN,

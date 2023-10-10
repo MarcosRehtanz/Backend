@@ -22,6 +22,7 @@ export const typeDefs = gql`
     profile: Profile
     shoppingHistory: [ShoppingHistory]
     review: [Review]
+    role: Role
   }
   type Profile {
     idProfile: ID!
@@ -34,6 +35,7 @@ export const typeDefs = gql`
     afipCondition: AfipCondition
     typeUser: TypeUser
     profilePicture: String
+    isBan: Boolean
   }
   type Product {
     idProduct: ID!
@@ -112,6 +114,10 @@ export const typeDefs = gql`
     comprador
     vendedor
     transportista
+  }
+  enum Role {
+    admin
+    user
   }
 
   type Materials {

@@ -27,9 +27,11 @@ import { updateMaterial } from "./updateMaterial.js";
 import { restoreMaterial } from "./restoreMaterial.js";
 import { deleteMaterial } from "./deleteMaterial.js";
 import { deleteSubMaterial } from "./deleteSubMaterial.js";
-import {deleteReview} from "./deleteReview.js"
-import {restoreReview} from "./restoreReview.js"
+import { deleteReview } from "./deleteReview.js"
+import { restoreReview } from "./restoreReview.js"
 import { passwordReset } from "./passwordReset.js"
+import { switchRole } from "./switchRole.js";
+import { banProfile } from "./banProfile.js"
 
 export const MutationType = gql`
   type Mutation {
@@ -56,6 +58,7 @@ export const MutationType = gql`
       profilePicture: String
       afipCondition: AfipCondition!
       typeUser: TypeUser!
+      role: Role
     ): User
     addProduct(
       name: String!
@@ -154,6 +157,11 @@ export const MutationType = gql`
     deleteReview(idReview: ID!): String
     restoreReview(idReview: ID!): Review
     passwordReset(email: String): String
+    switchRole(idUser: ID!):String
+    banProfile(
+      idProfile:ID!
+      username: String!
+      ): String
   }
 `;
 
@@ -190,5 +198,7 @@ export const Mutation = {
   deleteMaterial,
   deleteReview,
   restoreReview,
-  passwordReset
+  passwordReset,
+  switchRole,
+  banProfile
 };
