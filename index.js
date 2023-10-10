@@ -33,6 +33,8 @@ async function startApolloServer() {
       ApolloServerPluginDrainHttpServer({ httpServer }),
       ApolloServerPluginLandingPageLocalDefault({ embed: true }),
     ],
+    introspection: true,
+    playground: true
   });
   await server.start();
    server.applyMiddleware({ app, path: "/" });
