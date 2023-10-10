@@ -1,3 +1,4 @@
+import "dotenv/config";
 import { ApolloServer } from "apollo-server-express";
 import {
   ApolloServerPluginDrainHttpServer,
@@ -15,7 +16,6 @@ import { resolvers } from "./src/resolvers.js";
 // import { SubMaterials } from "./src/utils/SubMaterials.js";
 // import { Profile } from "./src/utils/Profile.js";
 import { models } from "./src/db.js";
-import cors from "cors";
 import morgan from "morgan";
 import bodyParser from "body-parser";
 import mercadopago from "mercadopago";
@@ -25,7 +25,7 @@ async function startApolloServer() {
   
   // CORS configuration
   const corsOptions = {
-      origin: '0.0.0.0',
+      origin: "*",
       credentials: true
   }
   
