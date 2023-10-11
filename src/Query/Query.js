@@ -21,7 +21,10 @@ import { feedbackMercadoPago } from "./feedbackMercadoPago.js";
 import { allSubmaterial } from "./allSubmaterials.js";
 
 import { getShoppingHistorybyUser } from "./getShoppingHistoryByUser.js";
-import {allProductsAdminDash} from "./allProductsAdminDash.js"
+import { allProductsAdminDash } from "./allProductsAdminDash.js"
+
+import { getAllBlog } from "./getAllBlog.js"
+
 export const QueryType = gql`
   type Query {
     allUsers: [User]
@@ -57,7 +60,10 @@ export const QueryType = gql`
     feedbackMercadoPago(success: SuccesInput): InfoResMP
     getShoppingHistorybyUser(userId: ID!): [ShoppingHistory]
     allProductsAdminDash: [Product]
+    
+    getAllBlog:[Blog]
   }
+
 `;
 
 export const Query = {
@@ -78,5 +84,6 @@ export const Query = {
   getMaterialsByName,
   countAllProducts,
   getShoppingHistorybyUser,
-  allProductsAdminDash
+  allProductsAdminDash,
+  getAllBlog
 };
