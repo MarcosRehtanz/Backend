@@ -17,6 +17,7 @@ export const addUser = async (root, args) => {
     profilePicture,
     afipCondition,
     typeUser,
+    isBan,
   } = args;
   try {
     const user = await models.User.findOrCreate({
@@ -36,6 +37,7 @@ export const addUser = async (root, args) => {
         profilePicture: profilePicture || null,
         afipCondition,
         typeUser,
+        isBan,
       },
    
     });
