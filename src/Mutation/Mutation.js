@@ -27,11 +27,12 @@ import { updateMaterial } from "./updateMaterial.js";
 import { restoreMaterial } from "./restoreMaterial.js";
 import { deleteMaterial } from "./deleteMaterial.js";
 import { deleteSubMaterial } from "./deleteSubMaterial.js";
-import { deleteReview } from "./deleteReview.js"
-import { restoreReview } from "./restoreReview.js"
-import { passwordReset } from "./passwordReset.js"
+import { deleteReview } from "./deleteReview.js";
+import { restoreReview } from "./restoreReview.js";
+import { passwordReset } from "./passwordReset.js";
 import { switchRole } from "./switchRole.js";
-import { banProfile } from "./banProfile.js"
+import { banProfile } from "./banProfile.js";
+import { addBlog } from "./addBlog.js";
 
 export const MutationType = gql`
   type Mutation {
@@ -162,7 +163,13 @@ export const MutationType = gql`
     banProfile(
       idProfile:ID!
       username: String!
-      ): String
+    ): String
+
+    addBlog(
+      title: String!
+      description: String!
+      date: String!
+    ): String
   }
 `;
 
@@ -201,5 +208,6 @@ export const Mutation = {
   restoreReview,
   passwordReset,
   switchRole,
-  banProfile
+  banProfile,
+  addBlog
 };
