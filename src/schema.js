@@ -151,6 +151,12 @@ export const typeDefs = gql`
     status: String!
     merchant_order_id: String!
   }
+  type Blog {
+    id: String!
+    title:String!
+    description:String!
+    date:String!
+  }
   ${QueryType}
   ${MutationType}
 `;
