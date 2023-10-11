@@ -121,6 +121,7 @@ export const MutationType = gql`
       email: String!
       password: String!
       acountActive: Boolean!
+      role: String
       termsAndCondsAprove: Boolean!
     ): User
     deleteProfile(idProfile: ID!): String
