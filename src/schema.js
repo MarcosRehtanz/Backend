@@ -156,6 +156,7 @@ export const typeDefs = gql`
     title:String!
     description:String!
     date:String!
+    createdAt: String!
   }
   ${QueryType}
   ${MutationType}
