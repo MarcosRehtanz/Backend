@@ -33,6 +33,8 @@ import { passwordReset } from "./passwordReset.js";
 import { switchRole } from "./switchRole.js";
 import { banProfile } from "./banProfile.js";
 import { addBlog } from "./addBlog.js";
+import { sendFooterEmail } from "./sendFooterEmail.js";
+import { deletePostBlog } from "./deletePostBlog.js";
 
 export const MutationType = gql`
   type Mutation {
@@ -164,11 +166,16 @@ export const MutationType = gql`
       username: String!
     ): String
 
-    addBlog(
-      title: String!
-      description: String!
-      date: String!
-    ): String
+    addBlog(title: String!, description: String!, date: String!): String
+    deletePostBlog(id: ID!): String
+
+    sendFooterEmail(
+      name: String!
+      email: String!
+      reason: String!
+      message: String!
+      phone: String!
+    ): FormFooter
   }
 `;
 
@@ -208,5 +215,7 @@ export const Mutation = {
   passwordReset,
   switchRole,
   banProfile,
-  addBlog
+  addBlog,
+  sendFooterEmail,
+  deletePostBlog,
 };
