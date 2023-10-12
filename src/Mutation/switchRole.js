@@ -8,7 +8,7 @@ export const switchRole = async (_, args) =>{
             throw new Error("No existe el usuario");
         }
         else if (user.role === 'user'){
-            await user.update({role: 'admin'}, {where: {idUser} });
+            await user.update({role: 'admin'});
             return `${user.name + ' ' + user.lastname} actualizó su rol a admin` 
         }
         else{
