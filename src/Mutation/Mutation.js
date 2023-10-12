@@ -33,7 +33,7 @@ import { passwordReset } from "./passwordReset.js";
 import { switchRole } from "./switchRole.js";
 import { banProfile } from "./banProfile.js";
 import { addBlog } from "./addBlog.js";
-
+import { sendFooterEmail } from "./sendFooterEmail.js";
 export const MutationType = gql`
   type Mutation {
     userRegister(
@@ -73,10 +73,7 @@ export const MutationType = gql`
       SubMaterials: [ID!]
     ): Product
 
-    orderMercadoPago(
-      product: [ProductInput]
-      idUser: ID
-    ): MercadoPago
+    orderMercadoPago(product: [ProductInput], idUser: ID): MercadoPago
 
     addShoppingHistory(
       payment_id: Int
@@ -85,12 +82,10 @@ export const MutationType = gql`
       email: String
     ): ShoppingHistory
 
-
     # addTypePerson(
     #     typePerson: String
     # ): TypePerson
 
-    
     addTypeUser(typeUser: String): TypeUser
     addMaterial(name: String!, description: String!, image: String!): Materials
     uploadProductImg(photo: String): String
@@ -162,17 +157,18 @@ export const MutationType = gql`
     deleteReview(idReview: ID!): String
     restoreReview(idReview: ID!): Review
     passwordReset(email: String): String
-    switchRole(idUser: ID!):String
-    banProfile(
-      idProfile:ID!
-      username: String!
-    ): String
+    switchRole(idUser: ID!): String
+    banProfile(idProfile: ID!, username: String!): String
 
-    addBlog(
-      title: String!
-      description: String!
-      date: String!
-    ): String
+    addBlog(title: String!, description: String!, date: String!): String
+
+    sendFooterEmail(
+      name: String!
+      email: String!
+      reason: String!
+      message: String!
+      phone: String!
+    ): FormFooter
   }
 `;
 
@@ -212,5 +208,6 @@ export const Mutation = {
   passwordReset,
   switchRole,
   banProfile,
-  addBlog
+  addBlog,
+  sendFooterEmail,
 };
