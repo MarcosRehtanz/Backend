@@ -12,7 +12,7 @@ export const orderMercadoPago = async (_, args) => {
      
   });
 
-  const { email, product, idUser} = args
+  const { product, idUser} = args
 
   try {
     console.log(args);
@@ -40,7 +40,7 @@ export const orderMercadoPago = async (_, args) => {
         pending: `${process.env.URL_FRONT}/pending`,
       },
       auto_return:"approved",
-      notification_url: `${process.env.URL_BACK}/webhook?email=${email}`
+      notification_url: `${process.env.URL_BACK}/webhook?email=${userExist.email}`
     });
 
     const res = {
