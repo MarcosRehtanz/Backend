@@ -12,6 +12,7 @@ import { subMaterials } from "./Models/SubMaterials.js";
 import { profile } from "./Models/Profile.js";
 import { review } from "./Models/Review.js";
 import { buyOrders } from "./Models/BuyOrders.js";
+import { blog } from './Models/Blog.js';
 
 const sequelize = new Sequelize(process.env.POSTGRES_URL, { dialectModule: pg, logging: false });
 
@@ -26,9 +27,10 @@ materials(sequelize);
 profile(sequelize);
 review(sequelize);
 subMaterials(sequelize);
+blog(sequelize)
 
 //Models
-const { User, Profile, Product, ShoppingHistory, BuyOrders, TypePerson, TypeUser, Materials, Review, SubMaterials } = sequelize.models;
+const { User, Profile, Product, ShoppingHistory, BuyOrders, TypePerson, TypeUser, Materials, Review, SubMaterials, Blog } = sequelize.models;
 
 // Relations
 User.hasOne(Profile);

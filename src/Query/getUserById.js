@@ -34,6 +34,7 @@ export const getUserById = async (_, args) => {
       password: user.dataValues.password,
       acountActive: user.dataValues.acountActive,
       termsAndCondsAprove: user.dataValues.termsAndCondsAprove,
+      role: user.dataValues.role,
       product: [...Product],
       profile: user.dataValues.Profile.dataValues,
       shoppingHistory: user.dataValues.ShoppingHistory?.dataValues,

@@ -8,6 +8,7 @@ export const updateUser = async (_, args) => {
         email,
         password,
         acountActive,
+        role,
         termsAndCondsAprove
         } = args;
 
@@ -19,6 +20,7 @@ export const updateUser = async (_, args) => {
                 email,
                 password,
                 acountActive,
+                role,
                 termsAndCondsAprove
             }, { where: {idUser} }
         )
