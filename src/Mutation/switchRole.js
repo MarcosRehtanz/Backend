@@ -9,11 +9,11 @@ export const switchRole = async (_, args) =>{
         }
         else if (user.role === 'user'){
             await user.update({role: 'admin'});
-            return `${user.name + ' ' + user.lastname} actualizó su rol a admin` 
+            return {message: `${user.name + ' ' + user.lastname} actualizó su rol a admin`}
         }
         else{
             await user.update({role:'user'})
-            return `${user.name + ' ' + user.lastname} actualizó su rol a user` 
+            return {message: `${user.name + ' ' + user.lastname} actualizó su rol a user`} 
         }
     }
     catch(error){
