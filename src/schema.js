@@ -24,6 +24,9 @@ export const typeDefs = gql`
     review: [Review]
     role: Role
   }
+  type Message {
+    message: String
+  }
   type Profile {
     idProfile: ID!
     userName: String
