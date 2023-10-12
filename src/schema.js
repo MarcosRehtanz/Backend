@@ -158,6 +158,14 @@ export const typeDefs = gql`
     date:String!
     createdAt: String!
   }
+
+  type FormFooter {
+    name: String!
+    email: String!
+    reason: String!
+    message: String!
+    phone: String!
+  }
   ${QueryType}
   ${MutationType}
 `;
