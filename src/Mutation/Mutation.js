@@ -160,7 +160,7 @@ export const MutationType = gql`
     restoreReview(idReview: ID!): Review
     passwordReset(email: String): String
     switchRole(idUser: ID!): Message
-    banProfile(idProfile: ID!, username: String!): String
+    banProfile(idProfile: ID!, username: String!, cuitCuil: String): Message
 
     addBlog(title: String!, description: String!, date: String!): String
     deletePostBlog(id: ID!): String
