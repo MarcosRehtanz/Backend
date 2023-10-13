@@ -1,4 +1,3 @@
-import { errorMonitor } from "nodemailer/lib/xoauth2";
 import { models } from "../db";
 
 export const updateBlog = async (_, args) => {
@@ -15,7 +14,7 @@ export const updateBlog = async (_, args) => {
         },{where: {id} })
 
         if(!blog){
-            throw new Error('el blo que intenta actualizar no ha sido encontrado. Verifique los datos')
+            throw new Error('el blog que intenta actualizar no ha sido encontrado. Verifique los datos')
         }
         else{
             const newBlogInfo = await models.Blog.findByPk(id)
