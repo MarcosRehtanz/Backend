@@ -13,7 +13,7 @@ export const allUsers = async() => {
         if(!users) throw new Error ("No se encontraron usuarios")
 
         const AllUsers = users.map(usuario =>{
-            //console.log(usuario.dataValues)
+            
             return {
                     idUser: usuario.dataValues.idUser,
                     name: usuario.dataValues.name,
