@@ -5,7 +5,7 @@ export const updateBlog = async (_, args) => {
         title,
         description,
          } = args;
-        // console.log(args);
+        console.log(args);
     try{
         const blog = await models.Blog.update({
             title,
