@@ -12,7 +12,7 @@ export const Profile = [
       },
       {
         userName: "juancito",
-        cuitCuil: "11-12345678-1",
+        cuitCuil: "11-12345678-2",
         phone: "+54 9 3512 7684 21",
         address: "Av Colon 125",
         postalCode: "5000",
@@ -23,7 +23,7 @@ export const Profile = [
       },
       {
         userName: "maria",
-        cuitCuil: "11-12345678-1",
+        cuitCuil: "11-12345678-3",
         phone: "+54 9 3512 7684 21",
         address: "Av Colon 125",
         postalCode: "5000",
@@ -34,7 +34,7 @@ export const Profile = [
       },
       {
         userName: "ginita",
-        cuitCuil: "11-12345678-1",
+        cuitCuil: "11-12345678-4",
         phone: "+54 9 3512 7684 21",
         address: "Av Colon 125",
         postalCode: "5000",
@@ -45,7 +45,7 @@ export const Profile = [
       },
       {
         userName: "danielin",
-        cuitCuil: "11-12345678-1",
+        cuitCuil: "11-12345678-5",
         phone: "+54 9 3512 7684 21",
         address: "Av Colon 125",
         postalCode: "5000",
@@ -56,7 +56,7 @@ export const Profile = [
       },
       {
         userName: "joniloco123",
-        cuitCuil: "11-12345678-1",
+        cuitCuil: "11-12345678-6",
         phone: "+54 9 3512 7684 21",
         address: "Av Colon 125",
         postalCode: "5000",
@@ -67,7 +67,7 @@ export const Profile = [
       },
       {
         userName: "josemigueeeel",
-        cuitCuil: "11-12345678-1",
+        cuitCuil: "11-12345678-7",
         phone: "+54 9 3512 7684 21",
         address: "Av Colon 125",
         postalCode: "5000",
@@ -78,7 +78,7 @@ export const Profile = [
       },
       {
         userName: "fanchute",
-        cuitCuil: "11-12345678-1",
+        cuitCuil: "11-12345678-8",
         phone: "+54 9 3512 7684 21",
         address: "Av Colon 125",
         postalCode: "5000",
@@ -89,7 +89,7 @@ export const Profile = [
       },
       {
         userName: "JuanelCaballol0co",
-        cuitCuil: "11-12345678-1",
+        cuitCuil: "11-12345678-9",
         phone: "+54 9 3512 7684 21",
         address: "Av Colon 125",
         postalCode: "5000",
@@ -100,7 +100,7 @@ export const Profile = [
       },
       {
         userName: "melanchu",
-        cuitCuil: "11-12345678-1",
+        cuitCuil: "11-1234567810",
         phone: "+54 9 3512 7684 21",
         address: "Av Colon 125",
         postalCode: "5000",
@@ -111,7 +111,7 @@ export const Profile = [
       },
       {
         userName: "GAbiTom",
-        cuitCuil: "11-12345678-1",
+        cuitCuil: "11-1234567811",
         phone: "+54 9 3512 7684 21",
         address: "Av Colon 125",
         postalCode: "5000",
