@@ -11,10 +11,11 @@ export const addShoppingHistory = async (root, args) => {
     if (!payment_id || !status || !merchant_order_id || !email)
       throw new Error("Faltan datos");
     const response = await mercadopago.payment.findById(payment_id);
-
+    
     const user = await models.User.findOne({
       where: { email },
     });
+    console.log(response);
 
     if (!user)
       throw new Error(

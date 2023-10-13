@@ -35,6 +35,8 @@ import { banProfile } from "./banProfile.js";
 import { addBlog } from "./addBlog.js";
 import { sendFooterEmail } from "./sendFooterEmail.js";
 import { deletePostBlog } from "./deletePostBlog.js";
+import { restorePostBlog } from "./restorePostBlog.js"
+import { updateBlog } from "./updateBlog.js"
 
 export const MutationType = gql`
   type Mutation {
@@ -128,7 +130,7 @@ export const MutationType = gql`
     deleteProfile(idProfile: ID!): String
     restoreProfile(idProfile: ID!): Profile
     deleteUser(idUser: ID!): String
-    restoreUser(idUser: ID!): User
+    restoreUser(idUser: ID!): String
     addReview(
       title: String!
       rating: Int!
@@ -172,6 +174,13 @@ export const MutationType = gql`
       message: String!
       phone: String!
     ): FormFooter
+    restorePostBlog(id:ID!): Blog
+    updateBlog(
+        id:ID!
+        title:String!
+        description:String!
+        date:String!
+    ): Blog
   }
 `;
 
@@ -214,4 +223,6 @@ export const Mutation = {
   addBlog,
   sendFooterEmail,
   deletePostBlog,
+  restorePostBlog,
+  updateBlog,
 };
