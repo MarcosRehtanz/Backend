@@ -33,6 +33,7 @@ export const addShoppingHistory = async (root, args) => {
         taxes: response.body.taxes_amount,
         totalAmount: response.body.transaction_amount,
         UserIdUser: user.dataValues.idUser,
+        status:response.body.status
       },
     });
 
@@ -48,8 +49,9 @@ export const addShoppingHistory = async (root, args) => {
       taxes: shoppingHistoryadded[0].dataValues.taxes,
       totalAmount: shoppingHistoryadded[0].dataValues.totalAmount,
       UserIdUser: shoppingHistoryadded[0].dataValues.UserIdUser,
+      status:shoppingHistoryadded[0].dataValues.status
     };
-    console.log(response.response.additional_info.items[0])
+    //console.log(response.response.additional_info.items[0])
     const buyOrders = await Promise.all(response.response.additional_info.items.map(async item => {
       const buyProduct = await models.BuyOrders.findOrCreate({
         where: {

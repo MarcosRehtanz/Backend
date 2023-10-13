@@ -75,7 +75,7 @@ export const MutationType = gql`
       SubMaterials: [ID!]
     ): Product
 
-    orderMercadoPago(product: [ProductInput] email:String): MercadoPago
+    orderMercadoPago(product: [ProductInput], idUser: ID): MercadoPago
 
     addShoppingHistory(
       payment_id: Int
@@ -84,12 +84,10 @@ export const MutationType = gql`
       email: String
     ): ShoppingHistory
 
-
     # addTypePerson(
     #     typePerson: String
     # ): TypePerson
 
-    
     addTypeUser(typeUser: String): TypeUser
     addMaterial(name: String!, description: String!, image: String!): Materials
     uploadProductImg(photo: String): String
@@ -124,6 +122,7 @@ export const MutationType = gql`
       email: String!
       password: String!
       acountActive: Boolean!
+      role: String
       termsAndCondsAprove: Boolean!
     ): User
     deleteProfile(idProfile: ID!): String
@@ -160,11 +159,8 @@ export const MutationType = gql`
     deleteReview(idReview: ID!): String
     restoreReview(idReview: ID!): Review
     passwordReset(email: String): String
-    switchRole(idUser: ID!):String
-    banProfile(
-      idProfile:ID!
-      username: String!
-    ): String
+    switchRole(idUser: ID!): Message
+    banProfile(idProfile: ID!, username: String!): String
 
     addBlog(title: String!, description: String!, date: String!): String
     deletePostBlog(id: ID!): String

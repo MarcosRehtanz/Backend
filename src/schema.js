@@ -24,6 +24,9 @@ export const typeDefs = gql`
     review: [Review]
     role: Role
   }
+  type Message {
+    message: String
+  }
   type Profile {
     idProfile: ID!
     userName: String
@@ -157,6 +160,14 @@ export const typeDefs = gql`
     description:String!
     date:String!
     createdAt: String!
+  }
+
+  type FormFooter {
+    name: String!
+    email: String!
+    reason: String!
+    message: String!
+    phone: String!
   }
   ${QueryType}
   ${MutationType}

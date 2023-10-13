@@ -1,4 +1,5 @@
 import "dotenv/config";
+import { models } from '../db.js'
 import mercadopago from "mercadopago";
 
 const { ACCESS_TOKEN_MP } = process.env;
@@ -11,9 +12,15 @@ export const orderMercadoPago = async (_, args) => {
      
   });
 
+  const { product, idUser} = args
+
   try {
-    console.log(args.email);
-    const prod = args.product;
+    console.log(args);
+    const userExist = await models.User.findOne({where:{idUser}})
+    console.log(userExist);
+    if( !userExist ) throw new Error('Usuario no registrado')
+
+    const prod = product;
 
     const IdCurr = prod.map((p) => p.currencyId);
    
@@ -33,7 +40,7 @@ export const orderMercadoPago = async (_, args) => {
         pending: `${process.env.URL_FRONT}/pending`,
       },
       auto_return:"approved",
-      notification_url: `${process.env.URL_BACK}/webhook?email=${args.email}`
+      notification_url: `${process.env.URL_BACK}/webhook?email=${userExist.email}`
     });
 
     const res = {
