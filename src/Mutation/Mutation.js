@@ -34,6 +34,8 @@ import { switchRole } from "./switchRole.js";
 import { banProfile } from "./banProfile.js";
 import { addBlog } from "./addBlog.js";
 import { sendFooterEmail } from "./sendFooterEmail.js";
+import { deletePostBlog } from "./deletePostBlog.js";
+
 export const MutationType = gql`
   type Mutation {
     userRegister(
@@ -161,6 +163,7 @@ export const MutationType = gql`
     banProfile(idProfile: ID!, username: String!): String
 
     addBlog(title: String!, description: String!, date: String!): String
+    deletePostBlog(id: ID!): String
 
     sendFooterEmail(
       name: String!
@@ -210,4 +213,5 @@ export const Mutation = {
   banProfile,
   addBlog,
   sendFooterEmail,
+  deletePostBlog,
 };
