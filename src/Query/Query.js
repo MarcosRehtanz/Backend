@@ -24,6 +24,7 @@ import { getShoppingHistorybyUser } from "./getShoppingHistoryByUser.js";
 import { allProductsAdminDash } from "./allProductsAdminDash.js"
 
 import { getAllBlog } from "./getAllBlog.js"
+import { allRestoredUser } from "./allRestoredUser.js"
 
 export const QueryType = gql`
   type Query {
@@ -62,6 +63,7 @@ export const QueryType = gql`
     allProductsAdminDash: [Product]
     
     getAllBlog:[Blog]
+    allRestoredUser :[User]
   }
 
 `;
@@ -85,5 +87,7 @@ export const Query = {
   countAllProducts,
   getShoppingHistorybyUser,
   allProductsAdminDash,
-  getAllBlog
+  getAllBlog,
+  allRestoredUser,
+
 };
