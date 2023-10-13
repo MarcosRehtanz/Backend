@@ -130,7 +130,7 @@ export const MutationType = gql`
     deleteProfile(idProfile: ID!): String
     restoreProfile(idProfile: ID!): Profile
     deleteUser(idUser: ID!): String
-    restoreUser(idUser: ID!): User
+    restoreUser(idUser: ID!): String
     addReview(
       title: String!
       rating: Int!
