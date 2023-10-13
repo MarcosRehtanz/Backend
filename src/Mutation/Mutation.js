@@ -91,7 +91,12 @@ export const MutationType = gql`
     # ): TypePerson
 
     addTypeUser(typeUser: String): TypeUser
-    addMaterial(name: String!, description: String!, image: String!): Materials
+    addMaterial(
+    name: String!,
+     description: String!, 
+     image: String!,
+     submaterials: [SubMaterialInput] )
+     : Materials
     uploadProductImg(photo: String): String
     deleteProduct(id: ID): String
     google(email: String!, name: String!, lastname: String!): User
