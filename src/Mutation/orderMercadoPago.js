@@ -40,9 +40,9 @@ export const orderMercadoPago = async (_, args) => {
         pending: `${process.env.URL_FRONT}/pending`,
       },
       auto_return:"approved",
-      notification_url: `${process.env.URL_BACK}/webhook?email=${userExist.email}`
+      // notification_url: `${process.env.URL_BACK}/webhook?email=${userExist.email}`
     });
-
+    console.log(response);
     const res = {
       products: prod,
       currency_id: IdCurr,
