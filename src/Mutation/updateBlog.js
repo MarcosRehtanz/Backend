@@ -4,13 +4,13 @@ export const updateBlog = async (_, args) => {
     const { id,
         title,
         description,
-        date } = args;
-
+         } = args;
+        // console.log(args);
     try{
-        const blog = await models.blog.update({
+        const blog = await models.Blog.update({
             title,
             description,
-            date
+            
         },{where: {id} })
 
         if(!blog){
