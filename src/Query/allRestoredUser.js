@@ -1,4 +1,4 @@
-import { models } from "../db";
+import { models } from "../db.js";
 
 export const allRestoredUser = async ()=> {
    try{
