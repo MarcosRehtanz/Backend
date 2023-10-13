@@ -61,7 +61,13 @@ export const typeDefs = gql`
     name: String!
     origin: String!
     image: String!
+
   }
+  input SubMaterialInput {
+    name: String!
+    description: String!
+  }
+  
   input ProductInput {
     idProduct: ID!
     name: String!
