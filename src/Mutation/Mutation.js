@@ -164,10 +164,11 @@ export const MutationType = gql`
 
     sendFooterEmail(
       name: String!
-      email: String!
+      senderEmail: String!
       reason: String!
       message: String!
       phone: String!
+      destinationEmail: String
     ): FormFooter
   }
 `;
