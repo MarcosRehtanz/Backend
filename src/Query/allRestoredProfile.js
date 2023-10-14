@@ -2,7 +2,7 @@ import { models } from "../db.js";
 
 export const allRestoredProfile = async () => {
     try{
-        const restoredProfiles = await models.Profile.findAll({where: {paranoid: false}})
+        const restoredProfiles = await models.Profile.findAll({where: { [Op.not]: {deletedAt: null}}, paranoid: false})
         return restoredProfiles;
     }
     catch(error){

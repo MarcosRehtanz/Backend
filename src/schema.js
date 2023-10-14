@@ -15,7 +15,7 @@ export const typeDefs = gql`
     "status o isAcountActive ? para verificar estado de la cuenta"
     acountActive: Boolean
     termsAndCondsAprove: Boolean
-    deleteAd: String
+    deletedAt: String
     cart: [String]
     product: [Product]
     token: String!
