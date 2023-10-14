@@ -25,6 +25,11 @@ import { allProductsAdminDash } from "./allProductsAdminDash.js"
 
 import { getAllBlog } from "./getAllBlog.js"
 import { allRestoredUser } from "./allRestoredUser.js"
+import { allResProducts } from "./allRestoredProducts.js"
+import { allRestoredMaterials } from "./allRestoredMaterials.js"
+import { allRestoredSubmaterials } from "./allRestoredSubmaterials.js"
+import { allRestoredBlogs } from "./allRestoredBlogs.js"
+import { allRestoredProfile } from "./allRestoredProfile.js"
 
 export const QueryType = gql`
   type Query {
@@ -63,7 +68,12 @@ export const QueryType = gql`
     allProductsAdminDash: [Product]
     
     getAllBlog:[Blog]
-    allRestoredUser :[User]
+    allRestoredUser: [User]
+    allResProducts: [Product]
+    allRestoredMaterials: [Materials]
+    allRestoredSubmaterials: [SubMaterials]
+    allRestoredBlogs: [Blog]
+    allRestoredProfile: [Profile]
   }
 
 `;
@@ -89,5 +99,9 @@ export const Query = {
   allProductsAdminDash,
   getAllBlog,
   allRestoredUser,
-
+  allResProducts,
+  allRestoredMaterials,
+  allRestoredSubmaterials,
+  allRestoredBlogs,
+  allRestoredProfile,
 };

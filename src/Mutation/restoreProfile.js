@@ -1,16 +1,15 @@
 
 import { models } from "../db.js";
 
-export const restoreProfile = async (_, { idProfile }) => {
+export const restoreProfile = async (_, args) => {
+  const { idProfile, username } = args
   try {
-    const restoredProfile = await models.Profile.findByPk(idProfile, { paranoid: false })
-
+    const restoredProfile = await models.Profile.restore({where: idProfile})
     if (!restoredProfile) {
       throw new Error('Peril no encontrado')
     }
     else {
-      console.log(restoredProfile, '¡He vuelto del más allá ciela!')
-      return restoredProfile
+      return `El usuario ${username} ha sido restaurado`
     }
   }
   catch (error) {
