@@ -170,10 +170,11 @@ export const typeDefs = gql`
 
   type FormFooter {
     name: String!
-    email: String!
+    senderEmail: String!
     reason: String!
     message: String!
     phone: String!
+    destinationEmail: String
   }
   ${QueryType}
   ${MutationType}
