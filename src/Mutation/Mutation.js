@@ -121,6 +121,8 @@ export const MutationType = gql`
       stock: Float!
       publicationDate: String!
       productImage: String!
+      Materials: [ID!]
+      SubMaterials: [ID!]
     ): Product
     updateUser(
       idUser: ID!
