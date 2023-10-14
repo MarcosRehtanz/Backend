@@ -8,7 +8,7 @@ export const allProductsByUser = async (_, args) => {
         invalidArgs: id,
       });
       const product = await models.Product.findAll({
-        where: { UserIdUser: id }, include: models.Materials
+        where: { UserIdUser: id }, include: [models.Materials, models.SubMaterials]
       });
 
     return product;
