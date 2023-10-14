@@ -7,6 +7,6 @@ export const allProductsAdminDash = async() => {
         const allProducts = await models.Product.findAll()
         return allProducts
     } catch (error) {
-        throw new Error ('Internal server error')
+        throw new Error ('No se pudo cargar el total de productos ' + error.message)
     }
 }

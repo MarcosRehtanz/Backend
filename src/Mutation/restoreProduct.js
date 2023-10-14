@@ -2,17 +2,17 @@
 
 import { models } from "../db.js";
 
-export const restoreProduct = async (_, { idProduct }) => {
+export const restoreProduct = async (_, args) => {
+  const { idProduct, name } = args
   try {
 
-    const restoredProduct = await models.Product.findByPk(idProduct, {paranoid: false})
+    const restoredProduct = await models.Product.restore({where: idProduct})
 
   if(!restoredProduct){
     throw new Error ('Producto no encontrado')
   }
   else{
-    console.log(restoredProduct, '¡He vuelto del más allá ciela!')
-    return restoredProduct
+    return `${name} ha sido resaurado`
   }
     }    
    catch (error) {
