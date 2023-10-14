@@ -83,7 +83,7 @@ export const MutationType = gql`
       payment_id: Int
       status: String
       merchant_order_id: String
-      email: String
+      idUser: String
     ): ShoppingHistory
 
     # addTypePerson(

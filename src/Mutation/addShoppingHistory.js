@@ -3,19 +3,27 @@ import mercadopago from "mercadopago";
 import "dotenv/config";
 export const addShoppingHistory = async (root, args) => {
 
-  mercadopago.configure({
-    access_token: process.env.ACCESS_TOKEN_MP,
-  });
-  const { payment_id, status, merchant_order_id, email } = args;
+  // mercadopago.configure({
+  //   access_token: process.env.ACCESS_TOKEN_MP,
+  // });
+  const { payment_id, status, merchant_order_id, idUser } = args;
   try {
-    if (!payment_id || !status || !merchant_order_id || !email)
+    if (!payment_id || !status || !merchant_order_id || !idUser)
       throw new Error("Faltan datos");
     const response = await mercadopago.payment.findById(payment_id);
     
     const user = await models.User.findOne({
-      where: { email },
+      where: { idUser },
     });
-    console.log(response);
+    // console.log(user);
+    console.log({
+      operationId: response.body.collector_id,
+      paymentMethod: response.body.payment_type_id,
+      paymentMethodId: response.body.payment_method_id,
+      netAmount: response.body.transaction_details.net_received_amount,
+      taxes: response.body.taxes_amount,
+      totalAmount: response.body.transaction_amount,
+    });
 
     if (!user)
       throw new Error(
@@ -25,7 +33,7 @@ export const addShoppingHistory = async (root, args) => {
     // console.log(response.response)
     // console.log(response.response.charges_details)
     // console.log(response.response.additional_info.items)
-    const shoppingHistoryadded = await models.ShoppingHistory.findOrCreate({
+    const [shoppingHistoryadded, created] = await models.ShoppingHistory.findOrCreate({
       where: {
         operationId: response.body.collector_id,
         paymentMethod: response.body.payment_type_id,
@@ -33,10 +41,14 @@ export const addShoppingHistory = async (root, args) => {
         netAmount: response.body.transaction_details.net_received_amount,
         taxes: response.body.taxes_amount,
         totalAmount: response.body.transaction_amount,
+      },
+      defaults: {
         UserIdUser: user.dataValues.idUser,
         status:response.body.status
-      },
+      }
     });
+
+    console.log(created);
 
     if (!shoppingHistoryadded)
       throw new Error("Falta informacion para crear el historial");
@@ -57,10 +69,12 @@ export const addShoppingHistory = async (root, args) => {
       const buyProduct = await models.BuyOrders.findOrCreate({
         where: {
           id_product: item.id,
+          ShoppingHistoryIDShopHistory: shoppingHistoryadded[0].dataValues.IDShopHistory
+        }, 
+        defaults: {
           title: item.title,
           unit_price: item.unit_price,
           quantity: item.quantity,
-          ShoppingHistoryIDShopHistory: shoppingHistoryadded[0].dataValues.IDShopHistory
         }
       })
       return buyProduct.dataValues
