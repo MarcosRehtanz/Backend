@@ -112,7 +112,7 @@ export const MutationType = gql`
       afipCondition: AfipCondition!
       profilePicture: String!
     ): Profile
-    restoreProduct(idProduct: ID!): Product
+    restoreProduct(idProduct: ID!): String
     updateProduct(
       idProduct: ID!
       name: String!

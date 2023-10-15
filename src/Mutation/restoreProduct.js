@@ -3,16 +3,18 @@
 import { models } from "../db.js";
 
 export const restoreProduct = async (_, args) => {
-  const { idProduct, name } = args
+  const { idProduct } = args
   try {
 
-    const restoredProduct = await models.Product.restore({where: idProduct})
+    const restoredProduct = await models.Product.restore({where: {
+      idProduct
+    }})
 
   if(!restoredProduct){
     throw new Error ('Producto no encontrado')
   }
   else{
-    return `${name} ha sido resaurado`
+    return `El producto ha sido resaurado`
   }
     }    
    catch (error) {
