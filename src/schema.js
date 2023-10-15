@@ -55,6 +55,7 @@ export const typeDefs = gql`
     averageRating: Int
     currency_id: String
     quantity: Int
+    deletedAt: String
   }
   input MaterialInput {
     id: ID!
