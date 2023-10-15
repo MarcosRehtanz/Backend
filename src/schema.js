@@ -15,7 +15,7 @@ export const typeDefs = gql`
     "status o isAcountActive ? para verificar estado de la cuenta"
     acountActive: Boolean
     termsAndCondsAprove: Boolean
-    deleteAd: String
+    deletedAt: String
     cart: [String]
     product: [Product]
     token: String!
@@ -170,10 +170,11 @@ export const typeDefs = gql`
 
   type FormFooter {
     name: String!
-    email: String!
+    senderEmail: String!
     reason: String!
     message: String!
     phone: String!
+    destinationEmail: String
   }
   ${QueryType}
   ${MutationType}

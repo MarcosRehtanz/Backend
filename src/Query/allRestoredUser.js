@@ -1,13 +1,15 @@
 import { models } from "../db.js";
+import { Op } from "sequelize";
 
 export const allRestoredUser = async ()=> {
    try{
-    const restoredUsers = await models.User.findAll({ paranoid: false })
+    const restoredUsers = await models.User.findAll({ where: { [Op.not]: {deletedAt: null} }, paranoid: false, include: models.Profile })
     if(!restoredUsers){
         return 'No se encontraron usuarios'
     }
     else{
-        const allRestoredUsrs = restoredUsers.map(user =>{
+        const allRestoredUsrs = restoredUsers.map(usuario =>{
+            console.log(usuario?.dataValues.name);
             return{
                 idUser: usuario.dataValues.idUser,
                 name: usuario.dataValues.name,
