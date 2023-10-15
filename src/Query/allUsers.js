@@ -7,19 +7,20 @@ export const allUsers = async() => {
         
         const users = await models.User.findAll(
             {
-                include: models.Profile
+                include: [models.Profile, models.Review]
             }
         )
         if(!users) throw new Error ("No se encontraron usuarios")
 
         const AllUsers = users.map(usuario =>{
-            
+            console.log(usuario.dataValues.Reviews);
             return {
                     idUser: usuario.dataValues.idUser,
                     name: usuario.dataValues.name,
                     lastname: usuario.dataValues.lastname,
                     email:usuario.dataValues.email,
                     password: usuario.dataValues.password,
+                    review: usuario.dataValues.Reviews,
                     acountActive: usuario.dataValues.acountActive,
                     termsAndCondsAprove: usuario.dataValues.termsAndCondsAprove,
                     createdAt: String(usuario.dataValues.createdAt),
