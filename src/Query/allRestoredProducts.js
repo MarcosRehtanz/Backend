@@ -1,5 +1,5 @@
+import { Op } from "sequelize";
 import { models } from "../db.js"
-
 
 export const allResProducts = async() => {
     

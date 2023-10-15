@@ -30,6 +30,7 @@ import { allRestoredMaterials } from "./allRestoredMaterials.js"
 import { allRestoredSubmaterials } from "./allRestoredSubmaterials.js"
 import { allRestoredBlogs } from "./allRestoredBlogs.js"
 import { allRestoredProfile } from "./allRestoredProfile.js"
+import { allResProductsByUser } from "./allRestoredProductsByUser.js";
 
 export const QueryType = gql`
   type Query {
@@ -70,6 +71,9 @@ export const QueryType = gql`
     getAllBlog:[Blog]
     allRestoredUser: [User]
     allResProducts: [Product]
+    allResProductsByUser(
+      id: ID!
+    ): [Product] 
     allRestoredMaterials: [Materials]
     allRestoredSubmaterials: [SubMaterials]
     allRestoredBlogs: [Blog]
@@ -104,4 +108,5 @@ export const Query = {
   allRestoredSubmaterials,
   allRestoredBlogs,
   allRestoredProfile,
+  allResProductsByUser
 };
