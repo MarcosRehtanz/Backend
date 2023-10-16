@@ -1,6 +1,8 @@
 import { models } from "../db.js";
 import mercadopago from "mercadopago";
 import "dotenv/config";
+import { stock } from "./stock.js";
+
 export const addShoppingHistory = async (root, args) => {
 
   // mercadopago.configure({
@@ -79,6 +81,8 @@ export const addShoppingHistory = async (root, args) => {
     const buyOrders = await Promise.all(response.response.additional_info.items.map(async item => {
       // console.log('80', item);
       try {
+
+        await stock({ idProduct: item.id, quantity: item.quantity })
         const userSeller = await models.Product.findOne({where: { idProduct: item.id}})
         
         console.log('84', userSeller.dataValues.UserIdUser);
