@@ -29,7 +29,7 @@ import { deleteMaterial } from "./deleteMaterial.js";
 import { deleteSubMaterial } from "./deleteSubMaterial.js";
 import { deleteReview } from "./deleteReview.js";
 import { restoreReview } from "./restoreReview.js";
-import { passwordReset } from "./passwordReset.js";
+import { PasswordResetInit } from "./PasswordResetInit.js";
 import { switchRole } from "./switchRole.js";
 import { banProfile } from "./banProfile.js";
 import { addBlog } from "./addBlog.js";
@@ -37,6 +37,7 @@ import { sendFooterEmail } from "./sendFooterEmail.js";
 import { deletePostBlog } from "./deletePostBlog.js";
 import { restorePostBlog } from "./restorePostBlog.js"
 import { updateBlog } from "./updateBlog.js"
+import { updatePassword } from "./updatePassword.js"
 
 export const MutationType = gql`
   type Mutation {
@@ -167,7 +168,7 @@ export const MutationType = gql`
     deleteSubMaterial(id: ID!): String
     deleteReview(idReview: ID!): String
     restoreReview(idReview: ID!): Review
-    passwordReset(email: String): String
+    PasswordResetInit(email: String): String
     switchRole(idUser: ID!): Message
     banProfile(idProfile: ID!, username: String!, cuitCuil: String): Message
 
@@ -189,6 +190,7 @@ export const MutationType = gql`
         description:String!
         date:String!
     ): Blog
+    updatePassword(password: String!): User
   }
 `;
 
@@ -225,7 +227,7 @@ export const Mutation = {
   deleteMaterial,
   deleteReview,
   restoreReview,
-  passwordReset,
+  PasswordResetInit,
   switchRole,
   banProfile,
   addBlog,
@@ -233,4 +235,5 @@ export const Mutation = {
   deletePostBlog,
   restorePostBlog,
   updateBlog,
+  updatePassword,
 };

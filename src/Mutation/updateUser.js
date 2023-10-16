@@ -1,4 +1,5 @@
 import { models } from "../db.js";
+// import bcrypt from 'bcryptjs'
 
 export const updateUser = async (_, args) => {
 
@@ -6,19 +7,18 @@ export const updateUser = async (_, args) => {
         name,
         lastname,
         email,
-        password,
         acountActive,
         role,
         termsAndCondsAprove
         } = args;
 
     try {
+    
         const updatedUser = await models.User.update(
             {
                 name,
                 lastname,
                 email,
-                password,
                 acountActive,
                 role,
                 termsAndCondsAprove
