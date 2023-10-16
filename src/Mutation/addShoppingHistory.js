@@ -79,10 +79,14 @@ export const addShoppingHistory = async (root, args) => {
     const buyOrders = await Promise.all(response.response.additional_info.items.map(async item => {
       // console.log('80', item);
       try {
+        const userSeller = await models.Product.findOne({where: { idProduct: item.id}})
+        
+        console.log('84', userSeller.dataValues.UserIdUser);
 
         const buyProduct = await models.BuyOrders.findOrCreate({
           where: {
             id_product: item.id,
+            id_seller: userSeller.dataValues.UserIdUser,
             ShoppingHistoryIDShopHistory: shoppingHistoryadded.dataValues.IDShopHistory,
             title: item.title,
             unit_price: item.unit_price,
