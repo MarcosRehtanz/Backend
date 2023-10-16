@@ -101,6 +101,7 @@ export const typeDefs = gql`
     quantity: Int!
     unit_price: Float!
     id_product: String!
+    id_seller: String!
   }
 
   type ShoppingHistory {
