@@ -31,7 +31,7 @@ import { allRestoredSubmaterials } from "./allRestoredSubmaterials.js"
 import { allRestoredBlogs } from "./allRestoredBlogs.js"
 import { allRestoredProfile } from "./allRestoredProfile.js"
 import { allResProductsByUser } from "./allRestoredProductsByUser.js";
-
+import { verifyTokenPassReset } from "./verifyTokenPassReset.js"
 export const QueryType = gql`
   type Query {
     allUsers: [User]
@@ -78,6 +78,7 @@ export const QueryType = gql`
     allRestoredSubmaterials: [SubMaterials]
     allRestoredBlogs: [Blog]
     allRestoredProfile: [Profile]
+    verifyTokenPassReset (token: String!): User
   }
 
 `;
@@ -108,5 +109,6 @@ export const Query = {
   allRestoredSubmaterials,
   allRestoredBlogs,
   allRestoredProfile,
-  allResProductsByUser
+  allResProductsByUser,
+  verifyTokenPassReset
 };
