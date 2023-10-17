@@ -1,4 +1,5 @@
 import { models } from "../db.js"
+import { uploadProductImg } from "./uploadProductImg.js";
 
 export const addMaterial = async (_, args) => {
 
@@ -8,17 +9,17 @@ export const addMaterial = async (_, args) => {
 
         const mat = await models.Materials.findOne({ where: { name } })
         if (mat) throw new Error("El material ya esta creado")
+        const urlImage = await uploadProductImg(image)
         const material = await models.Materials.create({
             name,
             description,
-            image
+            image: urlImage
         })
 
         await Promise.all(submaterials.map(async (submaterial) => {
-            const { name, description } = submaterial
+            const { name } = submaterial
             await models.SubMaterials.create({
                 name,
-                description,
                 MaterialId: material.id
             })
         }))
