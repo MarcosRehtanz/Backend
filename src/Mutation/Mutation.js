@@ -162,6 +162,8 @@ export const MutationType = gql`
       name: String!
       description: String!
       image: String!
+      submaterials: [SubMaterialInput]
+      submaterialsDestroyed: [SubMaterialInput]
     ): Materials
     deleteMaterial(id: ID!): String
     restoreMaterial(id: ID!): String
