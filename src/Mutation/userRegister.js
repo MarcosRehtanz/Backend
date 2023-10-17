@@ -12,7 +12,7 @@ export const userRegister = async (_, args) => {
             password
             } = args
     const emailToValidate = await models.User.findOne( {where:{email}})
-    console.log(emailToValidate, 'Esto arroja la consulta')
+    // console.log(emailToValidate, 'Esto arroja la consulta')
         if(emailToValidate){
            throw new Error ('Este email está en uso. Accede a tu cuenta e inicia sesión')
         }
@@ -40,7 +40,7 @@ export const userRegister = async (_, args) => {
             <p style="Margin:0;font-family:arial,'helvetica neue',helvetica,sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">Si no se registró con nosotros, ignore este correo electrónico.</p>
         </td> </tr> <tr> <td align="center" style="padding:0;Margin:0;padding-top:10px;padding-bottom:10px">
             <span class="m_1467742517444429127es-button-border" style="border-style:solid;border-color:#2cb543;background:#5c68e2;border-width:0px;display:inline-block;border-radius:6px;width:auto">
-                <a href="${process.env.URL_FRONT}/verify?key=${token}" class="m_1467742517444429127es-button" style="text-decoration:none!important;color:#ffffff;font-size:20px;padding:10px 30px 10px 30px;display:inline-block;background:#5c68e2;border-radius:6px;font-family:arial,'helvetica neue',helvetica,sans-serif;font-weight:normal;font-style:normal;line-height:24px!important;width:auto;text-align:center;letter-spacing:0;border-left-width:30px;border-right-width:30px" target="_blank" data-saferedirecturl="https://www.google.com/url?q=https://localhost:5173/verify&amp;source=gmail&amp;ust=1696696216333000&amp;usg=AOvVaw3NKp5kPCETgHDrNmRglYyR">
+                <a href="${process.env.URL_FRONT}/verify?key=${token}" class="m_1467742517444429127es-button" style="text-decoration:none!important;color:#ffffff;font-size:20px;padding:10px 30px 10px 30px;display:inline-block;background:#5c68e2;border-radius:6px;font-family:arial,'helvetica neue',helvetica,sans-serif;font-weight:normal;font-style:normal;line-height:24px!important;width:auto;text-align:center;letter-spacing:0;border-left-width:30px;border-right-width:30px" target="_blank" data-saferedirecturl="https://www.google.com/url?q=${process.env.URL_FRONT}/verify&amp;source=gmail&amp;ust=1696696216333000&amp;usg=AOvVaw3NKp5kPCETgHDrNmRglYyR">
                     Confirmar email
                 </a>
             </span>
