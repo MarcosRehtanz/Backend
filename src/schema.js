@@ -66,7 +66,6 @@ export const typeDefs = gql`
   }
   input SubMaterialInput {
     name: String!
-    description: String!
   }
   
   input ProductInput {

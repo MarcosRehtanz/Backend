@@ -1,17 +1,19 @@
 import { models } from "../db.js";
 
 export const restoreMaterial = async (_, args) => {
-  const { id, name } = args
+  const { id } = args
   try {
 
-    const restoredMaterial = await models.Materials.restore({where: id})
+    const restoredMaterial = await models.Materials.restore({where: {
+      id
+    }})
 
     if (!restoredMaterial) {
       throw new Error('Material no encontrado')
     }
     else {
       console.log(restoredMaterial, '¡He vuelto del más allá ciela!')
-      return `${name} ha sido resaurado`
+      return "La categoría ha sido resaurada"
     }
   } 
   catch (error) {
