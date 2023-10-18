@@ -13,7 +13,6 @@ export const allUsers = async() => {
         if(!users) throw new Error ("No se encontraron usuarios")
 
         const AllUsers = users.map(usuario =>{
-            console.log(usuario.dataValues.Reviews);
             return {
                     idUser: usuario.dataValues.idUser,
                     name: usuario.dataValues.name,
@@ -26,7 +25,7 @@ export const allUsers = async() => {
                     createdAt: String(usuario.dataValues.createdAt),
                     updatedAt: String(usuario.dataValues.updatedAt),
                     deletedAt: usuario.dataValues.deletedAt,
-                    profile: usuario.dataValues.Profile.dataValues,
+                    profile: usuario.dataValues.Profile,
                     role:usuario.dataValues.role
                 }
                 
