@@ -1,19 +1,19 @@
 import { models } from "../db.js";
 import bcrypt from 'bcryptjs'
 
-export const updatePassword = async (_, {password}) =>{
+export const updatePasswordRec = async (_, {password, idUser}) =>{
     try{
         const pass = await bcrypt.hash(password, 8)
         const changedPasword = await models.User.update(
             {
                 password: pass
-            }, { where: {email} }
+            }, { where: {idUser} }
         )
         if(!changedPasword){
             throw new  Error ('Esta cuenta no existe, por favor regístrate')
         }
         else{
-            const newPassword = await models.User.findOne(email)
+            const newPassword = await models.User.findByPk(idUser)
             return newPassword
         }
     }
