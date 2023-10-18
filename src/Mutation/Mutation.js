@@ -37,7 +37,7 @@ import { sendFooterEmail } from "./sendFooterEmail.js";
 import { deletePostBlog } from "./deletePostBlog.js";
 import { restorePostBlog } from "./restorePostBlog.js"
 import { updateBlog } from "./updateBlog.js"
-import { updatePassword } from "./updatePassword.js"
+import { updatePasswordRec } from "./updatePasswordRec.js"
 
 export const MutationType = gql`
   type Mutation {
@@ -192,7 +192,8 @@ export const MutationType = gql`
         description:String!
         date:String!
     ): Blog
-    updatePassword(password: String!): User
+    updatePasswordRec(password: String!
+      idUser: ID!): User
   }
 `;
 
@@ -237,5 +238,5 @@ export const Mutation = {
   deletePostBlog,
   restorePostBlog,
   updateBlog,
-  updatePassword,
+  updatePasswordRec,
 };
