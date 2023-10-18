@@ -16,6 +16,7 @@ import { searchUserByName } from "./searchUserByName.js";
 import { getUserById } from "./getUserById.js";
 import { getProductById } from "./getProductById.js";
 import { getMaterialsByName } from "./getMaterialsByName.js";
+import { getMaterialById } from "./getMaterialById.js";
 
 import { feedbackMercadoPago } from "./feedbackMercadoPago.js";
 import { allSubmaterial } from "./allSubmaterials.js";
@@ -32,6 +33,7 @@ import { allRestoredBlogs } from "./allRestoredBlogs.js"
 import { allRestoredProfile } from "./allRestoredProfile.js"
 import { allResProductsByUser } from "./allRestoredProductsByUser.js";
 import { verifyTokenPassReset } from "./verifyTokenPassReset.js"
+
 export const QueryType = gql`
   type Query {
     allUsers: [User]
@@ -79,6 +81,9 @@ export const QueryType = gql`
     allRestoredBlogs: [Blog]
     allRestoredProfile: [Profile]
     verifyTokenPassReset (token: String!): User
+    getMaterialById(
+      idMaterial: String
+    ): Materials
   }
 
 `;
@@ -110,5 +115,6 @@ export const Query = {
   allRestoredBlogs,
   allRestoredProfile,
   allResProductsByUser,
-  verifyTokenPassReset
+  verifyTokenPassReset,
+  getMaterialById
 };
